@@ -131,6 +131,7 @@
     <Content Include="assets\images\image4.jpeg" />
     <Content Include="assets\images\imageLokal.jpeg" />
     <Content Include="assets\images\Img1.png" />
+    <Content Include="assets\images\img_avatar2.png" />
     <Content Include="assets\images\logoOficialOneGo.jpg" />
     <Content Include="assets\images\logo\ad.png" />
     <Content Include="assets\images\logo\american_express.gif" />
@@ -210,6 +211,12 @@
     <Content Include="assets\lib\semantic-ui-transition\transition.min.css" />
     <Content Include="assets\lib\semantic-ui-transition\transition.min.js" />
     <Content Include="assets\lib\typed.js\lib\typed.min.js" />
+    <Content Include="BankQuestions\PreExam.aspx" />
+    <Content Include="BankQuestions\Register.aspx" />
+    <Content Include="BankQuestions\Payment.aspx" />
+    <Content Include="BankQuestions\Exam.aspx" />
+    <Content Include="BankQuestions\ForgotPassword.aspx" />
+    <Content Include="BankQuestions\Login.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Contact.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -326,6 +333,48 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BankQuestions\PreExam.aspx.cs">
+      <DependentUpon>PreExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\PreExam.aspx.designer.cs">
+      <DependentUpon>PreExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\Exam.aspx.cs">
+      <DependentUpon>Exam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\Exam.aspx.designer.cs">
+      <DependentUpon>Exam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
