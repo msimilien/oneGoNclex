@@ -82,7 +82,7 @@
 
                             </li>
                             <li>
-                                <a href="Banks.html"> Questions Bank</a>
+                                <a href="Banks.html">Questions Bank</a>
 
                             </li>
                             <li>
@@ -111,7 +111,7 @@
                 </nav>
             </div>
         </div>
-       <%-- <section class="py-9 overflow-hidden text-center">
+        <%-- <section class="py-9 overflow-hidden text-center">
             <div class="background-holder overlay overlay-1 parallax" style="background-image:url(assets/images/image1.jpg);"> </div>
             <!--/.background-holder-->
             <div class="container">
@@ -134,67 +134,70 @@
             <div class="container">
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
-                           <div class="text-center">
-        <p>
-        <br />
-        <asp:Label ID="LblregisterForm" runat="server" Text="Registration Form" class="bg-success text-white" Font-Bold="True" Font-Overline="True" Font-Size="Large" Font-Strikeout="False" ForeColor="Red"></asp:Label>
-    </p>
-        <p>
-            <asp:Label ID="lblIdregistration" runat="server"></asp:Label>
-    </p>
-   </div>
-    <div class="container">
-      <div style="margin-top:20px;" class="row-fluid">
-        <div class="offset4 span4 well">
+                        <div class="text-center">
+                            <p>
+                                <br />
+                                <asp:Label ID="LblregisterForm" runat="server" Text="Registration Form" class="bg-success text-white" Font-Bold="True" Font-Overline="True" Font-Size="Large" Font-Strikeout="False" ForeColor="Red"></asp:Label>
+                            </p>
+                            <p>
+                                <asp:Label ID="lblIdregistration" runat="server"></asp:Label>
+                            </p>
+                        </div>
+                        <div class="container">
+                            <div style="margin-top: 20px;" class="row-fluid">
+                                <div class="offset4 span4 well">
 
-          <div class="col">
-            <form id="form1" runat="server">
-            <input name="TextFname" type="text" required="required" placeholder="First Name"  />
-            <input name="TextMdleName" type="text"  placeholder="Midle Name " />
-            <input name="TexLast" type="text" required="required" placeholder="Last name " />
-            <input name="TxtSocialSecurity" type="text" required="required" placeholder="Social Security Number" /><br />
-            <input name="TextAddress" type="text" required="required" placeholder="Addres" />
-            <input name="TextState" type="text" required="required" placeholder="State" />
-            <input name="TextCity" type="text" required="required" placeholder="City" />
-            <input name="Zip" type="text" required="required" placeholder="Zip" /><br />
-            <input name="TextPhone" type="tel" required="required" placeholder="Phone Number" />
-            <input name="TextResidenceCountry" type="text" required="required" placeholder="Country of Residence" />
-            <input name="TextMail" type="email" required="required" placeholder="Email" />
-            <input name="TextEmergencyMail" type="email"  placeholder="Emergency Contact Email" /><br />
-            <input name="TextEmergencyName" type="text"  placeholder="Emergency Contact Name" />
-            <input name="TextEmergencyPhone" type="tel"  placeholder="Emergency Contact Phone" />
-              <hr />
-            <asp:Label ID="Label1" runat="server" Text="Birth Date"></asp:Label> 
-            <input name="TextBirthDate" type="date" required="required" />
-              <asp:Label ID="Label2" runat="server" Text="Gender"></asp:Label> 
-              <select name="SelectGender" required="required">
-                  <option>Male</option>
-                  <option>Female</option>
+                                    <div class="col">
+                                        <form id="form1" runat="server">
+                                            <input name="TextFname" type="text" required="required" placeholder="First Name" />
+                                            <input name="TextMdleName" type="text" placeholder="Midle Name " />
+                                            <input name="TexLast" type="text" required="required" placeholder="Last name " />
+                                            <input name="TxtSocialSecurity" type="text" required="required" placeholder="Social Security Number" /><br />
+                                            <input name="TextAddress" type="text" required="required" placeholder="Addres" />
+                                            <input name="TextState" type="text" required="required" placeholder="State" />
+                                            <input name="TextCity" type="text" required="required" placeholder="City" />
+                                            <input name="Zip" type="text" required="required" placeholder="Zip" /><br />
+                                            <input name="TextPhone" type="tel" required="required" placeholder="Phone Number" />
+                                            <input name="TextResidenceCountry" type="text" required="required" placeholder="Country of Residence" />
+                                            <input name="TextMail" type="email" required="required" placeholder="Email" />
+                                            <input name="TextEmergencyMail" type="email" placeholder="Emergency Contact Email" /><br />
+                                            <input name="TextEmergencyName" type="text" placeholder="Emergency Contact Name" />
+                                            <input name="TextEmergencyPhone" type="tel" placeholder="Emergency Contact Phone" />
+                                            <hr />
+                                            <asp:Label ID="Label1" runat="server" Text="Birth Date"></asp:Label>
+                                            <input name="TextBirthDate" type="date" required="required" />
+                                            <asp:Label ID="Label2" runat="server" Text="Gender"></asp:Label>
+                                            <select name="SelectGender" required="required">
+                                                <option>Male</option>
+                                                <option>Female</option>
 
-              </select>
-              <br />
-              <input name="CheckboxHighSchool" type="checkbox" title="High School Diploma/GED" />
-              <asp:Label ID="Label3" runat="server" Text="High School Diploma/GED" Font-Bold="True"></asp:Label> <br />
-              <input name="CheckboxLPN" type="checkbox" title="LPN" />
-              <asp:Label ID="Label4" runat="server" Text="LPN" Font-Bold="True"></asp:Label> <br /><br />
-              
-                  <asp:Button ID="BtnSubmit" runat="server" Text="Submit" class="btn btn-md-lg btn-primary" OnClick="BtnSubmit_Click" />
-              </form>
-              
+                                            </select>
+                                            <br />
+                                            <input name="CheckboxHighSchool" type="checkbox" title="High School Diploma/GED" />
+                                            <asp:Label ID="Label3" runat="server" Text="High School Diploma/GED" Font-Bold="True"></asp:Label>
+                                            <br />
+                                            <input name="CheckboxLPN" type="checkbox" title="LPN" />
+                                            <asp:Label ID="Label4" runat="server" Text="LPN" Font-Bold="True"></asp:Label>
+                                            <br />
+                                            <br />
 
-         </div>
-            
-           
-            </div>
-          </div>
-        </div>
-    
+                                            <asp:Button ID="BtnSubmit" runat="server" Text="Submit" class="btn btn-md-lg btn-primary" OnClick="BtnSubmit_Click" />
+                                        </form>
 
 
-    
-    <br />
-    <br />
-    <br />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <br />
+                        <br />
+                        <br />
                     </div>
                 </div>
                 <!--/.row-->

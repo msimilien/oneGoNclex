@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace oneGoNclex
 {
@@ -20,6 +15,7 @@ namespace oneGoNclex
             addRegister();
             Response.Redirect("ResponseContact.html");
         }
+
         private void addRegister()
         {
             string gedSchool = null, gender = null, lpn = null;
@@ -99,8 +95,6 @@ namespace oneGoNclex
                                 @HighSchoolGED,
                                 @lpn)";
             cmd.Connection = conn;
-
-
             
             cmd.Parameters.AddWithValue("@FirstName", FsName);
             cmd.Parameters.AddWithValue("@MiddleName", midle ?? null);
@@ -118,19 +112,9 @@ namespace oneGoNclex
             cmd.Parameters.AddWithValue("@Gender", gender);
             cmd.Parameters.AddWithValue("@HighSchoolGED", gedSchool);
             cmd.Parameters.AddWithValue("@lpn", lpn);
-            try
-            {
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                // call send mail method
-                
-               
-                
-            }
-            catch (Exception ex)
-            {
-                //lblMessage.Text = lblMessage.Text + " ;" + ex.Message.ToString();
-            }
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
         }
     }
 }
