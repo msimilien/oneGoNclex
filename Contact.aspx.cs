@@ -17,12 +17,16 @@ namespace oneGoNclex
 
         protected void btnsend_Click(object sender, EventArgs e)
         {
-            SmtpClient smtp = new SmtpClient("mail.onegonclexreview.com",8889); //mail.onegonclexreview.com smtp.live.com
-            smtp.Credentials = new System.Net.NetworkCredential("info@onegonclexreview.com", "lexo543*");
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            MailMessage mail = new MailMessage("info@onegonclexreview.com", "info@onegonclexreview.com");
-            mail.Subject = "Your contact with OneGo Nclex Review LLC";
-            mail.Body = txtdesciption.Text + "---- Mail from:  "+ txtmail.Text;
+            SmtpClient smtp = new SmtpClient("mail.onegonclexreview.com", 8889)
+            {
+                Credentials = new System.Net.NetworkCredential("info@onegonclexreview.com", "lexo543*"),
+                DeliveryMethod = SmtpDeliveryMethod.Network
+            }; //mail.onegonclexreview.com smtp.live.com
+            MailMessage mail = new MailMessage("info@onegonclexreview.com", "info@onegonclexreview.com")
+            {
+                Subject = "Your contact with OneGo Nclex Review LLC",
+                Body = txtdesciption.Text + "---- Mail from:  " + txtmail.Text
+            };
             //mail.Bcc.Add("info@onegonclexreview.com");
             try
             {

@@ -22,7 +22,7 @@
     <link rel="manifest" href="assets/images/favicons/manifest.json">
     <link rel="mask-icon" href="assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileImage" content="assets/images/favicons/mstile-150x150.png">--%>
-     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logoOficialOneGo.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logoOficialOneGo.jpg">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logoOficialOneGo.jpg">
     <meta name="theme-color" content="#ffffff">
     <!--  -->
@@ -82,7 +82,7 @@
 
                             </li>
                             <li>
-                                <a href="Banks.html"> Questions Bank</a>
+                                <a href="Banks.html">Questions Bank</a>
 
                             </li>
                             <li>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <section class="py-9 overflow-hidden text-center">
-            <div class="background-holder overlay overlay-1 parallax" style="background-image:url(assets/images/image1.jpg);"> </div>
+            <div class="background-holder overlay overlay-1 parallax" style="background-image: url(assets/images/image1.jpg);"></div>
             <!--/.background-holder-->
             <div class="container">
                 <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
@@ -135,12 +135,15 @@
                     <div class="col-lg-4 pr-lg-6">
                         <div class="row">
                             <div class="col-md-4 col-lg-12 mb-4">
-                                <h5 class="mb-2">New York Office</h5>1111 Broadhollow Rd, Suite 330 Farmingdale
-                                <br>New York 11735, USA
-                                <br>TEL:
-                                <a href="tel:+1 631-984-0231">+1 631-984-0231</a> 
+                                <h5 class="mb-2">New York Office</h5>
+                                1111 Broadhollow Rd, Suite 330 Farmingdale
+                                <br>
+                                New York 11735, USA
+                                <br>
+                                TEL:
+                                <a href="tel:+1 631-984-0231">+1 631-984-0231</a>
                             </div>
-                          
+
                             <div class="col-md-4 col-lg-12">
                                 <h4 class="mb-2">Socials</h4>
                                 <a class="d-inline-block mt-2" href="#">
@@ -159,55 +162,53 @@
                         </div>
                     </div>
                     <div class="col-lg mt-4 mt-lg-0">
-                        <form  id="form1" runat="server"> <%--class="zform"--%>
+                        <form id="form1" runat="server">
+                            <%--class="zform"--%>
                             <div class="row">
                                 <div class="col-12">
                                     <%--<input class="form-control" type="hidden" name="to" value="user@domain.extension">--%>
                                     <%--<input class="form-control" type="text" placeholder="Your Name" required>--%>
                                     <asp:TextBox ID="TextName" class="form-control" runat="server" placeholder="Your Name" TextMode="SingleLine"></asp:TextBox>
-                                    <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
-                                          ControlToValidate="TextName"
-                                          ErrorMessage=" Name is a required field."
-                                          ForeColor="Red">
-                                        </asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="TextName"
+                                        ErrorMessage=" Name is a required field."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-12 mt-4">
                                     <%--<input class="form-control" type="email" placeholder="Email" required>--%>
                                     <asp:TextBox ID="txtmail" runat="server" class="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
-                                    <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
-                                          ControlToValidate="txtmail"
-                                          ErrorMessage=" Email is a required field."
-                                          ForeColor="Red">
-                                        </asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="txtmail"
+                                        ErrorMessage=" Email is a required field."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-12 mt-4">
                                     <%--<textarea class="form-control" rows="6" placeholder="Enter your descriptions here..." required></textarea>--%>
-                                    <asp:TextBox ID="txtdesciption" runat="server"  class="form-control" placeholder="Enter your descriptions here..."  TextMode="MultiLine" Rows="6"></asp:TextBox>
-                                    <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
-                                          ControlToValidate="txtdesciption"
-                                          ErrorMessage=" Description is a required field."
-                                          ForeColor="Red">
-                                        </asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="txtdesciption" runat="server" class="form-control" placeholder="Enter your descriptions here..." TextMode="MultiLine" Rows="6"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                        ControlToValidate="txtdesciption"
+                                        ErrorMessage=" Description is a required field."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-12 mt-4">
-                                    
-                                        
-                                            <asp:button class="btn btn-md-lg btn-primary" id="btnsend" runat="server" Text="Send" OnClick="btnsend_Click">
-                                                
-                                            </asp:button>
-                                        
-                                    
-                                   
+
+
+                                    <asp:Button class="btn btn-md-lg btn-primary" ID="btnsend" runat="server" Text="Send" OnClick="btnsend_Click"></asp:Button>
+
+
+
                                 </div>
                             </div>
-                           
+
                         </form>
                     </div>
                     <div class="col-12 mt-8">
-                      
+
                         <div class="googlemap" data-latlng="40.708885,-73.4300624" data-scrollwheel="false" data-icon="assets/images/map-marker.png" data-zoom="13" data-theme="Silver" style="min-height: 350px;">
                             <div class="marker-content py-3">
-                                
                             </div>
                         </div>
                     </div>

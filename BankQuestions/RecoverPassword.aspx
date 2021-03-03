@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="oneGoNclex.ForgotPassword" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RecoverPassword.aspx.cs" Inherits="oneGoNclex.RecoverPassword" %>
 
 <!DOCTYPE html>
 
@@ -115,22 +115,36 @@
                             <form id="frmLogin" class="container-fluid" runat="server">
                                 <div class="imgcontainer">
                                     <p>
-                                        Please enter your email to recieve the instructions for reset your password.
+                                        Please enter a new password and save it to update your profile.
                                     </p>
                                 </div>
 
                                 <div class="container text-left">
-                                    <label for="uname"><b>Email</b></label>
-                                    <asp:TextBox ID="txtEmail" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                placeholder="Your email" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
-                                    </asp:TextBox>
+                                    <label for="uname"><b>Password</b></label>
+                                    <asp:TextBox ID="txtPassword" 
+                                                 class="form-control" 
+                                                 type="password"
+                                                 runat="server" 
+                                                 placeholder="Your new password" 
+                                                 TextMode="SingleLine"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                        ControlToValidate="txtEmail"
-                                        ErrorMessage=" Email contact is a required."
+                                        ControlToValidate="txtPassword"
+                                        ErrorMessage=" Password is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="container text-left">
+                                    <label for="uname"><b>Confirm Password</b></label>
+                                    <asp:TextBox ID="txtConfirmPassword" 
+                                                 class="form-control" 
+                                                 type="password"
+                                                 runat="server" 
+                                                 placeholder="Confirm your new password" 
+                                                 TextMode="SingleLine"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="txtConfirmPassword"
+                                        ErrorMessage=" Confirm Password is a required."
                                         ForeColor="Red">
                                     </asp:RequiredFieldValidator>
                                 </div>
@@ -141,12 +155,12 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-4">
                                         <asp:Button class="btn btn-md-lg btn-primary" 
-                                            ID="btnsend" 
+                                            ID="btnUpdate" 
                                             runat="server"
                                             BackColor="#4CAF50"
                                             BorderStyle="None"
-                                            Text="Send" 
-                                            OnClick="btnsend_Click"></asp:Button>
+                                            Text="Update password"
+                                            OnClick="btnUpdate_Click"></asp:Button>
                                         <br />
                                         <a href="/bankquestions/login">Back</a>
                                     </div>
