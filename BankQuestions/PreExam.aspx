@@ -66,23 +66,23 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav fs-0">
                             <li>
-                                <a href="Index.html">Home</a>
+                                <a href="/Index.html">Home</a>
 
                             </li>
                             <li>
-                                <a href="About.html">About</a>
+                                <a href="/About.html">About</a>
 
                             </li>
                             <li>
-                                <a href="Programs.html">Our programs</a>
+                                <a href="/Programs.html">Our programs</a>
 
                             </li>
                             <li>
-                                <a href="Banks.html">Questions Bank</a>
+                                <a href="/Banks.html">Questions Bank</a>
 
                             </li>
                             <li>
-                                <a href="Contact.aspx">Contact</a>
+                                <a href="/Contact.aspx">Contact</a>
 
                             </li>
 

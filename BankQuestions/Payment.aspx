@@ -66,23 +66,23 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav fs-0">
                             <li>
-                                <a href="Index.html">Home</a>
+                                <a href="/Index.html">Home</a>
 
                             </li>
                             <li>
-                                <a href="About.html">About</a>
+                                <a href="/About.html">About</a>
 
                             </li>
                             <li>
-                                <a href="Programs.html">Our programs</a>
+                                <a href="/Programs.html">Our programs</a>
 
                             </li>
                             <li>
-                                <a href="Banks.html">Questions Bank</a>
+                                <a href="/Banks.html">Questions Bank</a>
 
                             </li>
                             <li>
-                                <a href="Contact.aspx">Contact</a>
+                                <a href="/Contact.aspx">Contact</a>
 
                             </li>
 
@@ -112,30 +112,7 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            <form id="frmLogin" class="container-fluid">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/img_avatar2.png" class="avatar" alt="Avatar" />
-                                </div>
-
-                                <div class="container">
-                                    <label for="uname"><b>Username</b></label>
-                                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                                    <label for="psw"><b>Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                                    <button type="submit">Login</button>
-                                    <div style="float: left; text-align: left;">
-                                        <label>
-                                            <a href="#">Forgot password?</a>
-                                        </label>
-                                        <br />
-                                        <label>
-                                            <a href="#">Register</a>
-                                        </label>
-                                    </div>
-                                </div>
-                            </form>
+                            
                         </div>
                         <div class="container">
                             <div style="margin-top: 20px;" class="row-fluid">
