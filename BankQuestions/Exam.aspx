@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exam.aspx.cs" Inherits="oneGoNclex.Exam" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exam.aspx.cs" Inherits="oneGoNclex.Exam" MasterPageFile="~/Site.Master" %>
 
 <!DOCTYPE html>
 

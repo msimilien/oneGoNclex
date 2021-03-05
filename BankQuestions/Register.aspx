@@ -112,55 +112,341 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            <form id="frmRegister" class="container-fluid">
+                            <form id="frmRegister" class="container-fluid" runat="server">
                                 <div class="imgcontainer">
                                     <h3>Register new user</h3>
                                 </div>
+
+                                <div class="imgcontainer text-left">
+                                    <h5>Personal Information</h5>
+                                </div>
+
+                                <hr />
 
                                 <div class="container row">
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="form-group text-left">
                                             <label for="uname"><b>Firstname</b></label>
-                                            <input type="text" placeholder="Enter Firstname" name="txtFirstname" required>
-                                            <br />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group text-left">
-                                            <label for="uname"><b>Lastname</b></label>
-                                            <input type="text" placeholder="Enter Lastname" name="txtLastname" required>
-                                            <br />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group text-left">
-                                            <label for="uname"><b>Email</b></label>
-                                            <input type="text" placeholder="Enter Email" name="txtEmail" required>
-                                            <br />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group text-left">
-                                            <label for="uname"><b>Date of Birth</b></label>
-                                            <input type="text" placeholder="Enter Date of Birth" name="txtDateOfBirth" required>
+                                            <asp:TextBox ID="txtFirstname"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Firstname"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                                ControlToValidate="txtFirstname"
+                                                ErrorMessage=" Firstname is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
                                             <br />
                                         </div>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="form-group text-left">
-                                            <label for="uname"><b>Cellphone</b></label>
-                                            <input type="text" placeholder="Enter Cellphone" name="txtCellphone" required>
+                                            <label for="uname"><b>Middlename</b></label>
+                                            <asp:TextBox ID="txtMiddlename"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Middlename"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Lastname</b></label>
+                                            <asp:TextBox ID="txtLastname"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Lastname"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                                ControlToValidate="txtLastname"
+                                                ErrorMessage=" Lastname is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Email</b></label>
+                                            <asp:TextBox ID="txtEmail"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Email"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                                ControlToValidate="txtEmail"
+                                                ErrorMessage=" Email is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Date of Birth</b></label>
+                                            <asp:TextBox ID="txtDateOfBirth"
+                                                class="form-control"
+                                                type="date"
+                                                runat="server"
+                                                placeholder="Your Date of Birth"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                                ControlToValidate="txtDateOfBirth"
+                                                ErrorMessage=" Date of Birth is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Phone number</b></label>
+                                            <asp:TextBox ID="txtPhonenumber"
+                                                class="form-control"
+                                                runat="server"
+                                                type="number"
+                                                placeholder="Your Phone number"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                                ControlToValidate="txtPhonenumber"
+                                                ErrorMessage=" Phone number is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Address</b></label>
+                                            <asp:TextBox ID="txtAddress"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Address"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                                                ControlToValidate="txtAddress"
+                                                ErrorMessage=" Address is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>State</b></label>
+                                            <asp:TextBox ID="txtState"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your State"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
+                                                ControlToValidate="txtState"
+                                                ErrorMessage=" State is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>City</b></label>
+                                            <asp:TextBox ID="txtCity"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your City"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server"
+                                                ControlToValidate="txtCity"
+                                                ErrorMessage=" City is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Zip Code</b></label>
+                                            <asp:TextBox ID="txtZip"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Zip Code"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server"
+                                                ControlToValidate="txtZip"
+                                                ErrorMessage=" Zip code is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Social Security</b></label>
+                                            <asp:TextBox ID="txtSocialSecurity"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Social Security"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
+                                                ControlToValidate="txtSocialSecurity"
+                                                ErrorMessage=" Social Security is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Residence Country</b></label>
+                                            <asp:TextBox ID="txtResidenceCountry"
+                                                class="form-control"
+                                                runat="server"
+                                                placeholder="Your Residence Country"
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                            </asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+                                                ControlToValidate="txtResidenceCountry"
+                                                ErrorMessage=" Residence Country is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>Gender</b></label>
+                                            <asp:RadioButtonList runat="server" ID="rdbGender">
+                                                <asp:ListItem Text="&nbsp;Male" />
+                                                <asp:ListItem Text="&nbsp;Female" />
+                                            </asp:RadioButtonList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server"
+                                                ControlToValidate="rdbGender"
+                                                ErrorMessage=" Gender is a required."
+                                                ForeColor="Red">
+                                            </asp:RequiredFieldValidator>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>High School Diploma/GED</b></label>
+                                            <asp:CheckBox ID="chkHighSchool" Text="text" runat="server" />
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group text-left">
+                                            <label for="uname"><b>LPN</b></label>
+                                            <asp:CheckBox ID="chkLPN" Text="text" runat="server" />
                                             <br />
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="imgcontainer text-left">
+                                    <h5>Emergency Information</h5>
+                                </div>
+
+                                <hr />
+
+                                <div class="container row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group text-left">
+                                        <label for="uname"><b>Emergency Phone</b></label>
+                                        <asp:TextBox ID="txtEmergencyPhone"
+                                            class="form-control"
+                                            runat="server"
+                                            type="number"
+                                            placeholder="Your Emergency phone"
+                                            TextMode="SingleLine"
+                                            Font-Size="Medium">
+                                        </asp:TextBox>
+                                        <br />
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group text-left">
+                                        <label for="uname"><b>Emergency Email</b></label>
+                                        <asp:TextBox ID="txtEmergencyEmail"
+                                            class="form-control"
+                                            runat="server"
+                                            type="number"
+                                            placeholder="Your Emergency Email"
+                                            TextMode="SingleLine"
+                                            Font-Size="Medium">
+                                        </asp:TextBox>
+                                        <br />
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group text-left">
+                                        <label for="uname"><b>Emergency Name</b></label>
+                                        <asp:TextBox ID="txtEmergencyName"
+                                            class="form-control"
+                                            runat="server"
+                                            type="number"
+                                            placeholder="Your Emergency Name"
+                                            TextMode="SingleLine"
+                                            Font-Size="Medium">
+                                        </asp:TextBox>
+                                        <br />
+                                    </div>
+                                </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-4">
                                         &nbsp;
                                     </div>
                                     <div class="col-xs-12 col-sm-4">
-                                        <button type="submit">Save</button>
+                                        <asp:Button class="btn btn-md-lg btn-primary"
+                                            ID="btnSave"
+                                            runat="server"
+                                            BackColor="#4CAF50"
+                                            BorderStyle="None"
+                                            Text="Save"
+                                            OnClick="btnSave_Click"></asp:Button>
                                         <br />
                                         <a href="/bankquestions/login">Back</a>
                                     </div>

@@ -56,8 +56,9 @@ namespace oneGoNclex
             }
 
             SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"insert into preregister (
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = @"insert into preregister (
                                 
                                 FirstName,
                                 MiddleName,
@@ -93,9 +94,10 @@ namespace oneGoNclex
                                 @ResidenceCountry,
                                 @Gender,
                                 @HighSchoolGED,
-                                @lpn)";
-            cmd.Connection = conn;
-            
+                                @lpn)",
+                Connection = conn
+            };
+
             cmd.Parameters.AddWithValue("@FirstName", FsName);
             cmd.Parameters.AddWithValue("@MiddleName", midle ?? null);
             cmd.Parameters.AddWithValue("@LastName", TexLast);
