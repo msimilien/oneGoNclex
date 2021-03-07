@@ -112,19 +112,63 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            <form id="frmLogin" class="container-fluid">
+                            <form id="frmLogin" class="container-fluid" runat="server">
                                 <div class="imgcontainer">
                                     <img src="../assets/images/img_avatar2.png" class="avatar" alt="Avatar" />
                                 </div>
 
-                                <div class="container">
+                                <div class="container text-center">
                                     <label for="uname"><b>Username</b></label>
-                                    <input type="text" placeholder="Enter Username" name="uname" required>
+                                    <asp:TextBox ID="txtUsername" 
+                                                class="form-control" 
+                                                runat="server" 
+                                                placeholder="Enter Username" 
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="txtUsername"
+                                        ErrorMessage=" Username is a required."
+                                        Style="float: left"
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+
+                                    <br />
+                                    <br />
+                                    <br />
 
                                     <label for="psw"><b>Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="psw" required>
+                                    <asp:TextBox ID="txtPassword" 
+                                                class="form-control" 
+                                                runat="server" 
+                                                type="password"
+                                                placeholder="Enter Username" 
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="txtPassword"
+                                        Style="float: left"
+                                        ErrorMessage=" Password is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
 
-                                    <button type="submit">Login</button>
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    <asp:Button class="btn btn-md-lg btn-primary" 
+                                            ID="btnsend" 
+                                            runat="server"
+                                            BackColor="#4CAF50"
+                                            BorderStyle="None"
+                                            Text="Login" 
+                                            OnClick="btnsend_Click">
+                                    </asp:Button>
+
+                                    <br />
+                                    <br />
+
                                     <div style="float: left; text-align: left;">
                                         <label>
                                             <a href="/bankquestions/forgotpassword">Forgot password?</a>

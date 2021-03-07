@@ -112,7 +112,64 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            
+                            <form id="frmLogin" class="container-fluid" runat="server">
+                                <div class="imgcontainer">
+                                    <p>
+                                        Please enter a password and re-enter to confirm.
+                                    </p>
+                                </div>
+
+                                <div class="container text-left">
+                                    <label for="uname"><b>Password</b></label>
+                                    <asp:TextBox ID="txtPassword" 
+                                                class="form-control" 
+                                                runat="server" 
+                                                type="password"
+                                                placeholder="Your Password" 
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="txtPassword"
+                                        ErrorMessage=" Password is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="container text-left">
+                                    <label for="uname"><b>Confirm Password</b></label>
+                                    <asp:TextBox ID="txtConfirmPassword" 
+                                                class="form-control" 
+                                                runat="server" 
+                                                type="password"
+                                                placeholder="Confirm Password" 
+                                                TextMode="SingleLine"
+                                                Font-Size="Medium">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="txtConfirmPassword"
+                                        ErrorMessage=" Confirm Password is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <asp:Button class="btn btn-md-lg btn-primary" 
+                                            ID="btnsend" 
+                                            runat="server"
+                                            BackColor="#4CAF50"
+                                            BorderStyle="None"
+                                            Text="Save" 
+                                            OnClick="btnsend_Click"></asp:Button>
+                                        <br />
+                                        <a href="/bankquestions/login">Back</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="container">
                             <div style="margin-top: 20px;" class="row-fluid">

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using oneGoNclex.Model;
+using oneGoNclex.Services;
+using System;
 
 namespace oneGoNclex
 {
@@ -13,5 +10,21 @@ namespace oneGoNclex
         {
 
         }
+
+        protected void btnsend_Click(object sender, EventArgs e)
+        {
+            var model = PreRegisterService.GetById(int.Parse(Request.QueryString["id"]));
+            model.Password = txtPassword.Text;
+            AddStudent(model);
+        }
+
+        #region Methods
+
+        private void AddStudent(PreRegisterViewModel model)
+        {
+            StudentService.Add(model);
+        }
+
+        #endregion
     }
 }
