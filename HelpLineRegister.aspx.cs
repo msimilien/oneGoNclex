@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Services;
+﻿using oneGoNclex.Model;
+using oneGoNclex.Services;
 using System;
 
 namespace oneGoNclex
@@ -18,7 +19,6 @@ namespace oneGoNclex
 
         private void addRegister()
         {
-            string gedSchool = null, gender = null, lpn = null;
             string FsName = Request.Form["TextFname"];
             string TexLast = Request.Form["TexLast"];
             string midle = Request.Form["TextMdleName"];
@@ -33,15 +33,15 @@ namespace oneGoNclex
             string TextEmergencyMail = Request.Form["TextEmergencyMail"];
             string TextEmergencyName = Request.Form["TextEmergencyName"];
             string TextEmergencyPhone = Request.Form["TextEmergencyPhone"];
-            
-            gender = Request.Form["SelectGender"].ToString();
-            lpn = Request.Form["CheckboxLPN"];
-            gedSchool = Request.Form["CheckboxHighSchool"];
+            string gender = Request.Form["SelectGender"].ToString();
+            string lpn = Request.Form["CheckboxLPN"];
+            string gedSchool = Request.Form["CheckboxHighSchool"];
             string bdate = Request.Form["TextBirthDate"];
+
             lpn = string.IsNullOrEmpty(lpn) ? "no" : "yes";
             gedSchool = string.IsNullOrEmpty(lpn) ? "no" : "yes";
 
-            PreRegisterService.Add(new Model.PreRegisterViewModel
+            PreRegisterService.Add(new PreRegisterViewModel
             (
                 FsName,
                 TexLast,
@@ -60,8 +60,7 @@ namespace oneGoNclex
                 gedSchool,
                 gender,
                 lpn,
-                bdate,
-                null
+                bdate
             ));
         }
     }

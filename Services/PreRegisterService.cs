@@ -81,8 +81,7 @@ namespace oneGoNclex.Services
                                 reader.GetString(13), //gedSchool
                                 reader.GetString(12), //gender
                                 reader.GetString(14), //lpn
-                                reader.GetDateTime(3).ToString("yyyy-MM-dd"), //bdate
-                                null //password
+                                reader.GetDateTime(3).ToString("yyyy-MM-dd") //bdate
                             );
                     }
                 }
@@ -95,7 +94,7 @@ namespace oneGoNclex.Services
 
                 return model;
             }
-            catch (Exception e)
+            catch
             {
                 return null;
             }

@@ -13,14 +13,14 @@ namespace oneGoNclex
 
         protected void btnsend_Click(object sender, EventArgs e)
         {
-            var model = PreRegisterService.GetById(int.Parse(Request.QueryString["id"]));
+            var model = ExternalLoginService.GetById(int.Parse(Request.QueryString["id"]));
             model.Password = txtPassword.Text;
             AddStudent(model);
         }
 
         #region Methods
 
-        private void AddStudent(PreRegisterViewModel model)
+        private void AddStudent(ExternalLoginViewModel model)
         {
             StudentService.Add(model);
         }

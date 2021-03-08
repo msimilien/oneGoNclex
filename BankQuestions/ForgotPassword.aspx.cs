@@ -14,7 +14,7 @@ namespace oneGoNclex
         protected void btnsend_Click(object sender, EventArgs e)
         {
             SendEmailForConfirmation();
-            Response.Redirect("ResponseContact.html");
+            Response.Redirect("/responsecontact.html");
         }
 
         #region Methods

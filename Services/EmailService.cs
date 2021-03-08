@@ -10,9 +10,11 @@ namespace oneGoNclex.Services
         {
             try
             {
-                SmtpClient smtp = new SmtpClient(ConfigurationManager.AppSettings["host"], int.Parse(ConfigurationManager.AppSettings["port"]))
+                SmtpClient smtp = new SmtpClient(ConfigurationManager.AppSettings["host"], 
+                                                 int.Parse(ConfigurationManager.AppSettings["port"]))
                 {
-                    Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["username"], ConfigurationManager.AppSettings["password"]),
+                    Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["username"], 
+                                                                    ConfigurationManager.AppSettings["password"]),
                     DeliveryMethod = SmtpDeliveryMethod.Network
                 }; //mail.onegonclexreview.com smtp.live.com
                 MailMessage mail = new MailMessage(ConfigurationManager.AppSettings["username"], emailViewModel.EmailTo)

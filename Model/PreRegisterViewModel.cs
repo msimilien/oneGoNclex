@@ -21,8 +21,7 @@
                                     string gedSchool,
                                     string gender,
                                     string lpn,
-                                    string bdate,
-                                    string password)
+                                    string bdate)
         {
             FsName = fsName;
             TexLast = texLast;
@@ -42,7 +41,6 @@
             Gender = gender;
             Lpn = lpn;
             Bdate = bdate;
-            Password = password;
         }
 
         public string FsName { get; }
