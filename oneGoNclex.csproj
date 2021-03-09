@@ -145,6 +145,7 @@
     <Content Include="assets\images\map-marker.png" />
     <Content Include="assets\images\orientation.png" />
     <Content Include="assets\images\projects_header.jpg" />
+    <Content Include="assets\images\student_login.jpg" />
     <Content Include="assets\js\config.js" />
     <Content Include="assets\js\core.js" />
     <Content Include="assets\js\googlemap.js" />
@@ -211,6 +212,10 @@
     <Content Include="assets\lib\semantic-ui-transition\transition.min.css" />
     <Content Include="assets\lib\semantic-ui-transition\transition.min.js" />
     <Content Include="assets\lib\typed.js\lib\typed.min.js" />
+    <Content Include="BankQuestions\Choose.aspx" />
+    <Content Include="BankQuestions\StudentAccessLogin.aspx" />
+    <Content Include="BankQuestions\StudentAccessPassword.aspx" />
+    <Content Include="BankQuestions\StudentAccess.aspx" />
     <Content Include="BankQuestions\RecoverPassword.aspx" />
     <Content Include="BankQuestions\PreExam.aspx" />
     <Content Include="BankQuestions\Register.aspx" />
@@ -334,6 +339,34 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BankQuestions\Choose.aspx.cs">
+      <DependentUpon>Choose.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\Choose.aspx.designer.cs">
+      <DependentUpon>Choose.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\StudentAccessLogin.aspx.cs">
+      <DependentUpon>StudentAccessLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\StudentAccessLogin.aspx.designer.cs">
+      <DependentUpon>StudentAccessLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\StudentAccessPassword.aspx.cs">
+      <DependentUpon>StudentAccessPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\StudentAccessPassword.aspx.designer.cs">
+      <DependentUpon>StudentAccessPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\StudentAccess.aspx.cs">
+      <DependentUpon>StudentAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\StudentAccess.aspx.designer.cs">
+      <DependentUpon>StudentAccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BankQuestions\RecoverPassword.aspx.cs">
       <DependentUpon>RecoverPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -403,6 +436,7 @@
     <Compile Include="Model\EmailViewModel.cs" />
     <Compile Include="Model\ExternalLoginViewModel.cs" />
     <Compile Include="Model\PreRegisterViewModel.cs" />
+    <Compile Include="Model\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

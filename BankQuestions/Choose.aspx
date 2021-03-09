@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exam.aspx.cs" Inherits="oneGoNclex.Exam" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Choose.aspx.cs" Inherits="oneGoNclex.Choose" %>
 
 <!DOCTYPE html>
 
@@ -111,20 +111,30 @@
             <div class="container">
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
-                        <div class="text-center">
-                            
-                        </div>
-                        <div class="container">
-                            <div style="margin-top: 20px;" class="row-fluid">
-                                <div class="offset4 span4 well">
-                                    <div class="col">
-                                    </div>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 mb-4">
+                                <h4>Our NCLEX Practice Questions Bank</h4>
+                                <p>Please choose an option to continue.</p>
                             </div>
                         </div>
-                        <br />
-                        <br />
-                        <br />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2">
+                                &nbsp;
+                            </div>
+                            <div class="col-xs-12 col-sm-3 text-right">
+                                <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/studentaccess'">
+                                    For Student Access
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                &nbsp;
+                            </div>
+                            <div class="col-xs-12 col-sm-3 text-left">
+                                <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/login'">
+                                    For External Access
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--/.row-->

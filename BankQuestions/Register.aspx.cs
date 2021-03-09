@@ -1,6 +1,7 @@
 ﻿using oneGoNclex.Model;
 using oneGoNclex.Services;
 using System;
+using System.Threading.Tasks;
 
 namespace oneGoNclex
 {
@@ -14,7 +15,11 @@ namespace oneGoNclex
         protected void btnSave_Click(object sender, EventArgs e)
         {
             var pregisterId = AddPreRegister();
-            SendEmailForConfirmation(pregisterId);
+
+            Task.Run(() => {
+                SendEmailForConfirmation(pregisterId);
+            });
+
             Response.Redirect("/responsecontact.html");
         }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exam.aspx.cs" Inherits="oneGoNclex.Exam" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentAccessPassword.aspx.cs" Inherits="oneGoNclex.StudentAccessPassword" %>
 
 <!DOCTYPE html>
 
@@ -112,7 +112,60 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            
+                            <form id="frmLogin" class="container-fluid" runat="server">
+                                <div class="imgcontainer">
+                                    <p>
+                                        Please enter a new password and save it to update your profile.
+                                    </p>
+                                </div>
+
+                                <div class="container text-left">
+                                    <label for="uname"><b>Password</b></label>
+                                    <asp:TextBox ID="txtPassword" 
+                                                 class="form-control" 
+                                                 type="password"
+                                                 runat="server" 
+                                                 placeholder="Your new password" 
+                                                 TextMode="SingleLine"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="txtPassword"
+                                        ErrorMessage=" Password is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="container text-left">
+                                    <label for="uname"><b>Confirm Password</b></label>
+                                    <asp:TextBox ID="txtConfirmPassword" 
+                                                 class="form-control" 
+                                                 type="password"
+                                                 runat="server" 
+                                                 placeholder="Confirm your new password" 
+                                                 TextMode="SingleLine"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="txtConfirmPassword"
+                                        ErrorMessage=" Confirm Password is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <asp:Button class="btn btn-md-lg btn-primary" 
+                                            ID="btnUpdate" 
+                                            runat="server"
+                                            BackColor="#4CAF50"
+                                            BorderStyle="None"
+                                            Text="Update password"
+                                            OnClick="btnUpdate_Click"></asp:Button>
+                                        <br />
+                                        <a href="/bankquestions/login">Back</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="container">
                             <div style="margin-top: 20px;" class="row-fluid">

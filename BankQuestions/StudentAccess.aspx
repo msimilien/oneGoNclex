@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exam.aspx.cs" Inherits="oneGoNclex.Exam" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentAccess.aspx.cs" Inherits="oneGoNclex.StudentAccess" %>
 
 <!DOCTYPE html>
 
@@ -112,15 +112,63 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            
-                        </div>
-                        <div class="container">
-                            <div style="margin-top: 20px;" class="row-fluid">
-                                <div class="offset4 span4 well">
-                                    <div class="col">
-                                    </div>
+                            <form id="frmLogin" class="container-fluid" runat="server">
+                                <div class="imgcontainer">
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <img src="../assets/images/student_login.jpg" class="avatar" alt="Avatar" />
                                 </div>
-                            </div>
+
+                                <div class="container text-center">
+                                    <label for="uname"><b>Registration ID</b></label>
+                                    <asp:TextBox ID="txtRegistrationID"
+                                        class="form-control"
+                                        runat="server"
+                                        placeholder="Enter your Registration ID"
+                                        TextMode="SingleLine"
+                                        Font-Size="Medium">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="txtRegistrationID"
+                                        ErrorMessage=" Registration ID is a required."
+                                        Style="float: left"
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    <label for="psw"><b>Email</b></label>
+                                    <asp:TextBox ID="txtEmail"
+                                        class="form-control"
+                                        runat="server"
+                                        type="email"
+                                        placeholder="Enter your Email"
+                                        TextMode="SingleLine"
+                                        Font-Size="Medium">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="txtEmail"
+                                        Style="float: left"
+                                        ErrorMessage=" Email is a required."
+                                        ForeColor="Red">
+                                    </asp:RequiredFieldValidator>
+
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    <asp:Button class="btn btn-md-lg btn-primary"
+                                        ID="btnsend"
+                                        runat="server"
+                                        BackColor="#4CAF50"
+                                        BorderStyle="None"
+                                        Text="Send"
+                                        OnClick="btnsend_Click"></asp:Button>
+                                </div>
+                            </form>
                         </div>
                         <br />
                         <br />

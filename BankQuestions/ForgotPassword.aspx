@@ -54,7 +54,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     <a class="navbar-brand overflow-hidden pr-3" href="#">
-                        <img src="assets/images/logo/LogoOficialOneGo1.png" width="145" alt="" class="navbar-brand">
+                        <img src="../assets/images/logo/LogoOficialOneGo1.png" width="145" alt="" class="navbar-brand">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <div class="hamburger hamburger--emphatic">

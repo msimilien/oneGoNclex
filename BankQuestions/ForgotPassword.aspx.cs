@@ -1,5 +1,6 @@
 ﻿using oneGoNclex.Services;
 using System;
+using System.Threading.Tasks;
 using System.Web.UI;
 
 namespace oneGoNclex
@@ -13,16 +14,21 @@ namespace oneGoNclex
 
         protected void btnsend_Click(object sender, EventArgs e)
         {
-            SendEmailForConfirmation();
+            var urlToSend = Request.Url.OriginalString.Replace(Request.Url.LocalPath, "") + "/bankquestions/recoverpassword";
+
+            Task.Run(() => {
+                SendEmailForConfirmation(urlToSend);
+            });
+
             Response.Redirect("/responsecontact.html");
         }
 
         #region Methods
 
-        private void SendEmailForConfirmation()
+        private void SendEmailForConfirmation(string url)
         {
             string Subject = "Recover password with OneGo Nclex Review LLC";
-            string Body = $"Please use this <a href='{Request.Url.OriginalString.Replace(Request.Url.LocalPath, "") + "/bankquestions/recoverpassword"}'>link</a> to recover.";
+            string Body = $"Please use this <a href='{url}'>link</a> to recover.";
             EmailService.SendEmail(new Model.EmailViewModel(txtEmail.Text, Subject, Body));
         }
 
