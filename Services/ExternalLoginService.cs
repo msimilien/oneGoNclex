@@ -96,16 +96,18 @@ namespace oneGoNclex.Services
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"insert into PreregisterExternal (
+                    CommandText = @"insert into [ExternalLogin] (
                                 FirstName,
                                 LastName,
                                 PhoneNumber,
-                                Email)
+                                Email,
+                                RegistrationDate)
                                 values(
                                 @FirstName,
                                 @LastName,
                                 @PhoneNumber,
-                                @Email)",
+                                @Email,
+                                @RegistrationDate)",
                     Connection = conn
                 };
 
@@ -113,6 +115,7 @@ namespace oneGoNclex.Services
                 cmd.Parameters.AddWithValue("@LastName", entity.TexLast);
                 cmd.Parameters.AddWithValue("@PhoneNumber", entity.TextPhone);
                 cmd.Parameters.AddWithValue("@Email", entity.TextMail);
+                cmd.Parameters.AddWithValue("@RegistrationDate", DateTime.Now);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -141,6 +144,40 @@ namespace oneGoNclex.Services
                 var result = cmd.ExecuteNonQuery();
 
                 return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool ValidateExternalWithEmailAndPassword(string email, string password)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandText = @"SELECT [id]
+                                    FROM [dbo].[ExternalLogin]
+                                    WHERE [Email] = '" + email + "' and [Password]='" + password + "'",
+                    Connection = conn
+                };
+
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        return reader.GetInt32(0) > 0;
+                    }
+                }
+
+                reader.Close();
+
+                return false;
             }
             catch
             {

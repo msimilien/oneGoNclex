@@ -173,6 +173,14 @@
                                     <br />
 
                                     <div style="float: left; text-align: left;">
+                                        <asp:Label runat="server" ForeColor="Red" ID="txtErrorLogin" class="text-left" />
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+
+                                    <div style="float: left; text-align: left;">
                                         <label>
                                             <a href="/bankquestions/forgotpassword?tag=external">Forgot password?</a>
                                         </label>

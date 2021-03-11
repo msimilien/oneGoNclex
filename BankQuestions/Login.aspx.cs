@@ -1,4 +1,5 @@
-﻿using System;
+﻿using oneGoNclex.Services;
+using System;
 
 namespace oneGoNclex
 {
@@ -11,7 +12,12 @@ namespace oneGoNclex
 
         protected void btnsend_Click(object sender, EventArgs e)
         {
-
+            if (ExternalLoginService.ValidateExternalWithEmailAndPassword(txtUsername.Text, txtPassword.Text))
+            {
+                Response.Redirect($"/bankquestions/preexam?email={txtUsername.Text}");
+            }
+            else
+                txtErrorLogin.Text = "Username or password invalid";
         }
     }
 }

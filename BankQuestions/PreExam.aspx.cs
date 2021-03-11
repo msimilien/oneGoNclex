@@ -14,8 +14,11 @@ namespace oneGoNclex
         {
             var registrationID = Request.QueryString["registrationid"];
             var email = HttpUtility.UrlDecode(Request.QueryString["email"]);
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/exam?registrationid={registrationID}&email={email}" :
+                                                              $"/bankquestions/exam?email={email}";
 
-            Response.Redirect($"/bankquestions/exam?registrationid={registrationID}&email={email}");
+
+            Response.Redirect(url);
         }
     }
 }
