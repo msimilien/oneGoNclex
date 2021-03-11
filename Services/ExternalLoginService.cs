@@ -124,5 +124,28 @@ namespace oneGoNclex.Services
                 return -1;
             }
         }
+
+        public static bool UpdatePassword(string email, string newPassword)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandText = @"update [ExternalLogin] set [Password] = '" + newPassword
+                                    + "' where Email = '" + email + "'",
+                    Connection = conn
+                };
+
+                conn.Open();
+                var result = cmd.ExecuteNonQuery();
+
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

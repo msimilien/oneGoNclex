@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PreExam.aspx.cs" Inherits="oneGoNclex.PreExamn" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PreExam.aspx.cs" Inherits="oneGoNclex.PreExam" %>
 
 <!DOCTYPE html>
 
@@ -32,9 +32,9 @@
     <link href="../assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Template specific stylesheets-->
     <link href="../assets/lib/loaders.css/loaders.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Nunito:300,400,600" rel="stylesheet">
     <link href="../assets/lib/iconsmind/iconsmind.css" rel="stylesheet">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="../assets/lib/hamburgers/dist/hamburgers.min.css" rel="stylesheet">
     <link href="../assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Main stylesheet and color file-->
@@ -107,47 +107,26 @@
                 </nav>
             </div>
         </div>
-        <section class=" background-11 py-0 text-center">
+        <section class=" background-11 py-0">
             <div class="container">
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
-                        <div class="text-center">
-                            <form id="frmLogin" class="container-fluid">
-                                <div class="imgcontainer">
-                                    <img src="assets/images/img_avatar2.png" class="avatar" alt="Avatar" />
-                                </div>
-
-                                <div class="container">
-                                    <label for="uname"><b>Username</b></label>
-                                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                                    <label for="psw"><b>Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                                    <button type="submit">Login</button>
-                                    <div style="float: left; text-align: left;">
-                                        <label>
-                                            <a href="#">Forgot password?</a>
-                                        </label>
-                                        <br />
-                                        <label>
-                                            <a href="#">Register</a>
-                                        </label>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="container">
-                            <div style="margin-top: 20px;" class="row-fluid">
-                                <div class="offset4 span4 well">
-                                    <div class="col">
-                                    </div>
+                        <form runat="server">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-12 mb-4">
+                                    <br />
+                                    <br />
+                                    <h4>Our NCLEX Practice Questions Bank</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, condimentum maecenas neque in senectus purus porta, vitae morbi diam et vehicula bibendum. Cubilia nec ligula eleifend mollis nisi mattis facilisis primis sodales, posuere metus cursus tortor volutpat turpis accumsan imperdiet, enim tempus gravida commodo tempor ac id aptent. Mi nibh himenaeos risus lacus fusce blandit quisque, purus phasellus magnis metus semper vestibulum, aliquam nisl auctor ultrices feugiat commodo.</p>
+                                    <p>Inceptos conubia laoreet vivamus eu habitasse hac ad malesuada, eget massa id auctor morbi magnis mattis, rutrum lacinia ante taciti donec aliquam accumsan. Nec praesent primis enim dapibus cubilia eleifend egestas commodo magna malesuada tempus volutpat, neque himenaeos quis morbi lacus tellus donec facilisi diam iaculis. Inceptos mattis porttitor semper aptent tristique litora interdum montes tincidunt, egestas tempor curae himenaeos sapien varius commodo ante enim, nulla malesuada ligula ornare rhoncus sed class proin.</p>
                                 </div>
                             </div>
-                        </div>
-                        <br />
-                        <br />
-                        <br />
+                            <div class="row">
+                                <div class="col-xs-12" style="margin: 0 auto;">
+                                    <asp:Button ID="startExam" Text="Start Exam" runat="server" OnClick="startExam_Click" class="btn btn-outline-success" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!--/.row-->
@@ -180,7 +159,6 @@
                         <p class="text-uppercase color-9 ls mb-3">One Go NCLEX Review LLC, 1111 Route 110 , Suite 330 Farmingdale, New York 11735.Tel: 631-984-0231</p>
                         <p class="color-5 mb-0">
                             info@onegonclexreview.com
-
                         </p>
                     </div>
                 </div>
@@ -192,9 +170,9 @@
     <!--  -->
     <!--    JavaScripts-->
     <!--    =============================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="../assets/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="../assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../assets/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="../assets/lib/jquery-menu-aim/jquery.menu-aim.js"></script>
@@ -206,7 +184,7 @@
     <script src="../assets/js/zanimation.js"></script>
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/googlemap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>

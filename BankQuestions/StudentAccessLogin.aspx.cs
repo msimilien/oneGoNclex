@@ -20,7 +20,8 @@ namespace oneGoNclex
             {
                 //TODO: Chequear si pago el servicio del examen
                 //Si pago, a la pagina de examn
-                //No pago, a la pagina de payment                
+                //No pago, a la pagina de payment
+                Response.Redirect($"/bankquestions/preexam?registrationid={registrationID}&email={email}");
             }
         }
     }

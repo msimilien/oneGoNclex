@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace oneGoNclex
 {
@@ -12,6 +8,14 @@ namespace oneGoNclex
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void startExam_Click(object sender, EventArgs e)
+        {
+            var registrationID = Request.QueryString["registrationid"];
+            var email = HttpUtility.UrlDecode(Request.QueryString["email"]);
+
+            Response.Redirect($"/bankquestions/exam?registrationid={registrationID}&email={email}");
         }
     }
 }

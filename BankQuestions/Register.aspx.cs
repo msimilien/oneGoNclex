@@ -45,7 +45,7 @@ namespace oneGoNclex
         private void SendEmailForConfirmation(int pregisterId)
         {
             string Subject = "OneGo Nclex Review LLC - Preregister";
-            string Body = $"Please use this <a href='{Request.Url.OriginalString.Replace(Request.Url.LocalPath, "") + "/bankquestions/payment"}?id={pregisterId}'>link</a> to confirm your email.";
+            string Body = $"Please use this <a href='{Request.Url.OriginalString.Replace(Request.Url.PathAndQuery, "") + "/bankquestions/payment"}?id={pregisterId}'>link</a> to confirm your email.";
             EmailService.SendEmail(new EmailViewModel(txtEmail.Text, Subject, Body));
         }
 

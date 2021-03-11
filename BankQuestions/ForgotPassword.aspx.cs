@@ -7,14 +7,26 @@ namespace oneGoNclex
 {
     public partial class ForgotPassword : Page
     {
+        private string _from;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            _from = Request.QueryString["tag"];
 
+            if(_from == "student")
+                pnRegistration.Visible = true;
+            else
+                pnRegistration.Visible = false;
         }
 
         protected void btnsend_Click(object sender, EventArgs e)
         {
-            var urlToSend = Request.Url.OriginalString.Replace(Request.Url.LocalPath, "") + "/bankquestions/recoverpassword";
+            var urlToSend = Request.Url.OriginalString.Replace(Request.Url.PathAndQuery, "") + "/bankquestions/recoverpassword";
+
+            if (_from == "student")
+                urlToSend += $"?registrationid={txtRegistrationID.Text}&email={txtEmail.Text}";
+            else
+                urlToSend += $"?email={txtEmail.Text}";
 
             Task.Run(() => {
                 SendEmailForConfirmation(urlToSend);

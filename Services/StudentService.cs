@@ -74,15 +74,11 @@ namespace oneGoNclex.Services
 	                                    ,Actif
 	                                    ,[Group]
 	                                    ,LPNDiploma
-	                                    ,[Password]
+	                                    ,ISNULL([Password], '') as [Password]
                                     from Student
-                                    where RegistrationID = '@RegistrationID'
-                                    and Email = '@Email'",
+                                    where RegistrationID = '" + registrationID + "'and Email = '" + email + "'",
                     Connection = conn
                 };
-
-                cmd.Parameters.AddWithValue("@RegistrationID", registrationID);
-                cmd.Parameters.AddWithValue("@Email", email);
 
                 conn.Open();
                 var reader = cmd.ExecuteReader();
@@ -92,25 +88,25 @@ namespace oneGoNclex.Services
                     while (reader.Read())
                     {
                         return new StudentViewModel(registrationID,
-                                                    reader.GetString(0),
-                                                    reader.GetString(1),
-                                                    reader.GetString(2),
-                                                    reader.GetString(3),
-                                                    reader.GetString(4),
-                                                    reader.GetString(5),
-                                                    reader.GetString(6),
-                                                    reader.GetString(7),
-                                                    reader.GetString(8),
-                                                    reader.GetString(9),
-                                                    reader.GetString(10),
-                                                    reader.GetString(11),
-                                                    reader.GetString(12),
-                                                    reader.GetString(13),
-                                                    reader.GetString(14),
-                                                    reader.GetString(15),
-                                                    reader.GetString(16),
-                                                    reader.GetString(17),
-                                                    reader.GetString(18));
+                                                    reader.GetString(0).Trim(),
+                                                    reader.GetString(1).Trim(),
+                                                    reader.GetString(2).Trim(),
+                                                    reader.GetDateTime(3).ToString("yyyy-MM-dd").Trim(),
+                                                    reader.GetString(4).Trim(),
+                                                    reader.GetString(5).Trim(),
+                                                    reader.GetString(6).Trim(),
+                                                    reader.GetString(7).Trim(),
+                                                    reader.GetDateTime(8).ToString("yyyy-MM-dd").Trim(),
+                                                    reader.GetString(9).Trim(),
+                                                    reader.GetString(10).Trim(),
+                                                    reader.GetString(11).Trim(),
+                                                    reader.GetString(12).Trim(),
+                                                    reader.GetString(13).Trim(),
+                                                    reader.GetString(14).Trim(),
+                                                    reader.GetString(15).Trim(),
+                                                    reader.GetString(16).Trim(),
+                                                    reader.GetString(17).Trim(),
+                                                    reader.GetString(18).Trim());
                     }
                 }
 
@@ -131,19 +127,14 @@ namespace oneGoNclex.Services
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"update Student 
-	                                    set [Password] = @Password
-                                    where RegistrationID = '@RegistrationID'
-                                    and Email = '@Email'",
+                    CommandText = @"update Student set [Password] = '" + newPassword 
+                                    + "' where RegistrationID = '" + registrationID 
+                                    + "' and Email = '" + email + "'",
                     Connection = conn
                 };
 
-                cmd.Parameters.AddWithValue("@RegistrationID", registrationID);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Password", newPassword);
-
                 conn.Open();
-                var result = (int)cmd.ExecuteScalar();
+                var result = cmd.ExecuteNonQuery();
 
                 return result > 0;
             }
@@ -162,13 +153,10 @@ namespace oneGoNclex.Services
                 {
                     CommandText = @"select [Password]
                                     from Student
-                                    where RegistrationID = '@RegistrationID'
-                                    and Email = '@Email'",
+                                    where RegistrationID = '" + registrationID 
+                                    + "' and Email = '" + email + "'",
                     Connection = conn
                 };
-
-                cmd.Parameters.AddWithValue("@RegistrationID", registrationID);
-                cmd.Parameters.AddWithValue("@Email", email);
 
                 conn.Open();
                 var reader = cmd.ExecuteReader();

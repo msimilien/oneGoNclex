@@ -32,9 +32,9 @@
     <link href="../assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Template specific stylesheets-->
     <link href="../assets/lib/loaders.css/loaders.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Nunito:300,400,600" rel="stylesheet">
     <link href="../assets/lib/iconsmind/iconsmind.css" rel="stylesheet">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="../assets/lib/hamburgers/dist/hamburgers.min.css" rel="stylesheet">
     <link href="../assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Main stylesheet and color file-->
@@ -217,9 +217,9 @@
     <!--  -->
     <!--    JavaScripts-->
     <!--    =============================================-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="../assets/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="../assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../assets/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="../assets/lib/jquery-menu-aim/jquery.menu-aim.js"></script>
@@ -231,7 +231,7 @@
     <script src="../assets/js/zanimation.js"></script>
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/googlemap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>

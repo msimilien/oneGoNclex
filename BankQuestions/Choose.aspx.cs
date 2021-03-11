@@ -8,10 +8,5 @@ namespace oneGoNclex
         {
 
         }
-
-        protected void btnsend_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
