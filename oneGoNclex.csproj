@@ -299,7 +299,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Banks.html" />
+    <Content Include="Banks.aspx" />
     <Content Include="Programs.html" />
     <Content Include="ResponseContact.html" />
     <Content Include="Scripts\bootstrap.js" />
@@ -433,7 +433,15 @@
     <Compile Include="HelpLineRegister.aspx.designer.cs">
       <DependentUpon>HelpLineRegister.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Banks.aspx.cs">
+      <DependentUpon>Banks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Banks.aspx.designer.cs">
+      <DependentUpon>Banks.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\EmailViewModel.cs" />
+    <Compile Include="Model\ExamViewModel.cs" />
     <Compile Include="Model\ExternalLoginViewModel.cs" />
     <Compile Include="Model\PreRegisterViewModel.cs" />
     <Compile Include="Model\StudentViewModel.cs" />
@@ -444,6 +452,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\ExternalLoginService.cs" />
     <Compile Include="Services\PreRegisterService.cs" />
     <Compile Include="Services\StudentService.cs" />

@@ -82,7 +82,7 @@
 
                             </li>
                             <li>
-                                <a href="Banks.html">Questions Bank</a>
+                                <a href="banks">Questions Bank</a>
 
                             </li>
                             <li>

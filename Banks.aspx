@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Banks.aspx.cs" Inherits="oneGoNclex.Banks" %>
+
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
@@ -80,7 +82,7 @@
 
                             </li>
                             <li>
-                                <a href="Banks.html"> Questions Bank</a>
+                                <a href="banks">Questions Bank</a>
 
                             </li>
                             <li>
@@ -110,7 +112,7 @@
             </div>
         </div>
         <section class="py-9 overflow-hidden text-center">
-            <div class="background-holder overlay overlay-1 parallax" style="background-image:url(assets/images/image1.jpg);"> </div>
+            <div class="background-holder overlay overlay-1 parallax" style="background-image: url(assets/images/image1.jpg);"></div>
             <!--/.background-holder-->
             <div class="container">
                 <div class="row" data-zanim-timeline="{}" data-zanim-trigger="scroll">
@@ -141,10 +143,10 @@
                     </div>
                     <div class="col-lg mt-4 mt-lg-0">
                         <form id="form1" runat="server">
-
                             <div class="row">
+
                                 <div class="col-md-4">
-                                    <img src="assets/images/Free-trial_Bank.jpg" style="width:100%">
+                                    <img src="assets/images/Free-trial_Bank.jpg" style="width: 100%">
                                     <div class="container">
                                         <p class="title">General free questions sets</p>
                                         <p>This is a set of 20 random questions that can help you to get a better idea on our question banks</p>
@@ -158,40 +160,44 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <img src="assets/images/basicCareQuiz.jpg" style="width:100%">
-                                    <div class="container">
-                                        <br />
-                                        <p class="title">General free questions sets</p><br />
-                                        <p>This is a set of 20 random questions that can help you to get a better idea on our question banks</p>
-                                        <p>
-                                            <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/choose'">
-                                                Open Questions
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
-                                                    <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z" />
-                                                </svg>
-                                            </button>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="assets/images/image2.jpg" style="width:100%">
-                                    <div class="container">
-                                        <br />
-                                        <p class="title">General free questions sets</p><br />
-                                        <p>This is a set of 20 random questions that can help you to get a better idea on our question banks</p>
-                                        <p>
-                                            <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/choose'">
-                                                Open Questions
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
-                                                    <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z" />
-                                                </svg>
-                                            </button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
 
+                                <div class="col-md-4">
+                                    <img src="assets/images/basicCareQuiz.jpg" style="width: 100%">
+                                    <div class="container">
+                                        <br />
+                                        <p class="title">General free questions sets</p>
+                                        <br />
+                                        <p>This is a set of 20 random questions that can help you to get a better idea on our question banks</p>
+                                        <p>
+                                            <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/choose'">
+                                                Open Questions
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
+                                                    <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z" />
+                                                </svg>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <img src="assets/images/image2.jpg" style="width: 100%">
+                                    <div class="container">
+                                        <br />
+                                        <p class="title">General free questions sets</p>
+                                        <br />
+                                        <p>This is a set of 20 random questions that can help you to get a better idea on our question banks</p>
+                                        <p>
+                                            <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/choose'">
+                                                Open Questions
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill" viewBox="0 0 16 16">
+                                                    <path d="M4.5 1A1.5 1.5 0 0 0 3 2.5V3h4v-.5A1.5 1.5 0 0 0 5.5 1h-1zM7 4v1h2V4h4v.882a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V13H9v-1.5a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5V13H1V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V4h4zM1 14v.5A1.5 1.5 0 0 0 2.5 16h3A1.5 1.5 0 0 0 7 14.5V14H1zm8 0v.5a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5V14H9zm4-11H9v-.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5V3z" />
+                                                </svg>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
                         </form>
                     </div>
 

@@ -78,7 +78,7 @@
 
                             </li>
                             <li>
-                                <a href="/Banks.html">Questions Bank</a>
+                                <a href="/banks">Questions Bank</a>
 
                             </li>
                             <li>
@@ -112,19 +112,37 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            
-                        </div>
-                        <div class="container">
-                            <div style="margin-top: 20px;" class="row-fluid">
-                                <div class="offset4 span4 well">
-                                    <div class="col">
+                            <form runat="server">
+                                <asp:ScriptManager runat="server" />
+                                <div class="container-fluid">
+                                    <asp:UpdatePanel runat="server" ID="updPanelTimer">
+                                        <ContentTemplate>
+                                            <asp:Timer runat="server" ID="timerClock" Interval="1000" OnTick="timerClock_Tick"></asp:Timer>
+                                            <b style="position: absolute; left: 90%;">Time: </b>
+                                            <label runat="server" id="lblTimer" style="position: absolute; left: 94%;">00:15:00</label>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea runat="server" id="txtQuestionArea"></textarea>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <textarea runat="server" id="txtAnswers"></textarea>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="row">
+                                    <div class="col-xs-4"></div>
+                                    <div class="col-xs-3">
+                                        <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" />
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <asp:Button Text="Previous" runat="server" ID="btnPrev" OnClick="btnPrev_Click" />
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <br />
-                        <br />
-                        <br />
                     </div>
                 </div>
                 <!--/.row-->
