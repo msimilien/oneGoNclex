@@ -7,17 +7,21 @@ namespace oneGoNclex
 {
     public partial class Exam : System.Web.UI.Page
     {
-        private int counter = 0;
-        private List<ExamViewModel> listOfQuestions;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            listOfQuestions = ExamService.GetQuestionsByBankId(2);
+            scripManager1.RegisterAsyncPostBackControl(btnNext);
+            scripManager1.RegisterAsyncPostBackControl(btnPrev);
 
-            if (listOfQuestions.Count > 0)
+            if (!Page.IsPostBack)
             {
-                txtQuestionArea.InnerText = listOfQuestions[counter].Question;
-                txtAnswers.InnerText = listOfQuestions[counter].Question;
+                Session["listOfQuestions"] = ExamService.GetQuestionsByBankId(2);
+                Session["counter"] = 0;
+
+                if ((Session["listOfQuestions"] as List<ExamViewModel>).Count > 0)
+                {
+                    lblQuestions.Text = (Session["listOfQuestions"] as List<ExamViewModel>)[0].Question;
+                    //txtAnswers.InnerText = listOfQuestions[counter].Question;
+                }
             }
         }
 
@@ -48,21 +52,58 @@ namespace oneGoNclex
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            counter++;
-            if (listOfQuestions[counter] != null)
+            var counter = int.Parse(Session["counter"].ToString()) + 1;
+            var listQuestions = (Session["listOfQuestions"] as List<ExamViewModel>);
+            Session["counter"] = counter;
+
+            if (counter <= (listQuestions.Count - 1))
             {
-                txtQuestionArea.InnerText = listOfQuestions[counter].Question;
-                txtAnswers.InnerText = listOfQuestions[counter].Question;
+                lblQuestions.Text = listQuestions[counter].Question;
+                //txtAnswers.InnerText = listOfQuestions[counter].Question;
+
+                if (counter == (listQuestions.Count - 1))
+                    btnNext.Attributes.Add("disabled", "true");
+                else
+                    btnNext.Attributes.Remove("disabled");
+
+                btnPrev.Attributes.Remove("disabled");
+
+                updPanelQuestion.Update();
+                updAnswers.Update();
+                updButtons.Update();
+            }
+            else
+            {
+                counter = int.Parse(Session["counter"].ToString()) - 1;
+                Session["counter"] = counter;
             }
         }
 
         protected void btnPrev_Click(object sender, EventArgs e)
         {
-            counter--;
-            if (listOfQuestions[counter] != null)
+            var counter = int.Parse(Session["counter"].ToString()) - 1;
+            var listQuestions = (Session["listOfQuestions"] as List<ExamViewModel>);
+            Session["counter"] = counter;
+
+            if (counter >= 0)
             {
-                txtQuestionArea.InnerText = listOfQuestions[counter].Question;
-                txtAnswers.InnerText = listOfQuestions[counter].Question;
+                lblQuestions.Text = listQuestions[counter].Question;
+                //txtAnswers.InnerText = listOfQuestions[counter].Question;
+
+                btnNext.Attributes.Remove("disabled");
+                if (counter == 0)
+                    btnPrev.Attributes.Add("disabled", "true");
+                else
+                    btnPrev.Attributes.Remove("disabled");
+
+                updPanelQuestion.Update();
+                updAnswers.Update();
+                updButtons.Update();
+            }
+            else
+            {
+                counter = int.Parse(Session["counter"].ToString()) + 1;
+                Session["counter"] = counter;
             }
         }
     }

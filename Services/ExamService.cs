@@ -1,4 +1,5 @@
 ﻿using oneGoNclex.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -13,12 +14,12 @@ namespace oneGoNclex.Services
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"SELECT [Question]
-                                          ,[id]
-                                          ,[pictureQuestion]
-                                          '' as [videoQuestion],
-                                      FROM [dbo].[Questions]
-                                    where [BankId]=" + bankID,
+                    CommandText = @"SELECT Question
+                                          ,id
+                                          ,pictureQuestion
+                                          ,'' as videoQuestion
+                                      FROM Questions
+                                    where BankId=" + bankID,
                     Connection = conn
                 };
 
@@ -38,7 +39,7 @@ namespace oneGoNclex.Services
 
                 return list;
             }
-            catch
+            catch (Exception ex)
             {
                 return new List<ExamViewModel>();
             }

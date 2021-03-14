@@ -15,6 +15,15 @@ namespace oneGoNclex
     {
 
         /// <summary>
+        /// scripManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager scripManager1;
+
+        /// <summary>
         /// updPanelTimer control.
         /// </summary>
         /// <remarks>
@@ -42,31 +51,49 @@ namespace oneGoNclex
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTimer;
 
         /// <summary>
-        /// txtQuestionArea control.
+        /// updPanelQuestion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtQuestionArea;
+        protected global::System.Web.UI.UpdatePanel updPanelQuestion;
 
         /// <summary>
-        /// txtAnswers control.
+        /// lblQuestions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAnswers;
+        protected global::System.Web.UI.WebControls.Label lblQuestions;
 
         /// <summary>
-        /// btnNext control.
+        /// updAnswers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.UpdatePanel updAnswers;
+
+        /// <summary>
+        /// Answers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList Answers;
+
+        /// <summary>
+        /// updButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updButtons;
 
         /// <summary>
         /// btnPrev control.
@@ -76,5 +103,14 @@ namespace oneGoNclex
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPrev;
+
+        /// <summary>
+        /// btnNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNext;
     }
 }

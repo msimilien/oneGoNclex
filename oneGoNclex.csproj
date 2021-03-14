@@ -423,6 +423,11 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BankData.cs" />
+    <Compile Include="DAL\ExamData.cs" />
+    <Compile Include="DAL\ExternalLoginData.cs" />
+    <Compile Include="DAL\PreregisterData.cs" />
+    <Compile Include="DAL\StudentData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -440,6 +445,7 @@
     <Compile Include="Banks.aspx.designer.cs">
       <DependentUpon>Banks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Model\BankViewModel.cs" />
     <Compile Include="Model\EmailViewModel.cs" />
     <Compile Include="Model\ExamViewModel.cs" />
     <Compile Include="Model\ExternalLoginViewModel.cs" />
@@ -451,6 +457,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Security\StringCipher.cs" />
+    <Compile Include="Services\BankService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\ExternalLoginService.cs" />

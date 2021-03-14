@@ -117,24 +117,22 @@
                                 <p>Please choose an option to continue.</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-2">
-                                &nbsp;
+                        <form runat="server">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-2">
+                                    &nbsp;
+                                </div>
+                                <div class="col-xs-12 col-sm-3 text-right">
+                                    <asp:Button ID="btnStudent" Text="For Student Access" runat="server" class="btn btn-outline-success" OnClick="btnStudent_Click" />
+                                </div>
+                                <div class="col-xs-12 col-sm-2">
+                                    &nbsp;
+                                </div>
+                                <div class="col-xs-12 col-sm-3 text-left">
+                                    <asp:Button ID="btnExternal" Text="For External Access" runat="server" class="btn btn-outline-success" OnClick="btnExternal_Click" />
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-sm-3 text-right">
-                                <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/studentaccess'">
-                                    For Student Access
-                                </button>
-                            </div>
-                            <div class="col-xs-12 col-sm-2">
-                                &nbsp;
-                            </div>
-                            <div class="col-xs-12 col-sm-3 text-left">
-                                <button type="button" class="btn btn-outline-success" onclick="location.href = '/bankquestions/login'">
-                                    For External Access
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!--/.row-->

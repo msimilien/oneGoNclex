@@ -8,5 +8,15 @@ namespace oneGoNclex
         {
 
         }
+
+        protected void btnStudent_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/bankquestions/studentaccess?bankid=" + Request.QueryString["bankid"]);
+        }
+
+        protected void btnExternal_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/bankquestions/login?bankid=" + Request.QueryString["bankid"]);
+        }
     }
 }
