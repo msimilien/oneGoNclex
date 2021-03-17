@@ -112,20 +112,28 @@
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <div class="text-center">
-                            <form runat="server">
+                            <form runat="server" class="text-left">
 
                                 <asp:ScriptManager ID="scripManager1" runat="server" />
 
                                 <div class="container-fluid">
-                                    <p style="margin-bottom: 120px;">
+                                    <p style="margin-bottom: 9rem;">
                                         <asp:UpdatePanel runat="server" ID="updPanelTimer" UpdateMode="Always">
                                             <ContentTemplate>
-                                                <asp:Timer runat="server" ID="timerClock" Interval="1000" OnTick="timerClock_Tick"></asp:Timer>
-                                                <b style="position: absolute; left: 85%; top: 30px;">Time: </b>
-                                                <label runat="server" id="lblTimer" style="position: absolute; left: 90%; top: 30px;">00:15:00</label>
+                                                <asp:Timer runat="server"
+                                                    ID="timerClock"
+                                                    Interval="1000"
+                                                    OnTick="timerClock_Tick"
+                                                    Enabled="false">
+                                                </asp:Timer>
+                                                <b style="position: absolute; left: 85%; top: 11rem;">Time: </b>
+                                                <label runat="server" id="lblTimer" style="position: absolute; left: 90%; top: 11rem;">00:15:00</label>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </p>
+
+                                    <br />
+                                    <br />
 
                                     <p style="margin-bottom: 40px;">
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestion" UpdateMode="Conditional">
@@ -133,20 +141,21 @@
                                                 <asp:Label runat="server" ID="lblQuestions">Loading...</asp:Label>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                    </p>
-
-                                    <p style="margin-bottom: 120px;">
+                                        <br />
+                                        <br />
                                         <asp:UpdatePanel runat="server" ID="updAnswers" UpdateMode="Conditional">
                                             <ContentTemplate>
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
+                                        <br />
+                                        <br />
                                     </p>
 
                                     <p>
                                         <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <asp:Button Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
+                                                <asp:Button Style="margin-left: 27%;" Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
                                             </ContentTemplate>

@@ -172,23 +172,26 @@
                                     <br />
                                     <br />
 
-                                    <div style="float: left; text-align: left;">
-                                        <asp:Label runat="server" ForeColor="Red" ID="txtErrorLogin" class="text-left" />
-                                    </div>
-
-                                    <br />
-                                    <br />
-
-
-                                    <div style="float: left; text-align: left;">
+                                    <div>
                                         <label>
-                                            <a href="/bankquestions/forgotpassword?tag=external">Forgot password?</a>
+                                            <a href="/bankquestions/forgotpassword?tag=external" runat="server" id="btnToExternal">Forgot password?</a>
                                         </label>
                                         <br />
                                         <label>
-                                            <a href="/bankquestions/register">Register</a>
+                                            <a href="/bankquestions/register" runat="server" id="btnToRegister">Register</a>
+                                        </label>
+                                        <br />
+                                        <label>
+                                            <a href="/bankquestions/choose" runat="server" id="btnToChoose">Back</a>
                                         </label>
                                     </div>
+
+                                    <br />
+
+                                    <div>
+                                        <asp:Label runat="server" ForeColor="Red" ID="txtErrorLogin" class="text-left" />
+                                    </div>
+
                                 </div>
                             </form>
                         </div>

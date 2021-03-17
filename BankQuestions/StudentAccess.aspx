@@ -167,6 +167,13 @@
                                         BorderStyle="None"
                                         Text="Send"
                                         OnClick="btnsend_Click"></asp:Button>
+
+                                    <br />
+                                    <br />
+
+                                    <label>
+                                        <a href="/bankquestions/choose" runat="server" id="btnToChoose">Back</a>
+                                    </label>
                                 </div>
                             </form>
                         </div>

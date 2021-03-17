@@ -1,5 +1,5 @@
-﻿using System;
-using System.Web;
+﻿using oneGoNclex.Security;
+using System;
 
 namespace oneGoNclex
 {
@@ -13,9 +13,8 @@ namespace oneGoNclex
         protected void startExam_Click(object sender, EventArgs e)
         {
             var registrationID = Request.QueryString["registrationid"];
-            var email = HttpUtility.UrlDecode(Request.QueryString["email"]);
-            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/exam?registrationid={registrationID}&email={email}" :
-                                                              $"/bankquestions/exam?email={email}";
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/exam?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                              $"/bankquestions/exam?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
 
 
             Response.Redirect(url);

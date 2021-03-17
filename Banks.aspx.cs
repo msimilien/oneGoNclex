@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Services;
+﻿using oneGoNclex.Security;
+using oneGoNclex.Services;
 using System;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace oneGoNclex
 
             foreach (var bank in bankListData)
             {
-                var url = "/bankquestions/choose?bankid=" + bank.BankId;
+                var url = "/bankquestions/choose?bankid=" + StringCipher.Encrypt(bank.BankId.ToString());
 
                 html.Append("<div class='col-md-4'>");
                 html.Append("<img src='assets/images/basicCareQuiz.jpg' style='width: 100%'>");

@@ -69,6 +69,33 @@ namespace oneGoNclex
         protected global::System.Web.UI.WebControls.Button btnsend;
 
         /// <summary>
+        /// btnToExternal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnToExternal;
+
+        /// <summary>
+        /// btnToRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnToRegister;
+
+        /// <summary>
+        /// btnToChoose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnToChoose;
+
+        /// <summary>
         /// txtErrorLogin control.
         /// </summary>
         /// <remarks>

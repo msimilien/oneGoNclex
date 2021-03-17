@@ -1,48 +1,22 @@
-﻿using oneGoNclex.Model;
-using System;
+﻿using oneGoNclex.DAL;
+using oneGoNclex.Model;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Linq;
 
 namespace oneGoNclex.Services
 {
     public class ExamService
     {
-        public static List<ExamViewModel> GetQuestionsByBankId(int bankID)
+        public static (List<ExamQuestion>, List<ExamAnswer>) GetQuestionsByBankId(int bankID)
         {
-            try
-            {
-                SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = @"SELECT Question
-                                          ,id
-                                          ,pictureQuestion
-                                          ,'' as videoQuestion
-                                      FROM Questions
-                                    where BankId=" + bankID,
-                    Connection = conn
-                };
-
-                conn.Open();
-                var reader = cmd.ExecuteReader();
-                var list = new List<ExamViewModel>();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        list.Add(new ExamViewModel(reader.GetGuid(1), reader.GetString(0), reader.GetString(2), reader.GetString(3)));
-                    }
-                }
-
-                reader.Close();
-
-                return list;
-            }
-            catch (Exception ex)
-            {
-                return new List<ExamViewModel>();
-            }
+            var list = ExamData.GetQuestionsByBankId(bankID);
+            var listOfQuestions = list.Select(s => new { s.Id, s.Question}).Distinct()
+                                      .Select(s => new ExamQuestion { Question = s.Question, QuestionID = s.Id })
+                                      .ToList();
+            var listOfAnswers = list.Select(s => new { s.Id, s.Response }).Distinct()
+                                    .Select(s => new ExamAnswer { QuestionID = s.Id, Answer = s.Response })
+                                    .ToList();
+            return (listOfQuestions, listOfAnswers);
         }
     }
 }

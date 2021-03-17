@@ -1,4 +1,5 @@
 ﻿using oneGoNclex.Model;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Threading.Tasks;
@@ -15,8 +16,8 @@ namespace oneGoNclex
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            var registrationID = Request.QueryString["registrationid"];
-            var email = HttpUtility.UrlDecode(Request.QueryString["email"]);
+            var registrationID = StringCipher.Decrypt(Request.QueryString["registrationid"]);
+            var email = HttpUtility.UrlDecode(StringCipher.Decrypt(Request.QueryString["email"]));
             var password = txtPassword.Text;
 
             if (StudentService.UpdateStudentPassword(registrationID, email, password))
@@ -25,7 +26,7 @@ namespace oneGoNclex
                     SendEmailForConfirmation(email);
                 });
 
-                Response.Redirect($"/bankquestions/studentaccesslogin?registrationid={registrationID}&email={email}");
+                Response.Redirect($"/bankquestions/studentaccesslogin?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
             }
             else
             {

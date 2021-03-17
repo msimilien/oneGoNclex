@@ -1,4 +1,5 @@
 ﻿using oneGoNclex.Model;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Threading.Tasks;
@@ -14,12 +15,12 @@ namespace oneGoNclex
 
         protected void btnsend_Click(object sender, EventArgs e)
         {
-            var model = ExternalLoginService.GetById(int.Parse(Request.QueryString["id"]));
+            var model = ExternalLoginService.GetById(int.Parse(StringCipher.Decrypt(Request.QueryString["id"])));
             model.Password = txtPassword.Text;
 
             UpdateExternalLoginProfile(model);
 
-            Response.Redirect($"/bankquestions/login?email={model.TextMail}");
+            Response.Redirect($"/bankquestions/login?bankid={Request.QueryString["bankid"]}&email={StringCipher.Encrypt(model.TextMail)}");
         }
 
         #region Methods

@@ -149,10 +149,17 @@
                                             OnClick="btnUpdate_Click"></asp:Button>
                                         <br />
                                         <br />
-                                        <a href="/bankquestions/login">&nbsp;Back</a>
+                                        <a href="/bankquestions/studentaccess" id="btnToBack" runat="server">&nbsp;Back</a>
                                         <br />
                                         <br />
                                         <a href="/bankquestions/forgotpassword?tag=student">Forgot password?</a>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <br />
+                                        <br />
+                                        <div style="float: left; text-align: left;">
+                                            <asp:Label runat="server" ForeColor="Red" ID="txtErrorLogin" class="text-left" />
+                                        </div>
                                     </div>
                                 </div>
                             </form>

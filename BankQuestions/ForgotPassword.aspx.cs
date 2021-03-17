@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Services;
+﻿using oneGoNclex.Security;
+using oneGoNclex.Services;
 using System;
 using System.Threading.Tasks;
 using System.Web.UI;
@@ -24,9 +25,9 @@ namespace oneGoNclex
             var urlToSend = Request.Url.OriginalString.Replace(Request.Url.PathAndQuery, "") + "/bankquestions/recoverpassword";
 
             if (_from == "student")
-                urlToSend += $"?registrationid={txtRegistrationID.Text}&email={txtEmail.Text}";
+                urlToSend += $"?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(txtRegistrationID.Text)}&email={StringCipher.Encrypt(txtEmail.Text)}";
             else
-                urlToSend += $"?email={txtEmail.Text}";
+                urlToSend += $"?bankid={Request.QueryString["bankid"]}&email={StringCipher.Encrypt(txtEmail.Text)}";
 
             Task.Run(() => {
                 SendEmailForConfirmation(urlToSend);

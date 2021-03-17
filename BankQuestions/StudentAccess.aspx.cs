@@ -1,6 +1,8 @@
 ﻿using oneGoNclex.Model;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
+using System.Web;
 
 namespace oneGoNclex
 {
@@ -8,7 +10,7 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
         }
 
         protected void btnsend_Click(object sender, EventArgs e)
@@ -22,10 +24,10 @@ namespace oneGoNclex
 
             if (string.IsNullOrEmpty(student.Password))
             {
-                Response.Redirect($"/bankquestions/studentaccesspassword?registrationid={txtRegistrationID.Text}&email={txtEmail.Text}");
+                Response.Redirect($"/bankquestions/studentaccesspassword?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(txtRegistrationID.Text)}&email={StringCipher.Encrypt(HttpUtility.UrlEncode(txtEmail.Text))}");
             }
 
-            Response.Redirect($"/bankquestions/studentaccesslogin?registrationid={txtRegistrationID.Text}&email={txtEmail.Text}");
+            Response.Redirect($"/bankquestions/studentaccesslogin?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(txtRegistrationID.Text)}&email={StringCipher.Encrypt(HttpUtility.UrlEncode(txtEmail.Text))}");
         }
 
         #region Methods
