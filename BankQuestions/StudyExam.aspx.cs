@@ -4,14 +4,12 @@ using oneGoNclex.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace oneGoNclex
 {
-    public partial class Exam : System.Web.UI.Page
+    public partial class StudyExam : System.Web.UI.Page
     {
-        const string maxValueMinute = "59";
-        const string minValueMinute = "00";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             scripManager1.RegisterAsyncPostBackControl(btnNext);
@@ -37,56 +35,6 @@ namespace oneGoNclex
 
                 foreach (var answer in answers)
                     Answers.Items.Add(new System.Web.UI.WebControls.ListItem(answer.Answer));
-
-                var hour = 0;
-                var minute = 0;
-                var seconds = 0;
-                var total = questions.Count;
-
-                while (total > 60)
-                {
-                    hour++;
-                    total -= 60;
-                }
-
-                minute = total;
-
-                lblTimer.InnerText = $"{hour.ToString().PadLeft(2, '0')}:{minute.ToString().PadLeft(2, '0')}:{seconds.ToString().PadLeft(2, '0')}";
-                timerClock.Enabled = true;
-            }
-        }
-
-        protected void timerClock_Tick(object sender, EventArgs e)
-        {
-            var resultClock = lblTimer.InnerText.Split(':');
-
-            //Seconds
-            if (resultClock[2] != minValueMinute)
-            {
-                resultClock[2] = (int.Parse(resultClock[2]) - 1).ToString().PadLeft(2, '0');
-                lblTimer.InnerText = $"{resultClock[0]}:{resultClock[1]}:{resultClock[2]}";
-                return;
-            }
-
-            //Seconds affect minutes
-            if (resultClock[2] == minValueMinute && resultClock[1] != minValueMinute)
-            {
-                resultClock[2] = maxValueMinute;
-                resultClock[1] = (int.Parse(resultClock[1]) - 1).ToString().PadLeft(2, '0');
-                lblTimer.InnerText = $"{resultClock[0]}:{resultClock[1]}:{resultClock[2]}";
-                return;
-            }
-
-            //Minutes affect hours
-            if (resultClock[2] == minValueMinute &&
-                resultClock[1] == minValueMinute &&
-                resultClock[0] != minValueMinute)
-            {
-                resultClock[2] = maxValueMinute;
-                resultClock[1] = maxValueMinute;
-                resultClock[0] = (int.Parse(resultClock[0]) - 1).ToString().PadLeft(2, '0');
-                lblTimer.InnerText = $"{resultClock[0]}:{resultClock[1]}:{resultClock[2]}";
-                return;
             }
         }
 
@@ -166,6 +114,24 @@ namespace oneGoNclex
                 counter = int.Parse(Session["counter"].ToString()) + 1;
                 Session["counter"] = counter;
             }
+        }
+
+        protected void btnShowResponse_Click(object sender, EventArgs e)
+        {
+            var counter = int.Parse(Session["counter"].ToString());
+            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var itemExam = questions.ElementAt(counter);
+            var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).ToList();
+            var correctAnswer = answers.FindIndex(x => x.Asset);
+            Answers.Items[correctAnswer].Selected = true;
+
+            if (counter == 0)
+                btnPrev.Attributes.Add("disabled", "true");
+            else
+                btnPrev.Attributes.Remove("disabled");
+
+            updAnswers.Update();
+            updButtons.Update();
         }
     }
 }

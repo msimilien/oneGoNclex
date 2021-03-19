@@ -13,8 +13,8 @@ namespace oneGoNclex.Services
             var listOfQuestions = list.Select(s => new { s.Id, s.Question}).Distinct()
                                       .Select(s => new ExamQuestion { Question = s.Question, QuestionID = s.Id })
                                       .ToList();
-            var listOfAnswers = list.Select(s => new { s.Id, s.Response }).Distinct()
-                                    .Select(s => new ExamAnswer { QuestionID = s.Id, Answer = s.Response })
+            var listOfAnswers = list.Select(s => new { s.Id, s.Response, s.Asset }).Distinct()
+                                    .Select(s => new ExamAnswer { QuestionID = s.Id, Answer = s.Response, Asset = s.Asset  })
                                     .ToList();
             return (listOfQuestions, listOfAnswers);
         }

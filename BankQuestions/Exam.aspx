@@ -118,6 +118,12 @@
 
                                 <div class="container-fluid">
                                     <p style="margin-bottom: 9rem;">
+                                        <asp:UpdatePanel runat="server" ID="updPanelQuestions" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <b style="position: absolute; left: 1.5%; top: 11rem;">Questions: </b>
+                                                <label runat="server" id="lblQuestionsAmount" style="position: absolute; left: 9%; top: 11rem;">1 of 120</label>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
                                         <asp:UpdatePanel runat="server" ID="updPanelTimer" UpdateMode="Always">
                                             <ContentTemplate>
                                                 <asp:Timer runat="server"

@@ -42,5 +42,6 @@ namespace oneGoNclex.Model
     {
         public Guid QuestionID { get; set; }
         public string Answer { get; set; }
+        public bool Asset { get; set; }
     }
 }

@@ -8518,3 +8518,7 @@ span.psw {
     top: 7rem !important;
     position: relative;
 }
+
+[id^="Answers_"] {
+    margin-right: 5px;
+}
