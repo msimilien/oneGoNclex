@@ -31,6 +31,7 @@ namespace oneGoNclex
                 var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblQuestionsAmount.InnerText = $"1 of {questions.Count()}";
 
                 Answers.Items.Clear();
@@ -103,6 +104,7 @@ namespace oneGoNclex
                 var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
 
                 Answers.Items.Clear();
@@ -142,6 +144,7 @@ namespace oneGoNclex
                 var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
 
                 Answers.Items.Clear();

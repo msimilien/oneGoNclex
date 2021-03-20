@@ -36,6 +36,7 @@ namespace oneGoNclex.Model
     {
         public Guid QuestionID { get; set; }
         public string Question { get; set; }
+        public string PictureQuestion { get; set; }
     }
 
     public class ExamAnswer
