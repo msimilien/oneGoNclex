@@ -142,6 +142,15 @@
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
+                                    </p>
+
+                                    <p>
+                                        <asp:UpdatePanel runat="server" ID="updPanelMessage" UpdateMode="Conditional">
+                                            <ContentTemplate>
+                                                <asp:Label runat="server" ID="lblCorrect" ForeColor="#006600" Style="display: none;">CORRECT!!</asp:Label>
+                                                <asp:Label runat="server" ID="lblIncorrect" ForeColor="#cc0000" Style="display: none;">INCORRECT!!</asp:Label>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
                                         <br />
                                         <br />
                                     </p>
@@ -222,5 +231,16 @@
     <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        function checkAnswer(questionIndex, isCorrect) {
+            if (isCorrect) {
+                $("#lblCorrect").fadeIn();
+                $("#lblIncorrect").css("display", "none");
+            } else {
+                $("#lblIncorrect").fadeIn();
+                $("#lblCorrect").css("display", "none");
+            }
+        }
+    </script>
 </body>
 </html>

@@ -34,7 +34,11 @@ namespace oneGoNclex
                 Answers.Items.Clear();
 
                 foreach (var answer in answers)
-                    Answers.Items.Add(new System.Web.UI.WebControls.ListItem(answer.Answer));
+                {
+                    var item = new ListItem(answer.Answer);
+                    item.Attributes.Add("onclick", $"checkAnswer({0},{answer.Asset.ToString().ToLower()})");
+                    Answers.Items.Add(item);
+                }
             }
         }
 
@@ -56,7 +60,11 @@ namespace oneGoNclex
                 Answers.Items.Clear();
 
                 foreach (var answer in answers)
-                    Answers.Items.Add(new System.Web.UI.WebControls.ListItem(answer.Answer));
+                {
+                    var item = new ListItem(answer.Answer);
+                    item.Attributes.Add("onclick", $"checkAnswer({counter},{answer.Asset.ToString().ToLower()})");
+                    Answers.Items.Add(item);
+                }
 
                 if (counter == (questions.Count - 1))
                     btnNext.Attributes.Add("disabled", "true");
@@ -65,6 +73,10 @@ namespace oneGoNclex
 
                 btnPrev.Attributes.Remove("disabled");
 
+                lblCorrect.Style.Add("display", "none");
+                lblIncorrect.Style.Add("display", "none");
+
+                updPanelMessage.Update();
                 updPanelQuestion.Update();
                 updPanelQuestions.Update();
                 updAnswers.Update();
@@ -96,7 +108,11 @@ namespace oneGoNclex
                 updAnswers.Update();
 
                 foreach (var answer in answers)
-                    Answers.Items.Add(new System.Web.UI.WebControls.ListItem(answer.Answer));
+                {
+                    var item = new ListItem(answer.Answer);
+                    item.Attributes.Add("onclick", $"checkAnswer({counter},{answer.Asset.ToString().ToLower()})");
+                    Answers.Items.Add(item);
+                }
 
                 btnNext.Attributes.Remove("disabled");
                 if (counter == 0)
@@ -104,6 +120,10 @@ namespace oneGoNclex
                 else
                     btnPrev.Attributes.Remove("disabled");
 
+                lblCorrect.Style.Add("display", "none");
+                lblIncorrect.Style.Add("display", "none");
+
+                updPanelMessage.Update();
                 updPanelQuestion.Update();
                 updPanelQuestions.Update();
                 updAnswers.Update();
@@ -123,7 +143,21 @@ namespace oneGoNclex
             var itemExam = questions.ElementAt(counter);
             var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).ToList();
             var correctAnswer = answers.FindIndex(x => x.Asset);
-            Answers.Items[correctAnswer].Selected = true;
+
+            Answers.Items.Clear();
+            updAnswers.Update();
+
+            foreach (var answer in answers)
+            {
+                var item = new ListItem(answer.Answer);
+                item.Attributes.Add("onclick", $"checkAnswer({counter},{answer.Asset.ToString().ToLower()})");
+                item.Selected = answer.Asset;
+                Answers.Items.Add(item);
+            }
+
+            lblCorrect.Style.Add("display", "block");
+            lblIncorrect.Style.Add("display", "none");
+            updPanelMessage.Update();
 
             if (counter == 0)
                 btnPrev.Attributes.Add("disabled", "true");
