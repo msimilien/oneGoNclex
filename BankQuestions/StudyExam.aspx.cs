@@ -38,6 +38,7 @@ namespace oneGoNclex
                 var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"1 of {questions.Count()}";
 
@@ -66,6 +67,7 @@ namespace oneGoNclex
                 var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
 
@@ -115,6 +117,7 @@ namespace oneGoNclex
                 var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
 

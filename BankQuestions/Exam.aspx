@@ -148,7 +148,6 @@
                                                 <br />
                                                 <br />
                                                 <div runat="server" id="divContentVideoImage" class="text-center">
-
                                                 </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
@@ -158,8 +157,7 @@
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                        <br />
-                                        <br />
+                                        <asp:TextBox runat="server" ID="txtQuestionsAnswered" style="display: none;" OnTextChanged="txtQuestionsAnswered_TextChanged"></asp:TextBox>
                                     </p>
 
                                     <p>
@@ -168,11 +166,11 @@
                                                 <asp:Button Style="margin-left: 27%;" Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
+                                                <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Visible="false" />
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </p>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -232,9 +230,21 @@
     <script src="../assets/lib/rellax/rellax.min.js"></script>
     <script src="../assets/js/zanimation.js"></script>
     <script src="../assets/js/inertia.js"></script>
-    <script src="../assets/js/googlemap.js"></script>
+    <script src="../assets/js/googlemap.js" async></script>
     <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        function checkAnswer(questionID, isCorrect, index) {
+            if (isCorrect)
+                $("#txtQuestionsAnswered").val(questionID + "|1" + "|" + index);
+            else
+                $("#txtQuestionsAnswered").val(questionID + "|0" + "|" + index);
+
+            setTimeout(function () {
+                $("#txtQuestionsAnswered").val("");
+            }, 1000);
+        }
+    </script>
 </body>
 </html>

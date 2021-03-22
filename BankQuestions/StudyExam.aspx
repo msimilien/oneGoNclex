@@ -133,9 +133,12 @@
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestion" UpdateMode="Conditional">
                                             <ContentTemplate>
                                                 <asp:Label runat="server" ID="lblQuestions">Loading...</asp:Label>
+                                                <br />
+                                                <br />
+                                                <div runat="server" id="divContentVideoImage" class="text-center">
+                                                </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                        <br />
                                         <br />
                                         <asp:UpdatePanel runat="server" ID="updAnswers" UpdateMode="Conditional">
                                             <ContentTemplate>

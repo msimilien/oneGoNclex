@@ -1,4 +1,5 @@
 ﻿using oneGoNclex.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -20,11 +21,11 @@ namespace oneGoNclex.DAL
                                            ,a.pictureQuestion
                                            ,b.Response
                                            ,b.Asset
-	                                       ,d.Explanation
-                                    from Questions a
-                                    join Responses b on a.id = b.IdQ
-                                    join [Subject] c on a.[Subject] = c.id
-                                    left join ExplanationQuestion d on a.id = d.IdQuestion
+	                                       ,ISNULL(d.Explanation, '') as Explanation
+                                    from Questions a WITH(NOLOCK)
+                                    join Responses b WITH(NOLOCK) on a.id = b.IdQ
+                                    join [Subject] c WITH(NOLOCK) on a.[Subject] = c.id
+                                    left join ExplanationQuestion d WITH(NOLOCK) on a.id = d.IdQuestion
                                     where a.BankId = " + bankID,
                     Connection = conn
                 };

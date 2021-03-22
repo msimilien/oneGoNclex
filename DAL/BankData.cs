@@ -16,7 +16,7 @@ namespace oneGoNclex.DAL
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"SELECT [IdBank],[Description] FROM [dbo].[Bank]",
+                    CommandText = @"SELECT [IdBank],[Description] FROM [dbo].[Bank] WITH(NOLOCK)",
                     Connection = conn
                 };
 

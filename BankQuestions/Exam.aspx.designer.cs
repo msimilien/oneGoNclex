@@ -114,6 +114,15 @@ namespace oneGoNclex
         protected global::System.Web.UI.WebControls.RadioButtonList Answers;
 
         /// <summary>
+        /// txtQuestionsAnswered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtQuestionsAnswered;
+
+        /// <summary>
         /// updButtons control.
         /// </summary>
         /// <remarks>
@@ -139,5 +148,14 @@ namespace oneGoNclex
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNext;
+
+        /// <summary>
+        /// btnFinish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFinish;
     }
 }
