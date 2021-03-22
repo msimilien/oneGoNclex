@@ -12,7 +12,8 @@ namespace oneGoNclex.Model
                              string pictureQuestion,
                              string subject,
                              string response,
-                             bool asset)
+                             bool asset,
+                             string explanation)
         {
             Id = id;
             Question = question;
@@ -21,6 +22,7 @@ namespace oneGoNclex.Model
             Subject = subject;
             Response = response;
             Asset = asset;
+            Explanation = explanation;
         }
 
         public Guid Id { get; }
@@ -30,6 +32,7 @@ namespace oneGoNclex.Model
         public string Subject { get; }
         public string Response { get; }
         public bool Asset { get; }
+        public string Explanation { get; }
     }
 
     public class ExamQuestion
@@ -44,5 +47,11 @@ namespace oneGoNclex.Model
         public Guid QuestionID { get; set; }
         public string Answer { get; set; }
         public bool Asset { get; set; }
+    }
+
+    public class ExamAnswerExplanation
+    {
+        public Guid QuestionID { get; set; }
+        public string Explanation { get; set; }
     }
 }

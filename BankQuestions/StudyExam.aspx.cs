@@ -22,13 +22,23 @@ namespace oneGoNclex
 
                 Session["listOfQuestions"] = serviceResponse.Item1;
                 Session["listOfAnswers"] = serviceResponse.Item2;
+                Session["listOfAnswersExplanation"] = serviceResponse.Item3;
                 Session["counter"] = 0;
 
                 var questions = (List<ExamQuestion>)Session["listOfQuestions"];
-                var itemExam = questions.First();
+                var itemExam = questions.FirstOrDefault();
+
+                if (itemExam is null)
+                {
+                    var url = "/bankquestions/choose?bankid=" + StringCipher.Decrypt(Request.QueryString["bankid"]);
+                    Response.Redirect(url);
+                }
+
                 var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"1 of {questions.Count()}";
 
                 Answers.Items.Clear();
@@ -53,8 +63,10 @@ namespace oneGoNclex
             {
                 var itemExam = questions.ElementAt(counter);
                 var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
 
                 Answers.Items.Clear();
@@ -100,8 +112,10 @@ namespace oneGoNclex
             {
                 var itemExam = questions.ElementAt(counter);
                 var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
+                lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
 
                 Answers.Items.Clear();
@@ -143,6 +157,10 @@ namespace oneGoNclex
             var itemExam = questions.ElementAt(counter);
             var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).ToList();
             var correctAnswer = answers.FindIndex(x => x.Asset);
+            var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+
+            lblAnswerExplanation.InnerHtml = explanation?.Explanation;
+            lblAnswerExplanation.Style.Add("display", "block");
 
             Answers.Items.Clear();
             updAnswers.Update();

@@ -8,7 +8,7 @@ namespace oneGoNclex.Services
 {
     public class ExamService
     {
-        public static (List<ExamQuestion>, List<ExamAnswer>) GetQuestionsByBankId(int bankID)
+        public static (List<ExamQuestion>, List<ExamAnswer>, List<ExamAnswerExplanation>) GetQuestionsByBankId(int bankID)
         {
             var list = ExamData.GetQuestionsByBankId(bankID);
             var listOfQuestions = list.Select(s => new { s.Id, s.Question, s.PictureQuestion}).Distinct()
@@ -17,7 +17,10 @@ namespace oneGoNclex.Services
             var listOfAnswers = list.Select(s => new { s.Id, s.Response, s.Asset }).Distinct()
                                     .Select(s => new ExamAnswer { QuestionID = s.Id, Answer = s.Response, Asset = s.Asset  })
                                     .ToList();
-            return (listOfQuestions, listOfAnswers);
+            var listOfExplanations = list.Select(s => new { s.Id, s.Explanation }).Distinct()
+                                    .Select(s => new ExamAnswerExplanation { QuestionID = s.Id, Explanation = s.Explanation })
+                                    .ToList();
+            return (listOfQuestions, listOfAnswers, listOfExplanations);
         }
 
         public static string GetVideoOrImageContent(string content)

@@ -14,15 +14,17 @@ namespace oneGoNclex.DAL
                 SqlCommand cmd = new SqlCommand
                 {
                     CommandText = @"select a.id
-	                                       ,c.[Subject]
-	                                       ,a.Question
-	                                       ,a.QuestionType
-	                                       ,a.pictureQuestion
-	                                       ,b.Response
-	                                       ,b.Asset
+                                           ,c.[Subject]
+                                           ,a.Question
+                                           ,a.QuestionType
+                                           ,a.pictureQuestion
+                                           ,b.Response
+                                           ,b.Asset
+	                                       ,d.Explanation
                                     from Questions a
                                     join Responses b on a.id = b.IdQ
                                     join [Subject] c on a.[Subject] = c.id
+                                    left join ExplanationQuestion d on a.id = d.IdQuestion
                                     where a.BankId = " + bankID,
                     Connection = conn
                 };
@@ -41,7 +43,8 @@ namespace oneGoNclex.DAL
                                                    reader.GetString(4),
                                                    reader.GetString(1),
                                                    reader.GetString(5),
-                                                   reader.GetBoolean(6)));
+                                                   reader.GetBoolean(6),
+                                                   reader.GetString(7)));
                     }
                 }
 

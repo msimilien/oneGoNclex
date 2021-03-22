@@ -149,6 +149,8 @@
                                             <ContentTemplate>
                                                 <asp:Label runat="server" ID="lblCorrect" ForeColor="#006600" Style="display: none;">CORRECT!!</asp:Label>
                                                 <asp:Label runat="server" ID="lblIncorrect" ForeColor="#cc0000" Style="display: none;">INCORRECT!!</asp:Label>
+                                                <br />
+                                                <p runat="server" ID="lblAnswerExplanation" Style="display: none;"></p>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                         <br />
@@ -235,10 +237,12 @@
         function checkAnswer(questionIndex, isCorrect) {
             if (isCorrect) {
                 $("#lblCorrect").fadeIn();
+                $("#lblAnswerExplanation").fadeIn();
                 $("#lblIncorrect").css("display", "none");
             } else {
                 $("#lblIncorrect").fadeIn();
                 $("#lblCorrect").css("display", "none");
+                $("#lblAnswerExplanation").css("display", "none");
             }
         }
     </script>
