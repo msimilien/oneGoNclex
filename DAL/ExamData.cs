@@ -58,5 +58,41 @@ namespace oneGoNclex.DAL
                 return new List<ExamViewModel>();
             }
         }
+
+        public static bool RegisterExamResult(ExamResultViewModel model)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandText = @"INSERT INTO [dbo].[Student_Result]
+                                           ([IdStudent]
+                                           ,[idExam]
+                                           ,[Point]
+                                           ,[qualification])
+                                     VALUES
+                                           (@RegistrationID
+                                           ,@BankId
+                                           ,@Points
+                                           ,@Qualification)",
+                    Connection = conn
+                };
+
+                cmd.Parameters.AddWithValue("@RegistrationID", model.StudentID);
+                cmd.Parameters.AddWithValue("@BankId", model.BankID);
+                cmd.Parameters.AddWithValue("@Points", model.Point);
+                cmd.Parameters.AddWithValue("@Qualification", model.Qualification);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

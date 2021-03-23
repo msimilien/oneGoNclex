@@ -47,5 +47,11 @@ namespace oneGoNclex.Services
 
             return result;
         }
+
+        public static void RegisterExamResult(ExamResultViewModel model)
+        {
+            if (!ExamData.RegisterExamResult(model))
+                throw new System.Exception("There is an error on registering the results for the exam");
+        }
     }
 }

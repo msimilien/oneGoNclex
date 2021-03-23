@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exam.aspx.cs" Inherits="oneGoNclex.Exam" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExamResult.aspx.cs" Inherits="oneGoNclex.ExamResult" %>
 
 <!DOCTYPE html>
 
@@ -107,72 +107,27 @@
                 </nav>
             </div>
         </div>
-        <section class=" background-11 py-0 text-center">
+        <section class=" background-11 py-0">
             <div class="container">
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
-                        <div class="text-center">
-                            <form runat="server" class="text-left">
-
-                                <asp:ScriptManager ID="scripManager1" runat="server" />
-
-                                <div class="container-fluid">
-                                    <p style="margin-bottom: 9rem;">
-                                        <asp:UpdatePanel runat="server" ID="updPanelQuestions" UpdateMode="Conditional">
-                                            <ContentTemplate>
-                                                <b style="position: absolute; left: 1.5%; top: 11rem;">Questions: </b>
-                                                <label runat="server" id="lblQuestionsAmount" style="position: absolute; left: 9%; top: 11rem;">1 of 120</label>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                        <asp:UpdatePanel runat="server" ID="updPanelTimer" UpdateMode="Always">
-                                            <ContentTemplate>
-                                                <asp:Timer runat="server"
-                                                    ID="timerClock"
-                                                    Interval="1000"
-                                                    OnTick="timerClock_Tick"
-                                                    Enabled="false">
-                                                </asp:Timer>
-                                                <b style="position: absolute; left: 85%; top: 11rem;">Time: </b>
-                                                <label runat="server" id="lblTimer" style="position: absolute; left: 90%; top: 11rem;">00:15:00</label>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                    </p>
-
+                        <form runat="server">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-12 mb-4">
                                     <br />
                                     <br />
-
-                                    <p style="margin-bottom: 40px;">
-                                        <asp:UpdatePanel runat="server" ID="updPanelQuestion" UpdateMode="Conditional">
-                                            <ContentTemplate>
-                                                <asp:Label runat="server" ID="lblQuestions">Loading...</asp:Label>
-                                                <br />
-                                                <br />
-                                                <div runat="server" id="divContentVideoImage" class="text-center">
-                                                </div>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                        <br />
-                                        <asp:UpdatePanel runat="server" ID="updAnswers" UpdateMode="Conditional">
-                                            <ContentTemplate>
-                                                <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                        <asp:TextBox runat="server" ID="txtQuestionsAnswered" style="display: none;" OnTextChanged="txtQuestionsAnswered_TextChanged"></asp:TextBox>
-                                    </p>
-
-                                    <p>
-                                        <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional">
-                                            <ContentTemplate>
-                                                <asp:Button Style="margin-left: 27%;" Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
-                                                <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Visible="false" />
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                    </p>
+                                    <h4>Our NCLEX Practice Questions Bank</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, condimentum maecenas neque in senectus purus porta, vitae morbi diam et vehicula bibendum. Cubilia nec ligula eleifend mollis nisi mattis facilisis primis sodales, posuere metus cursus tortor volutpat turpis accumsan imperdiet, enim tempus gravida commodo tempor ac id aptent. Mi nibh himenaeos risus lacus fusce blandit quisque, purus phasellus magnis metus semper vestibulum, aliquam nisl auctor ultrices feugiat commodo.</p>
+                                    <p>Inceptos conubia laoreet vivamus eu habitasse hac ad malesuada, eget massa id auctor morbi magnis mattis, rutrum lacinia ante taciti donec aliquam accumsan. Nec praesent primis enim dapibus cubilia eleifend egestas commodo magna malesuada tempus volutpat, neque himenaeos quis morbi lacus tellus donec facilisi diam iaculis. Inceptos mattis porttitor semper aptent tristique litora interdum montes tincidunt, egestas tempor curae himenaeos sapien varius commodo ante enim, nulla malesuada ligula ornare rhoncus sed class proin.</p>
+                                    <p><b>The result of your exam is: </b></p>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" style="margin: 0 auto;">
+                                    <asp:Label runat="server" ID="lblResult"></asp:Label>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!--/.row-->
@@ -205,7 +160,6 @@
                         <p class="text-uppercase color-9 ls mb-3">One Go NCLEX Review LLC, 1111 Route 110 , Suite 330 Farmingdale, New York 11735.Tel: 631-984-0231</p>
                         <p class="color-5 mb-0">
                             info@onegonclexreview.com
-
                         </p>
                     </div>
                 </div>
@@ -232,17 +186,5 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script>
-        function checkAnswer(questionID, isCorrect, index) {
-            if (isCorrect)
-                $("#txtQuestionsAnswered").val(questionID + "|1" + "|" + index);
-            else
-                $("#txtQuestionsAnswered").val(questionID + "|0" + "|" + index);
-
-            setTimeout(function () {
-                $("#txtQuestionsAnswered").val("");
-            }, 1000);
-        }
-    </script>
 </body>
 </html>

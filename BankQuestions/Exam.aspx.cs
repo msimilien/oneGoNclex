@@ -234,9 +234,31 @@ namespace oneGoNclex
             var totalQuestions = questions.Count;
             var responseQuestions = (List<string>)Session["responseCorrectQuestions"];
             var totalExam = ((responseQuestions.Count * 100) / totalQuestions);
+            var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
+            var email = StringCipher.Decrypt(Request.QueryString["email"]);
+            var registrationID = StringCipher.Decrypt(Request.QueryString["registrationid"]);
 
-            //TODO 1: Almacenar el valor en la base de datos
-            //TODO 2: Cambiarlo de pantalla a una que de como una intro + el resultado del examen
+            int externalLoginID = 0;
+            if (string.IsNullOrEmpty(registrationID))
+                externalLoginID = ExternalLoginService.GetIdByEmail(email);
+
+            var model = new ExamResultViewModel
+            {
+                BankID = bankId,
+                Qualification = totalExam,
+                Point = totalQuestions,
+                StudentID = string.IsNullOrEmpty(registrationID) ? externalLoginID.ToString() : registrationID
+            };
+
+            ExamService.RegisterExamResult(model);
+
+            Session.Clear();
+            Session["examResult"] = model;
+
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/examresult?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                              $"/bankquestions/examresult?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+
+            Response.Redirect(url);
         }
 
         protected void txtQuestionsAnswered_TextChanged(object sender, EventArgs e)

@@ -9,6 +9,9 @@ namespace oneGoNclex.Security
     {
         public static string Encrypt(string clearText)
         {
+            if (string.IsNullOrEmpty(clearText))
+                return clearText;
+
             string EncryptionKey = "abc123";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (Aes encryptor = Aes.Create())
@@ -30,6 +33,9 @@ namespace oneGoNclex.Security
         }
         public static string Decrypt(string cipherText)
         {
+            if (string.IsNullOrEmpty(cipherText))
+                return cipherText;
+
             string EncryptionKey = "abc123";
             cipherText = cipherText.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(cipherText);

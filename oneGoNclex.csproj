@@ -212,6 +212,7 @@
     <Content Include="assets\lib\semantic-ui-transition\transition.min.css" />
     <Content Include="assets\lib\semantic-ui-transition\transition.min.js" />
     <Content Include="assets\lib\typed.js\lib\typed.min.js" />
+    <Content Include="BankQuestions\ExamResult.aspx" />
     <Content Include="BankQuestions\StudyExam.aspx" />
     <Content Include="BankQuestions\PreExam.aspx" />
     <Content Include="BankQuestions\Choose.aspx" />
@@ -365,6 +366,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BankQuestions\ExamResult.aspx.cs">
+      <DependentUpon>ExamResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\ExamResult.aspx.designer.cs">
+      <DependentUpon>ExamResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BankQuestions\StudyExam.aspx.cs">
       <DependentUpon>StudyExam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -480,6 +488,7 @@
     </Compile>
     <Compile Include="Model\BankViewModel.cs" />
     <Compile Include="Model\EmailViewModel.cs" />
+    <Compile Include="Model\ExamResultViewModel.cs" />
     <Compile Include="Model\ExamViewModel.cs" />
     <Compile Include="Model\ExternalLoginViewModel.cs" />
     <Compile Include="Model\PreRegisterViewModel.cs" />

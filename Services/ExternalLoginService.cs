@@ -184,5 +184,46 @@ namespace oneGoNclex.Services
                 return false;
             }
         }
+
+        public static int GetIdByEmail(string email)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandText = @"SELECT [id]
+                                    FROM [dbo].[ExternalLogin]
+                                    WHERE [Email] = @Email",
+                    Connection = conn
+                };
+
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                int externalLoginID = 0;
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        externalLoginID = reader.GetInt32(0);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+
+                reader.Close();
+
+                return externalLoginID;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }
