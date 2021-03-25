@@ -10,6 +10,8 @@ namespace oneGoNclex
 {
     public partial class StudyExam : System.Web.UI.Page
     {
+        List<string> listOfQuestions;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             scripManager1.RegisterAsyncPostBackControl(btnNext);
@@ -20,12 +22,15 @@ namespace oneGoNclex
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
                 var serviceResponse = ExamService.GetQuestionsByBankId(bankId);
 
-                Session["listOfQuestions"] = serviceResponse.Item1;
-                Session["listOfAnswers"] = serviceResponse.Item2;
-                Session["listOfAnswersExplanation"] = serviceResponse.Item3;
-                Session["counter"] = 0;
+                ViewState["listOfQuestions"] = serviceResponse.Item1;
+                ViewState["listOfAnswers"] = serviceResponse.Item2;
+                ViewState["listOfAnswersExplanation"] = serviceResponse.Item3;
+                ViewState["counter"] = 0;
 
-                var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+                listOfQuestions = new List<string>();
+                ViewState["responseQuestions"] = listOfQuestions;
+
+                var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
                 var itemExam = questions.FirstOrDefault();
 
                 if (itemExam is null)
@@ -34,8 +39,8 @@ namespace oneGoNclex
                     Response.Redirect(url);
                 }
 
-                var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
-                var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
@@ -44,10 +49,11 @@ namespace oneGoNclex
 
                 Answers.Items.Clear();
 
-                foreach (var answer in answers)
+                for (int i = 0; i < answers.Count(); i++)
                 {
+                    var answer = answers.ElementAt(i);
                     var item = new ListItem(answer.Answer);
-                    item.Attributes.Add("onclick", $"checkAnswer({0},{answer.Asset.ToString().ToLower()})");
+                    item.Attributes.Add("onclick", $"checkAnswer({i},{answer.Asset.ToString().ToLower()},'{answer.QuestionID}')");
                     Answers.Items.Add(item);
                 }
             }
@@ -55,28 +61,38 @@ namespace oneGoNclex
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            var counter = int.Parse(Session["counter"].ToString()) + 1;
-            Session["counter"] = counter;
+            var counter = int.Parse(ViewState["counter"].ToString()) + 1;
+            ViewState["counter"] = counter;
 
-            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
 
             if (counter <= (questions.Count - 1))
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
-                var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+                var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
+                lblAnswerExplanation.Style.Add("display", "none");
 
                 Answers.Items.Clear();
 
-                foreach (var answer in answers)
+                for (int i = 0; i < answers.Count(); i++)
                 {
+                    var answer = answers.ElementAt(i);
                     var item = new ListItem(answer.Answer);
-                    item.Attributes.Add("onclick", $"checkAnswer({counter},{answer.Asset.ToString().ToLower()})");
+                    item.Attributes.Add("onclick", $"checkAnswer({i},{answer.Asset.ToString().ToLower()},'{answer.QuestionID}')");
+
+                    if (responseQuestions.FirstOrDefault(x => x.Contains(answer.QuestionID.ToString())) != null)
+                    {
+                        var response = responseQuestions.FirstOrDefault(x => x.Contains(answer.QuestionID.ToString()));
+                        item.Selected = response.Split('|')[1] == i.ToString();
+                    }
+
                     Answers.Items.Add(item);
                 }
 
@@ -98,36 +114,46 @@ namespace oneGoNclex
             }
             else
             {
-                counter = int.Parse(Session["counter"].ToString()) - 1;
-                Session["counter"] = counter;
+                counter = int.Parse(ViewState["counter"].ToString()) - 1;
+                ViewState["counter"] = counter;
             }
         }
 
         protected void btnPrev_Click(object sender, EventArgs e)
         {
-            var counter = int.Parse(Session["counter"].ToString()) - 1;
-            Session["counter"] = counter;
+            var counter = int.Parse(ViewState["counter"].ToString()) - 1;
+            ViewState["counter"] = counter;
 
-            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
 
             if (counter >= 0)
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
-                var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+                var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
+                lblAnswerExplanation.Style.Add("display", "none");
 
                 Answers.Items.Clear();
                 updAnswers.Update();
 
-                foreach (var answer in answers)
+                for (int i = 0; i < answers.Count(); i++)
                 {
+                    var answer = answers.ElementAt(i);
                     var item = new ListItem(answer.Answer);
-                    item.Attributes.Add("onclick", $"checkAnswer({counter},{answer.Asset.ToString().ToLower()})");
+                    item.Attributes.Add("onclick", $"checkAnswer({i},{answer.Asset.ToString().ToLower()},'{answer.QuestionID}')");
+
+                    if (responseQuestions.FirstOrDefault(x => x.Contains(answer.QuestionID.ToString())) != null)
+                    {
+                        var response = responseQuestions.FirstOrDefault(x => x.Contains(answer.QuestionID.ToString()));
+                        item.Selected = response.Split('|')[1] == i.ToString();
+                    }
+
                     Answers.Items.Add(item);
                 }
 
@@ -148,19 +174,19 @@ namespace oneGoNclex
             }
             else
             {
-                counter = int.Parse(Session["counter"].ToString()) + 1;
-                Session["counter"] = counter;
+                counter = int.Parse(ViewState["counter"].ToString()) + 1;
+                ViewState["counter"] = counter;
             }
         }
 
         protected void btnShowResponse_Click(object sender, EventArgs e)
         {
-            var counter = int.Parse(Session["counter"].ToString());
-            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var counter = int.Parse(ViewState["counter"].ToString());
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
             var itemExam = questions.ElementAt(counter);
-            var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).ToList();
+            var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).ToList();
             var correctAnswer = answers.FindIndex(x => x.Asset);
-            var explanation = ((List<ExamAnswerExplanation>)Session["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+            var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
             lblAnswerExplanation.InnerHtml = explanation?.Explanation;
             lblAnswerExplanation.Style.Add("display", "block");
@@ -168,10 +194,11 @@ namespace oneGoNclex
             Answers.Items.Clear();
             updAnswers.Update();
 
-            foreach (var answer in answers)
+            for (int i = 0; i < answers.Count(); i++)
             {
+                var answer = answers.ElementAt(i);
                 var item = new ListItem(answer.Answer);
-                item.Attributes.Add("onclick", $"checkAnswer({counter},{answer.Asset.ToString().ToLower()})");
+                item.Attributes.Add("onclick", $"checkAnswer({i},{answer.Asset.ToString().ToLower()},'{answer.QuestionID}')");
                 item.Selected = answer.Asset;
                 Answers.Items.Add(item);
             }
@@ -187,6 +214,28 @@ namespace oneGoNclex
 
             updAnswers.Update();
             updButtons.Update();
+        }
+
+        protected void txtQuestionsAnswered_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtQuestionsAnswered.Text))
+                return;
+
+            var questionID = txtQuestionsAnswered.Text.Split('|')[0];
+            var isCorrect = txtQuestionsAnswered.Text.Split('|')[1];
+            var answerIndex = txtQuestionsAnswered.Text.Split('|')[2];
+            var responseQuestions = (List<string>)ViewState["responseQuestions"];
+            var question = responseQuestions.FirstOrDefault(x => x.Contains(questionID));
+
+            if (question != null)
+            {
+                responseQuestions.Remove(question);
+                responseQuestions.Add(questionID + "|" + answerIndex);
+            }
+            else
+                responseQuestions.Add(questionID + "|" + answerIndex);
+
+            ViewState["responseQuestions"] = responseQuestions;
         }
     }
 }

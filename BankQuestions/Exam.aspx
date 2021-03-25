@@ -157,7 +157,11 @@
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                        <asp:TextBox runat="server" ID="txtQuestionsAnswered" style="display: none;" OnTextChanged="txtQuestionsAnswered_TextChanged"></asp:TextBox>
+                                        <asp:TextBox runat="server" 
+                                                     ID="txtQuestionsAnswered" 
+                                                     style="display: none;" 
+                                                     OnTextChanged="txtQuestionsAnswered_TextChanged">
+                                        </asp:TextBox>
                                     </p>
 
                                     <p>

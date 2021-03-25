@@ -35,6 +35,7 @@ namespace oneGoNclex.Model
         public string Explanation { get; }
     }
 
+    [Serializable]
     public class ExamQuestion
     {
         public Guid QuestionID { get; set; }
@@ -42,6 +43,7 @@ namespace oneGoNclex.Model
         public string PictureQuestion { get; set; }
     }
 
+    [Serializable]
     public class ExamAnswer
     {
         public Guid QuestionID { get; set; }
@@ -49,6 +51,7 @@ namespace oneGoNclex.Model
         public bool Asset { get; set; }
     }
 
+    [Serializable]
     public class ExamAnswerExplanation
     {
         public Guid QuestionID { get; set; }

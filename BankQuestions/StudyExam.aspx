@@ -145,6 +145,11 @@
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
+                                        <asp:TextBox runat="server" 
+                                                     style="display: none;"
+                                                     ID="txtQuestionsAnswered" 
+                                                     OnTextChanged="txtQuestionsAnswered_TextChanged">
+                                        </asp:TextBox>
                                     </p>
 
                                     <p>
@@ -237,16 +242,26 @@
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
-        function checkAnswer(questionIndex, isCorrect) {
+        function checkAnswer(index, isCorrect, questionID) {
             if (isCorrect) {
                 $("#lblCorrect").fadeIn();
                 $("#lblAnswerExplanation").fadeIn();
                 $("#lblIncorrect").css("display", "none");
+                setTimeout(function () {
+                    $("#txtQuestionsAnswered").val(questionID + "|1" + "|" + index);
+                }, 100);
             } else {
                 $("#lblIncorrect").fadeIn();
                 $("#lblCorrect").css("display", "none");
                 $("#lblAnswerExplanation").css("display", "none");
+                setTimeout(function () {
+                    $("#txtQuestionsAnswered").val(questionID + "|0" + "|" + index);
+                }, 100);
             }
+
+            //setTimeout(function () {
+            //    $("#txtQuestionsAnswered").val("");
+            //}, 1000);
         }
     </script>
 </body>

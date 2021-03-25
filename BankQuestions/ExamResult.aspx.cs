@@ -17,6 +17,8 @@ namespace oneGoNclex
                 lblResult.ForeColor = Color.Red;
 
             lblResult.Font.Size = 24;
+
+            Session.Remove("examResult");
         }
     }
 }

@@ -25,16 +25,16 @@ namespace oneGoNclex
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
                 var serviceResponse = ExamService.GetQuestionsByBankId(bankId);
 
-                Session["listOfQuestions"] = serviceResponse.Item1.Take(10).ToList();
-                Session["listOfAnswers"] = serviceResponse.Item2;
-                Session["counter"] = 0;
+                ViewState["listOfQuestions"] = serviceResponse.Item1;
+                ViewState["listOfAnswers"] = serviceResponse.Item2;
+                ViewState["counter"] = 0;
 
                 listOfCorrectQuestions = new List<string>();
                 listOfQuestions = new List<string>();
-                Session["responseCorrectQuestions"] = listOfCorrectQuestions;
-                Session["responseQuestions"] = listOfQuestions;
+                ViewState["responseCorrectQuestions"] = listOfCorrectQuestions;
+                ViewState["responseQuestions"] = listOfQuestions;
 
-                var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+                var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
                 var itemExam = questions.FirstOrDefault();
 
                 if (itemExam is null)
@@ -43,7 +43,7 @@ namespace oneGoNclex
                     Response.Redirect(url);
                 }
 
-                var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
@@ -113,16 +113,16 @@ namespace oneGoNclex
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            var counter = int.Parse(Session["counter"].ToString()) + 1;
-            Session["counter"] = counter;
+            var counter = int.Parse(ViewState["counter"].ToString()) + 1;
+            ViewState["counter"] = counter;
 
-            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
 
             if (counter <= (questions.Count - 1))
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
-                var responseQuestions = (List<string>)Session["responseQuestions"];
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
@@ -167,23 +167,23 @@ namespace oneGoNclex
             }
             else
             {
-                counter = int.Parse(Session["counter"].ToString()) - 1;
-                Session["counter"] = counter;
+                counter = int.Parse(ViewState["counter"].ToString()) - 1;
+                ViewState["counter"] = counter;
             }
         }
 
         protected void btnPrev_Click(object sender, EventArgs e)
         {
-            var counter = int.Parse(Session["counter"].ToString()) - 1;
-            Session["counter"] = counter;
+            var counter = int.Parse(ViewState["counter"].ToString()) - 1;
+            ViewState["counter"] = counter;
 
-            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
 
             if (counter >= 0)
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)Session["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
-                var responseQuestions = (List<string>)Session["responseQuestions"];
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
@@ -223,16 +223,16 @@ namespace oneGoNclex
             }
             else
             {
-                counter = int.Parse(Session["counter"].ToString()) + 1;
-                Session["counter"] = counter;
+                counter = int.Parse(ViewState["counter"].ToString()) + 1;
+                ViewState["counter"] = counter;
             }
         }
 
         protected void btnFinish_Click(object sender, EventArgs e)
         {
-            var questions = (List<ExamQuestion>)Session["listOfQuestions"];
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
             var totalQuestions = questions.Count;
-            var responseQuestions = (List<string>)Session["responseCorrectQuestions"];
+            var responseQuestions = (List<string>)ViewState["responseCorrectQuestions"];
             var totalExam = ((responseQuestions.Count * 100) / totalQuestions);
             var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
             var email = StringCipher.Decrypt(Request.QueryString["email"]);
@@ -252,7 +252,6 @@ namespace oneGoNclex
 
             ExamService.RegisterExamResult(model);
 
-            Session.Clear();
             Session["examResult"] = model;
 
             var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/examresult?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
@@ -269,7 +268,7 @@ namespace oneGoNclex
             var questionID = txtQuestionsAnswered.Text.Split('|')[0];
             var isCorrect = txtQuestionsAnswered.Text.Split('|')[1];
             var answerIndex = txtQuestionsAnswered.Text.Split('|')[2];
-            var responseCorrectQuestions = (List<string>)Session["responseCorrectQuestions"];
+            var responseCorrectQuestions = (List<string>)ViewState["responseCorrectQuestions"];
             var correctQuestion = responseCorrectQuestions.FirstOrDefault(x => x == questionID);
 
             if (correctQuestion == null && isCorrect == "1")
@@ -278,9 +277,9 @@ namespace oneGoNclex
             if (correctQuestion != null && isCorrect == "0")
                 responseCorrectQuestions.Remove(questionID);
 
-            Session["responseCorrectQuestions"] = responseCorrectQuestions;
+            ViewState["responseCorrectQuestions"] = responseCorrectQuestions;
 
-            var responseQuestions = (List<string>)Session["responseQuestions"];
+            var responseQuestions = (List<string>)ViewState["responseQuestions"];
             var question = responseQuestions.FirstOrDefault(x => x.Contains(questionID));
 
             if (question != null)
@@ -291,7 +290,7 @@ namespace oneGoNclex
             else
                 responseQuestions.Add(questionID + "|" + answerIndex);
 
-            Session["responseQuestions"] = responseQuestions;
+            ViewState["responseQuestions"] = responseQuestions;
         }
     }
 }
