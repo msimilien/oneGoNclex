@@ -22,9 +22,9 @@ namespace oneGoNclex
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
                 var serviceResponse = ExamService.GetQuestionsByBankId(bankId);
 
-                ViewState["listOfQuestions"] = serviceResponse.Item1;
-                ViewState["listOfAnswers"] = serviceResponse.Item2;
-                ViewState["listOfAnswersExplanation"] = serviceResponse.Item3;
+                ViewState["listOfQuestions"] = serviceResponse.listOfQuestions;
+                ViewState["listOfAnswers"] = serviceResponse.listOfAnswers;
+                ViewState["listOfAnswersExplanation"] = serviceResponse.listOfExplanations;
                 ViewState["counter"] = 0;
 
                 listOfQuestions = new List<string>();
@@ -39,7 +39,7 @@ namespace oneGoNclex
                     Response.Redirect(url);
                 }
 
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
                 var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
 
                 lblQuestions.Text = itemExam.Question;
@@ -69,7 +69,7 @@ namespace oneGoNclex
             if (counter <= (questions.Count - 1))
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
                 var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
                 var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
@@ -129,7 +129,7 @@ namespace oneGoNclex
             if (counter >= 0)
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
                 var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
                 var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
