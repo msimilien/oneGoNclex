@@ -12,8 +12,6 @@ namespace oneGoNclex
     {
         List<string> listOfCorrectQuestions;
         List<string> listOfQuestions;
-        const string maxValueMinute = "59";
-        const string minValueMinute = "00";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,8 +23,8 @@ namespace oneGoNclex
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
                 var serviceResponse = ExamService.GetQuestionsByBankId(bankId);
 
-                ViewState["listOfQuestions"] = serviceResponse.Item1;
-                ViewState["listOfAnswers"] = serviceResponse.Item2;
+                ViewState["listOfQuestions"] = serviceResponse.listOfQuestions;
+                ViewState["listOfAnswers"] = serviceResponse.listOfAnswers;
                 ViewState["counter"] = 0;
 
                 listOfCorrectQuestions = new List<string>();
@@ -43,7 +41,7 @@ namespace oneGoNclex
                     Response.Redirect(url);
                 }
 
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
@@ -73,41 +71,6 @@ namespace oneGoNclex
                 minute = total;
 
                 lblTimer.InnerText = $"{hour.ToString().PadLeft(2, '0')}:{minute.ToString().PadLeft(2, '0')}:{seconds.ToString().PadLeft(2, '0')}";
-                timerClock.Enabled = true;
-            }
-        }
-
-        protected void timerClock_Tick(object sender, EventArgs e)
-        {
-            var resultClock = lblTimer.InnerText.Split(':');
-
-            //Seconds
-            if (resultClock[2] != minValueMinute)
-            {
-                resultClock[2] = (int.Parse(resultClock[2]) - 1).ToString().PadLeft(2, '0');
-                lblTimer.InnerText = $"{resultClock[0]}:{resultClock[1]}:{resultClock[2]}";
-                return;
-            }
-
-            //Seconds affect minutes
-            if (resultClock[2] == minValueMinute && resultClock[1] != minValueMinute)
-            {
-                resultClock[2] = maxValueMinute;
-                resultClock[1] = (int.Parse(resultClock[1]) - 1).ToString().PadLeft(2, '0');
-                lblTimer.InnerText = $"{resultClock[0]}:{resultClock[1]}:{resultClock[2]}";
-                return;
-            }
-
-            //Minutes affect hours
-            if (resultClock[2] == minValueMinute &&
-                resultClock[1] == minValueMinute &&
-                resultClock[0] != minValueMinute)
-            {
-                resultClock[2] = maxValueMinute;
-                resultClock[1] = maxValueMinute;
-                resultClock[0] = (int.Parse(resultClock[0]) - 1).ToString().PadLeft(2, '0');
-                lblTimer.InnerText = $"{resultClock[0]}:{resultClock[1]}:{resultClock[2]}";
-                return;
             }
         }
 
@@ -121,7 +84,7 @@ namespace oneGoNclex
             if (counter <= (questions.Count - 1))
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
                 var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
@@ -149,13 +112,13 @@ namespace oneGoNclex
                 {
                     btnNext.Attributes.Add("disabled", "true");
                     btnNext.Visible = false;
-                    btnFinish.Visible = true;
+                    btnFinish.Style["display"] = "block";
                 }
                 else
                 {
                     btnNext.Attributes.Remove("disabled");
                     btnNext.Visible = true;
-                    btnFinish.Visible = false;
+                    btnFinish.Style["display"] = "none";
                 }
 
                 btnPrev.Attributes.Remove("disabled");
@@ -182,7 +145,7 @@ namespace oneGoNclex
             if (counter >= 0)
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
                 var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
@@ -209,7 +172,7 @@ namespace oneGoNclex
 
                 btnNext.Attributes.Remove("disabled");
                 btnNext.Visible = true;
-                btnFinish.Visible = false;
+                btnFinish.Style["display"] = "none";
 
                 if (counter == 0)
                     btnPrev.Attributes.Add("disabled", "true");

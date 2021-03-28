@@ -124,18 +124,9 @@
                                                 <label runat="server" id="lblQuestionsAmount" style="position: absolute; left: 9%; top: 11rem;">1 of 120</label>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                        <asp:UpdatePanel runat="server" ID="updPanelTimer" UpdateMode="Always">
-                                            <ContentTemplate>
-                                                <asp:Timer runat="server"
-                                                    ID="timerClock"
-                                                    Interval="1000"
-                                                    OnTick="timerClock_Tick"
-                                                    Enabled="false">
-                                                </asp:Timer>
-                                                <b style="position: absolute; left: 85%; top: 11rem;">Time: </b>
-                                                <label runat="server" id="lblTimer" style="position: absolute; left: 90%; top: 11rem;">00:15:00</label>
-                                            </ContentTemplate>
-                                        </asp:UpdatePanel>
+
+                                        <b style="position: absolute; left: 85%; top: 11rem;">Time: </b>
+                                        <label runat="server" id="lblTimer" style="position: absolute; left: 90%; top: 11rem;">00:15:00</label>
                                     </p>
 
                                     <br />
@@ -157,20 +148,20 @@
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                        <asp:TextBox runat="server" 
-                                                     ID="txtQuestionsAnswered" 
-                                                     style="display: none;" 
-                                                     OnTextChanged="txtQuestionsAnswered_TextChanged">
+                                        <asp:TextBox runat="server"
+                                            ID="txtQuestionsAnswered"
+                                            Style="display: none;"
+                                            OnTextChanged="txtQuestionsAnswered_TextChanged">
                                         </asp:TextBox>
                                     </p>
 
                                     <p>
-                                        <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional">
+                                        <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional" style="display: flex;">
                                             <ContentTemplate>
                                                 <asp:Button Style="margin-left: 27%;" Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
-                                                <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Visible="false" />
+                                                <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" style="display: none;" />
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </p>
@@ -237,6 +228,50 @@
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
+        $(function () {
+            const maxValueMinute = "59";
+            const minValueMinute = "00";
+
+            setTimeout(function () {
+                setInterval(function () {
+                    var timerLabel = $("#lblTimer").text();
+                    var resultClock = timerLabel.split(':');
+
+                    //Seconds
+                    if (resultClock[2] != minValueMinute) {
+                        var resultSeconds = parseInt(resultClock[2]) - 1;
+                        resultClock[2] = resultSeconds > 9 ? resultSeconds : "0" + resultSeconds;
+                        $("#lblTimer").text(resultClock[0] + ":" + resultClock[1] + ":" + resultClock[2]);
+
+                        if ($("#lblTimer").text() === "00:00:00")
+                            $("#btnFinish").trigger("click");
+
+                        return;
+                    }
+
+                    //Seconds affect minutes
+                    if (resultClock[2] == minValueMinute && resultClock[1] != minValueMinute) {
+                        resultClock[2] = maxValueMinute;
+                        var resultMinutes = parseInt(resultClock[1]) - 1;
+                        resultClock[1] = resultMinutes > 9 ? resultMinutes : "0" + resultMinutes;
+                        $("#lblTimer").text(resultClock[0] + ":" + resultClock[1] + ":" + resultClock[2]);
+                        return;
+                    }
+
+                    //Minutes affect hours
+                    if (resultClock[2] == minValueMinute &&
+                        resultClock[1] == minValueMinute &&
+                        resultClock[0] != minValueMinute) {
+                        resultClock[2] = maxValueMinute;
+                        resultClock[1] = maxValueMinute;
+                        var resultHours = parseInt(resultClock[0]) - 1;
+                        resultClock[0] = resultHours > 9 ? resultHours : "0" + resultHours;
+                        $("#lblTimer").text(resultClock[0] + ":" + resultClock[1] + ":" + resultClock[2]);
+                        return;
+                    }
+                }, 1000);
+            }, 1000);
+        });
         function checkAnswer(questionID, isCorrect, index) {
             if (isCorrect)
                 $("#txtQuestionsAnswered").val(questionID + "|1" + "|" + index);
