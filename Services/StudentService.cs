@@ -50,6 +50,7 @@ namespace oneGoNclex.Services
 
         public static StudentViewModel GetStudentByRegistrationAndEmail(string registrationID, string email)
         {
+            string _actif = "yes";
             try
             {
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
@@ -76,7 +77,7 @@ namespace oneGoNclex.Services
 	                                    ,LPNDiploma
 	                                    ,ISNULL([Password], '') as [Password]
                                     from Student
-                                    where RegistrationID = '" + registrationID + "'and Email = '" + email + "'",
+                                    where RegistrationID = '" + registrationID + "'and Email = '" + email  + "'and Actif = '"+_actif+"'",
                     Connection = conn
                 };
 
@@ -114,7 +115,7 @@ namespace oneGoNclex.Services
 
                 return null;
             }
-            catch
+            catch (Exception ex)
             {
                 return null;
             }
@@ -127,8 +128,8 @@ namespace oneGoNclex.Services
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"update Student set [Password] = '" + newPassword 
-                                    + "' where RegistrationID = '" + registrationID 
+                    CommandText = @"update Student set [Password] = '" + newPassword
+                                    + "' where RegistrationID = '" + registrationID
                                     + "' and Email = '" + email + "'",
                     Connection = conn
                 };
@@ -155,6 +156,7 @@ namespace oneGoNclex.Services
                                     from Student
                                     where RegistrationID = '" + registrationID 
                                     + "' and Email = '" + email + "'",
+                                    
                     Connection = conn
                 };
 

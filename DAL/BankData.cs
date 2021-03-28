@@ -16,7 +16,7 @@ namespace oneGoNclex.DAL
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"SELECT [IdBank],[Description] FROM [dbo].[Bank] WITH(NOLOCK)",
+                    CommandText = @"SELECT [IdBank],[Description],[BankName],[ImageBank] FROM [dbo].[Bank] WITH(NOLOCK) WHERE Actif=1 ",
                     Connection = conn
                 };
 
@@ -27,7 +27,7 @@ namespace oneGoNclex.DAL
                 {
                     while (reader.Read())
                     {
-                        listOfBanks.Add(new BankViewModel(reader.GetInt32(0), reader.GetString(1)));
+                        listOfBanks.Add(new BankViewModel(reader.GetInt32(0), reader.GetString(2),reader.GetString(1),reader.GetString(3)));
                     }
                 }
 

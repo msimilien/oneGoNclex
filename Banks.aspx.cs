@@ -17,12 +17,12 @@ namespace oneGoNclex
                 var url = "/bankquestions/choose?bankid=" + StringCipher.Encrypt(bank.BankId.ToString());
 
                 html.Append("<div class='col-md-4'>");
-                html.Append("<img src='assets/images/basicCareQuiz.jpg' style='width: 100%'>");
+                html.Append($"<img src='{"../" + bank.imageBank}' style='width: 100%' class='rounded'>");
                 html.Append("<div class='container'>");
                 html.Append("<br />");
-                html.Append("<p class='title'>" + bank.Name + "</p>");
+                html.Append("<h4 class='font-weight-bold'>" + bank.Name + "</h4>");
                 html.Append("<br />");
-                html.Append("<p>This is a set of 20 random questions that can help you to get a better idea on our question banks</p>");
+                html.Append("<div class='border-bottom-0'>" + bank.Description +"</div>");
                 html.Append("<p>");
                 html.Append("<a class='btn btn-outline-success' href='" + url + "'>");
                 html.Append("Open Questions");
