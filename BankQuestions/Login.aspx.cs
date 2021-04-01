@@ -8,9 +8,14 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
-            btnToExternal.HRef += $"?bankid={Request.QueryString["bankid"]}";
-            btnToRegister.HRef += $"?bankid={Request.QueryString["bankid"]}";
+            if(!btnToChoose.HRef.Contains("?bankid="))
+                btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
+
+            if (!btnToExternal.HRef.Contains("?bankid="))
+                btnToExternal.HRef += $"?bankid={Request.QueryString["bankid"]}";
+
+            if (!btnToRegister.HRef.Contains("?bankid="))
+                btnToRegister.HRef += $"?bankid={Request.QueryString["bankid"]}";
         }
 
         protected void btnsend_Click(object sender, EventArgs e)

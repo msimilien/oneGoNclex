@@ -125,7 +125,7 @@
                                     <asp:TextBox ID="txtUsername" 
                                                 class="form-control" 
                                                 runat="server" 
-                                                placeholder="Enter Username" 
+                                                placeholder="Username" 
                                                 TextMode="SingleLine"
                                                 Font-Size="Medium">
                                     </asp:TextBox>
@@ -145,7 +145,7 @@
                                                 class="form-control" 
                                                 runat="server" 
                                                 type="password"
-                                                placeholder="Enter Username" 
+                                                placeholder="Password" 
                                                 TextMode="SingleLine"
                                                 Font-Size="Medium">
                                     </asp:TextBox>

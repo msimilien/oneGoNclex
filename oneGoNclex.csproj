@@ -234,6 +234,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="HelpLineRegister.aspx" />
     <Content Include="Image_Questions\appendix.mp4" />
+    <Content Include="Image_Questions\bankExam.jpg" />
     <Content Include="Image_Questions\bladder-prostate.mp4" />
     <Content Include="Image_Questions\concussion-brain-injury.mp4" />
     <Content Include="Image_Questions\ECG heart monitor.png" />
@@ -242,6 +243,10 @@
     <Content Include="Image_Questions\ECG strip PR interval Question 10.png" />
     <Content Include="Image_Questions\ECG strip.jpg" />
     <Content Include="Image_Questions\femur-fracture.mp4" />
+    <Content Include="Image_Questions\general1.jfif" />
+    <Content Include="Image_Questions\General2.jfif" />
+    <Content Include="Image_Questions\General3.jfif" />
+    <Content Include="Image_Questions\general4.jfif" />
     <Content Include="Image_Questions\gerd.mp4" />
     <Content Include="Image_Questions\high-blood-pressure.mp4" />
     <Content Include="Image_Questions\liver-overview.mp4" />

@@ -145,10 +145,10 @@
                                                 <asp:RadioButtonList runat="server" ID="Answers"></asp:RadioButtonList>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
-                                        <asp:TextBox runat="server" 
-                                                     style="display: none;"
-                                                     ID="txtQuestionsAnswered" 
-                                                     OnTextChanged="txtQuestionsAnswered_TextChanged">
+                                        <asp:TextBox runat="server"
+                                            Style="display: none;"
+                                            ID="txtQuestionsAnswered"
+                                            OnTextChanged="txtQuestionsAnswered_TextChanged">
                                         </asp:TextBox>
                                     </p>
 
@@ -158,7 +158,7 @@
                                                 <asp:Label runat="server" ID="lblCorrect" ForeColor="#006600" Style="display: none;">CORRECT!!</asp:Label>
                                                 <asp:Label runat="server" ID="lblIncorrect" ForeColor="#cc0000" Style="display: none;">INCORRECT!!</asp:Label>
                                                 <br />
-                                                <p runat="server" ID="lblAnswerExplanation" Style="display: none;"></p>
+                                                <p runat="server" id="lblAnswerExplanation" style="display: none;"></p>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                         <br />
@@ -168,11 +168,20 @@
                                     <p>
                                         <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <asp:Button Style="margin-left: 14%;" Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:Button Text="Show response" runat="server" ID="btnShowResponse" OnClick="btnShowResponse_Click" CssClass="btn btn-info" Width="250px" />
+                                                <div class="row text-center">
+                                                    <div class="col-xs-12 col-sm-4">
+                                                        <asp:Button Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
+                                                        <br /><br />
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4">
+                                                        <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
+                                                        <br /><br />
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4">
+                                                        <asp:Button Text="Show response" runat="server" ID="btnShowResponse" OnClick="btnShowResponse_Click" CssClass="btn btn-info" Width="250px" />
+                                                        <br /><br />
+                                                    </div>
+                                                </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </p>
@@ -258,10 +267,6 @@
                     $("#txtQuestionsAnswered").val(questionID + "|0" + "|" + index);
                 }, 100);
             }
-
-            //setTimeout(function () {
-            //    $("#txtQuestionsAnswered").val("");
-            //}, 1000);
         }
     </script>
 </body>

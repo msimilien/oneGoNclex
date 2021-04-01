@@ -156,12 +156,21 @@
                                     </p>
 
                                     <p>
-                                        <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional" style="display: flex;">
+                                        <asp:UpdatePanel runat="server" ID="updButtons" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <asp:Button Style="margin-left: 27%;" Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
-                                                <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" style="display: none;" />
+                                                <div class="row text-center">
+                                                    <div class="col-xs-12 col-sm-6">
+                                                        <asp:Button Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6">
+                                                        <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
+                                                        <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Style="display: none;" />
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </p>
@@ -277,10 +286,6 @@
                 $("#txtQuestionsAnswered").val(questionID + "|1" + "|" + index);
             else
                 $("#txtQuestionsAnswered").val(questionID + "|0" + "|" + index);
-
-            setTimeout(function () {
-                $("#txtQuestionsAnswered").val("");
-            }, 1000);
         }
     </script>
 </body>

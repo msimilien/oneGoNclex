@@ -122,13 +122,13 @@
                                 <div class="col-xs-12 col-sm-2">
                                     &nbsp;
                                 </div>
-                                <div class="col-xs-12 col-sm-3 text-right">
+                                <div class="col-xs-12 col-sm-3">
                                     <asp:Button ID="btnStudent" Text="For Student Access" runat="server" class="btn btn-outline-success" OnClick="btnStudent_Click" />
                                 </div>
                                 <div class="col-xs-12 col-sm-2">
                                     &nbsp;
                                 </div>
-                                <div class="col-xs-12 col-sm-3 text-left">
+                                <div class="col-xs-12 col-sm-3">
                                     <asp:Button ID="btnExternal" Text="For External Access" runat="server" class="btn btn-outline-success" OnClick="btnExternal_Click" />
                                 </div>
                             </div>
