@@ -174,6 +174,16 @@
                                     <label>
                                         <a href="/bankquestions/choose" runat="server" id="btnToChoose">Back</a>
                                     </label>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:Label runat="server" 
+                                        ID="txtErrorMsg" 
+                                        ForeColor="Red" 
+                                        Font-Size="Medium">
+
+                                    </asp:Label>
                                 </div>
                             </form>
                         </div>

@@ -42,6 +42,24 @@ namespace oneGoNclex
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblQuestionsAmount;
 
         /// <summary>
+        /// txtNumberQuestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumberQuestion;
+
+        /// <summary>
+        /// goToQuestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button goToQuestion;
+
+        /// <summary>
         /// updPanelQuestion control.
         /// </summary>
         /// <remarks>

@@ -131,24 +131,20 @@
         </section>
 
         <section>
-            <div class="container">
+            <div class="container" style="padding: 0 13%;">
                 <div class="row">
-                    <div class="col-lg-4 pr-lg-6">
-                        <div class="row">
-                            <div class="col-md-4 col-lg-12 mb-4">
-                                <h1>Our NCLEX Practice Questions Bank</h1>
-                                <p>The world needs more registered nurses. Practice for your 2021 NCLEX test using the same kind of questions you’ll be answering on the actual written examination.</p>
-                            </div>
-                        </div>
+                    <div class="col-xs-12">
+                        <h3>Our NCLEX Practice Questions Bank</h3>
+                        <br />
+                        <p>The world needs more registered nurses. Practice for your 2021 NCLEX test using the same kind of questions you’ll be answering on the actual written examination.</p>
+                        <br />
                     </div>
-                    <div class="col-lg mt-4 mt-lg-0">
+                    <div class="col-xs-12">
                         <form id="form1" runat="server">
                             <div class="row" runat="server" id="bankList">
-
                             </div>
                         </form>
                     </div>
-
                 </div>
                 <!--/.row-->
             </div>

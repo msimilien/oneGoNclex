@@ -123,10 +123,18 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12" style="margin: 0 auto;">
-                                    <asp:Button ID="startExam" Text="Start Exam" runat="server" OnClick="startExam_Click" class="btn btn-outline-success" />
+                                    <asp:Button ID="startExam" 
+                                        Text="Start Exam" 
+                                        runat="server" 
+                                        OnClick="startExam_Click" 
+                                        class="btn btn-outline-success" />
                                 </div>
                                 <div class="col-xs-12" style="margin: 0 auto;">
-                                    <asp:Button ID="btnStudyExam" Text="Study Exam" runat="server" OnClick="btnStudyExam_Click" class="btn btn-outline-info" />
+                                    <asp:Button ID="btnStudyExam" 
+                                        Text="Study Exam" 
+                                        runat="server" 
+                                        OnClick="btnStudyExam_Click" 
+                                        class="btn btn-outline-info" />
                                 </div>
                             </div>
                         </form>

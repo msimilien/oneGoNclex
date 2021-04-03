@@ -113,6 +113,8 @@
                     <div class="col-12 px-0">
                         <div class="text-center">
                             <form id="frmLogin" class="container-fluid" runat="server">
+                                <br />
+                                <br />
                                 <div class="imgcontainer">
                                     <p>
                                         Please enter a new password and save it to update your profile.
@@ -124,6 +126,7 @@
                                     <asp:TextBox ID="txtPassword" 
                                                  class="form-control" 
                                                  type="password"
+                                                 Font-Size="Medium"
                                                  runat="server" 
                                                  placeholder="Your new password" 
                                                  TextMode="SingleLine"></asp:TextBox>
@@ -139,6 +142,7 @@
                                     <asp:TextBox ID="txtConfirmPassword" 
                                                  class="form-control" 
                                                  type="password"
+                                                 Font-Size="Medium"
                                                  runat="server" 
                                                  placeholder="Confirm your new password" 
                                                  TextMode="SingleLine"></asp:TextBox>
@@ -163,7 +167,9 @@
                                             OnClick="btnUpdate_Click"></asp:Button>
                                         <br />
                                         <br />
-                                        <a href="/bankquestions/login">&nbsp;&nbsp;&nbsp;&nbsp;Back</a>
+                                        <a runat="server"
+                                           id="btnToBack"
+                                           href="/bankquestions/studentaccess">&nbsp;&nbsp;&nbsp;&nbsp;Back</a>
                                     </div>
                                 </div>
                             </form>

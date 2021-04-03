@@ -12,7 +12,7 @@ namespace oneGoNclex
                 btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
 
             if (!btnToExternal.HRef.Contains("?bankid="))
-                btnToExternal.HRef += $"?bankid={Request.QueryString["bankid"]}";
+                btnToExternal.HRef += $"?tag=external&bankid={Request.QueryString["bankid"]}";
 
             if (!btnToRegister.HRef.Contains("?bankid="))
                 btnToRegister.HRef += $"?bankid={Request.QueryString["bankid"]}";

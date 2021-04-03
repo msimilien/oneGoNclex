@@ -27,7 +27,7 @@ namespace oneGoNclex.DAL
                 {
                     while (reader.Read())
                     {
-                        listOfBanks.Add(new BankViewModel(reader.GetInt32(0), reader.GetString(2),reader.GetString(1),reader.GetString(3)));
+                        listOfBanks.Add(new BankViewModel(reader.GetInt32(0), reader.GetString(2), reader.GetString(1), reader.GetString(3)));
                     }
                 }
 

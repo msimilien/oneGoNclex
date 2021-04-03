@@ -113,6 +113,7 @@
                     <div class="col-12 px-0">
                         <div class="text-center">
                             <form id="frmLogin" class="container-fluid" runat="server">
+                                <br />
                                 <div class="imgcontainer">
                                     <p>
                                         Please enter your password to continue.
@@ -152,7 +153,9 @@
                                         <a href="/bankquestions/studentaccess" id="btnToBack" runat="server">&nbsp;Back</a>
                                         <br />
                                         <br />
-                                        <a href="/bankquestions/forgotpassword?tag=student">Forgot password?</a>
+                                        <a  id="btnForgotPassword"
+                                            runat="server" 
+                                            href="/bankquestions/forgotpassword">Forgot password?</a>
                                     </div>
                                     <div class="col-xs-12">
                                         <br />

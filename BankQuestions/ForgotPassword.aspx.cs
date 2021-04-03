@@ -14,10 +14,16 @@ namespace oneGoNclex
         {
             _from = Request.QueryString["tag"];
 
-            if(_from == "student")
+            if (_from == "student")
+            {
                 pnRegistration.Visible = true;
+                btnBack.HRef = $"/bankquestions/studentaccesslogin?tag=student&bankid={Request.QueryString["bankid"]}";
+            }
             else
+            {
                 pnRegistration.Visible = false;
+                btnBack.HRef = $"/bankquestions/login?tag=external&bankid={Request.QueryString["bankid"]}";
+            }
         }
 
         protected void btnsend_Click(object sender, EventArgs e)

@@ -11,6 +11,7 @@ namespace oneGoNclex
         protected void Page_Load(object sender, EventArgs e)
         {
             btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
+            txtErrorMsg.Visible = false;
         }
 
         protected void btnsend_Click(object sender, EventArgs e)
@@ -19,8 +20,12 @@ namespace oneGoNclex
 
             if (student == null)
             {
-                Console.WriteLine("Student does not exists");
+                txtErrorMsg.Text = "Registration ID or email ar invalid";
+                txtErrorMsg.Visible = true;
+                return;
             }
+            else
+                txtErrorMsg.Visible = false;
 
             if (string.IsNullOrEmpty(student.Password))
             {

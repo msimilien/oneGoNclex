@@ -113,6 +113,8 @@
                     <div class="col-12 px-0">
                         <div class="text-center">
                             <form id="frmLogin" class="container-fluid" runat="server">
+                                <br />
+                                <br />
                                 <div class="imgcontainer">
                                     <p>
                                         Please enter your email to recieve the instructions for reset your password.
@@ -120,13 +122,13 @@
                                 </div>
 
                                 <div class="container text-left" runat="server" id="pnRegistration">
-                                    <label for="uname"><b>Email</b></label>
-                                    <asp:TextBox ID="txtRegistrationID" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                placeholder="Your Registration ID" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
+                                    <label for="uname"><b>Registration ID</b></label>
+                                    <asp:TextBox ID="txtRegistrationID"
+                                        class="form-control"
+                                        runat="server"
+                                        placeholder="Your Registration ID"
+                                        TextMode="SingleLine"
+                                        Font-Size="Medium">
                                     </asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                         ControlToValidate="txtRegistrationID"
@@ -137,12 +139,12 @@
 
                                 <div class="container text-left">
                                     <label for="uname"><b>Email</b></label>
-                                    <asp:TextBox ID="txtEmail" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                placeholder="Your email" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
+                                    <asp:TextBox ID="txtEmail"
+                                        class="form-control"
+                                        runat="server"
+                                        placeholder="Your email"
+                                        TextMode="SingleLine"
+                                        Font-Size="Medium">
                                     </asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                         ControlToValidate="txtEmail"
@@ -155,31 +157,24 @@
                                     <div class="col-xs-12 col-sm-4">
                                         &nbsp;
                                     </div>
+
                                     <div class="col-xs-12 col-sm-4">
-                                        <asp:Button class="btn btn-md-lg btn-primary" 
-                                            ID="btnsend" 
+                                        <asp:Button class="btn btn-md-lg btn-primary"
+                                            ID="btnsend"
                                             runat="server"
                                             BackColor="#4CAF50"
                                             BorderStyle="None"
-                                            Text="Send" 
+                                            Text="Send"
                                             OnClick="btnsend_Click"></asp:Button>
                                         <br />
-                                        <a href="/bankquestions/login">Back</a>
+                                        <br />
+                                        <a id="btnBack"
+                                            runat="server"
+                                            href="/bankquestions/login">Back</a>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="container">
-                            <div style="margin-top: 20px;" class="row-fluid">
-                                <div class="offset4 span4 well">
-                                    <div class="col">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <br />
-                        <br />
                     </div>
                 </div>
                 <!--/.row-->

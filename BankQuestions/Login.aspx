@@ -122,12 +122,12 @@
 
                                 <div class="container text-center">
                                     <label for="uname"><b>Username</b></label>
-                                    <asp:TextBox ID="txtUsername" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                placeholder="Username" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
+                                    <asp:TextBox ID="txtUsername"
+                                        class="form-control"
+                                        runat="server"
+                                        placeholder="Username"
+                                        TextMode="SingleLine"
+                                        Font-Size="Medium">
                                     </asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                         ControlToValidate="txtUsername"
@@ -141,13 +141,13 @@
                                     <br />
 
                                     <label for="psw"><b>Password</b></label>
-                                    <asp:TextBox ID="txtPassword" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                type="password"
-                                                placeholder="Password" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
+                                    <asp:TextBox ID="txtPassword"
+                                        class="form-control"
+                                        runat="server"
+                                        type="password"
+                                        placeholder="Password"
+                                        TextMode="SingleLine"
+                                        Font-Size="Medium">
                                     </asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                         ControlToValidate="txtPassword"
@@ -160,36 +160,44 @@
                                     <br />
                                     <br />
 
-                                    <asp:Button class="btn btn-md-lg btn-primary" 
-                                            ID="btnsend" 
-                                            runat="server"
-                                            BackColor="#4CAF50"
-                                            BorderStyle="None"
-                                            Text="Login" 
-                                            OnClick="btnsend_Click">
-                                    </asp:Button>
+                                    <asp:Button class="btn btn-md-lg btn-primary"
+                                        ID="btnsend"
+                                        runat="server"
+                                        BackColor="#4CAF50"
+                                        BorderStyle="None"
+                                        Text="Login"
+                                        OnClick="btnsend_Click"></asp:Button>
 
                                     <br />
                                     <br />
 
                                     <div>
                                         <label>
-                                            <a href="/bankquestions/forgotpassword?tag=external" runat="server" id="btnToExternal">Forgot password?</a>
+                                            <a href="/bankquestions/forgotpassword"
+                                                runat="server"
+                                                id="btnToExternal">Forgot password?</a>
                                         </label>
                                         <br />
                                         <label>
-                                            <a href="/bankquestions/register" runat="server" id="btnToRegister">Register</a>
+                                            <a href="/bankquestions/register"
+                                                runat="server"
+                                                id="btnToRegister">Register</a>
                                         </label>
                                         <br />
                                         <label>
-                                            <a href="/bankquestions/choose" runat="server" id="btnToChoose">Back</a>
+                                            <a href="/bankquestions/choose"
+                                                runat="server"
+                                                id="btnToChoose">Back</a>
                                         </label>
                                     </div>
 
                                     <br />
 
                                     <div>
-                                        <asp:Label runat="server" ForeColor="Red" ID="txtErrorLogin" class="text-left" />
+                                        <asp:Label runat="server"
+                                            ForeColor="Red"
+                                            ID="txtErrorLogin"
+                                            class="text-left" />
                                     </div>
 
                                 </div>

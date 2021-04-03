@@ -121,14 +121,30 @@
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestions" UpdateMode="Conditional">
                                             <ContentTemplate>
                                                 <b style="position: absolute; left: 1.5%; top: 11rem;">Questions: </b>
-                                                <label runat="server" id="lblQuestionsAmount" style="position: absolute; left: 9%; top: 11rem;">1 of 120</label>
+                                                <label runat="server"
+                                                    id="lblQuestionsAmount"
+                                                    style="position: absolute; left: 9%; top: 11rem;">
+                                                    Loading...
+                                                </label>
+                                                <br />
+                                                <br />
+                                                <br />
+                                                <div>
+                                                    <label>
+                                                        Go to question number: 
+                                                    </label>
+                                                    <asp:TextBox runat="server"
+                                                        type="number"
+                                                        step="1"
+                                                        min="1"
+                                                        ID="txtNumberQuestion">
+                                                    </asp:TextBox>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                <asp:Button ID="goToQuestion" Style="background-color: darkgreen; color: white; font-weight: bold;" Text="Go" runat="server" OnClick="goToQuestion_Click" />
+                                                </div>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
                                     </p>
-
-                                    <br />
-                                    <br />
-
                                     <p style="margin-bottom: 40px;">
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestion" UpdateMode="Conditional">
                                             <ContentTemplate>
@@ -171,15 +187,18 @@
                                                 <div class="row text-center">
                                                     <div class="col-xs-12 col-sm-4">
                                                         <asp:Button Text="Previous" disabled="true" runat="server" ID="btnPrev" OnClick="btnPrev_Click" CssClass="btn btn-danger" Width="250px" />
-                                                        <br /><br />
+                                                        <br />
+                                                        <br />
                                                     </div>
                                                     <div class="col-xs-12 col-sm-4">
                                                         <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
-                                                        <br /><br />
+                                                        <br />
+                                                        <br />
                                                     </div>
                                                     <div class="col-xs-12 col-sm-4">
                                                         <asp:Button Text="Show response" runat="server" ID="btnShowResponse" OnClick="btnShowResponse_Click" CssClass="btn btn-info" Width="250px" />
-                                                        <br /><br />
+                                                        <br />
+                                                        <br />
                                                     </div>
                                                 </div>
                                             </ContentTemplate>

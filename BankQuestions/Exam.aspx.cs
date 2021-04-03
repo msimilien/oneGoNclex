@@ -37,7 +37,10 @@ namespace oneGoNclex
 
                 if (itemExam is null)
                 {
-                    var url = "/bankquestions/choose?bankid=" + StringCipher.Decrypt(Request.QueryString["bankid"]);
+                    var registrationID = Request.QueryString["registrationid"];
+                    var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/choose?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                                      $"/bankquestions/choose?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+
                     Response.Redirect(url);
                 }
 

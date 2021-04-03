@@ -11,7 +11,8 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!btnToBack.HRef.Contains("?bankid="))
+                btnToBack.HRef += $"?bankid={Request.QueryString["bankid"]}";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

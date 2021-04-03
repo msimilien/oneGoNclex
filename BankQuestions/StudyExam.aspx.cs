@@ -35,7 +35,10 @@ namespace oneGoNclex
 
                 if (itemExam is null)
                 {
-                    var url = "/bankquestions/choose?bankid=" + StringCipher.Decrypt(Request.QueryString["bankid"]);
+                    var registrationID = Request.QueryString["registrationid"];
+                    var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/choose?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                                      $"/bankquestions/choose?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+
                     Response.Redirect(url);
                 }
 
@@ -46,6 +49,7 @@ namespace oneGoNclex
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"1 of {questions.Count()}";
+                txtNumberQuestion.Attributes.Add("max", questions.Count().ToString());
 
                 Answers.Items.Clear();
 
@@ -77,6 +81,7 @@ namespace oneGoNclex
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
+                txtNumberQuestion.Text = (counter + 1).ToString();
                 lblAnswerExplanation.Style.Add("display", "none");
 
                 Answers.Items.Clear();
@@ -137,6 +142,7 @@ namespace oneGoNclex
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
                 lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
+                txtNumberQuestion.Text = (counter + 1).ToString();
                 lblAnswerExplanation.Style.Add("display", "none");
 
                 Answers.Items.Clear();
@@ -236,6 +242,64 @@ namespace oneGoNclex
                 responseQuestions.Add(questionID + "|" + answerIndex);
 
             ViewState["responseQuestions"] = responseQuestions;
+        }
+
+        protected void goToQuestion_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNumberQuestion.Text))
+                return;
+
+            var counter = int.Parse(txtNumberQuestion.Text);
+            ViewState["counter"] = counter;
+
+            var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
+
+            if (counter <= (questions.Count - 1))
+            {
+                var itemExam = questions.ElementAt(counter);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
+                var explanation = ((List<ExamAnswerExplanation>)ViewState["listOfAnswersExplanation"]).FirstOrDefault(x => x.QuestionID == itemExam.QuestionID);
+                var responseQuestions = (List<string>)ViewState["responseQuestions"];
+
+                lblQuestions.Text = itemExam.Question;
+                divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
+                lblAnswerExplanation.InnerHtml = explanation?.Explanation;
+                lblQuestionsAmount.InnerText = $"{counter} of {questions.Count()}";
+                lblAnswerExplanation.Style.Add("display", "none");
+
+                Answers.Items.Clear();
+
+                for (int i = 0; i < answers.Count(); i++)
+                {
+                    var answer = answers.ElementAt(i);
+                    var item = new ListItem(answer.Answer);
+                    item.Attributes.Add("onclick", $"checkAnswer({i},{answer.Asset.ToString().ToLower()},'{answer.QuestionID}')");
+
+                    if (responseQuestions.FirstOrDefault(x => x.Contains(answer.QuestionID.ToString())) != null)
+                    {
+                        var response = responseQuestions.FirstOrDefault(x => x.Contains(answer.QuestionID.ToString()));
+                        item.Selected = response.Split('|')[1] == i.ToString();
+                    }
+
+                    Answers.Items.Add(item);
+                }
+
+                if (counter == (questions.Count - 1))
+                    btnNext.Attributes.Add("disabled", "true");
+                else
+                    btnNext.Attributes.Remove("disabled");
+
+                btnPrev.Attributes.Remove("disabled");
+
+                lblCorrect.Style.Add("display", "none");
+                lblIncorrect.Style.Add("display", "none");
+
+                updPanelMessage.Update();
+                updPanelQuestion.Update();
+                updPanelQuestions.Update();
+                updAnswers.Update();
+                updButtons.Update();
+            }
         }
     }
 }

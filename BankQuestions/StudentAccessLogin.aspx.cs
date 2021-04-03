@@ -11,6 +11,9 @@ namespace oneGoNclex
         {
             if(!btnToBack.HRef.Contains("?bankid="))
                 btnToBack.HRef += $"?bankid={Request.QueryString["bankid"]}";
+
+            if (!btnForgotPassword.HRef.Contains("?bankid="))
+                btnForgotPassword.HRef += $"?tag=student&bankid={Request.QueryString["bankid"]}";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
