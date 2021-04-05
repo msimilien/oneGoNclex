@@ -113,27 +113,62 @@
                     <div class="col-12 px-0">
                         <form runat="server">
                             <div class="row">
-                                <div class="col-md-4 col-lg-12 mb-4">
+                                <div class="col-xs-12">
+                                    <br /><br /><br /><br /><br /><br /><br /><br />
+                                    <h4>Exam details</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <b>Total questions: </b>
+                                    <asp:Label runat="server" ID="lblTotalQuestions"></asp:Label>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <b>Time Limit: </b>
+                                    <asp:Label runat="server" ID="lblTimeLimit"></asp:Label>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <b>Allowed Attempts: </b>
+                                    <asp:Label runat="server" ID="lblAttempts">1</asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <br />
+                                    <b>Instructions</b>
                                     <br />
                                     <br />
-                                    <h4>Our NCLEX Practice Questions Bank</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, condimentum maecenas neque in senectus purus porta, vitae morbi diam et vehicula bibendum. Cubilia nec ligula eleifend mollis nisi mattis facilisis primis sodales, posuere metus cursus tortor volutpat turpis accumsan imperdiet, enim tempus gravida commodo tempor ac id aptent. Mi nibh himenaeos risus lacus fusce blandit quisque, purus phasellus magnis metus semper vestibulum, aliquam nisl auctor ultrices feugiat commodo.</p>
-                                    <p>Inceptos conubia laoreet vivamus eu habitasse hac ad malesuada, eget massa id auctor morbi magnis mattis, rutrum lacinia ante taciti donec aliquam accumsan. Nec praesent primis enim dapibus cubilia eleifend egestas commodo magna malesuada tempus volutpat, neque himenaeos quis morbi lacus tellus donec facilisi diam iaculis. Inceptos mattis porttitor semper aptent tristique litora interdum montes tincidunt, egestas tempor curae himenaeos sapien varius commodo ante enim, nulla malesuada ligula ornare rhoncus sed class proin.</p>
+                                    This exam/study-exam consists of multiple-choice questions. To be successful with the weekly exam/study-exam, it’s important to thoroughly be organize and precise in every answer. It will also be extremely useful to study the key terms at the end of the chapter and review the Test Your Knowledge activity at the end of the chapter. Keep the following in mind:
+                                    <br />
+                                    <br />
+                                    <b>Attempts</b> - You will have one attempt for take the exam. The score being recorded in the database.
+                                    <b>Timing</b> - You will an estimated time to complete the exam.
+                                    <b>Answers</b> - You may review your answer-choices and compare them to the correct answers after your final attempt.
+                                    <br />
+                                    <br />
+                                    To start the exam mode, click the "Start exam" button or if you want to study, click the "Study exam". When finished the exam mode, click the "Finish" button to view the results.
+                                    <br />
+                                    <br />
+                                    Only registered, enrolled users can take graded exam/study-exam
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12" style="margin: 0 auto;">
-                                    <asp:Button ID="startExam" 
-                                        Text="Start Exam" 
-                                        runat="server" 
-                                        OnClick="startExam_Click" 
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="startExam"
+                                        Text="Start Exam"
+                                        runat="server"
+                                        OnClick="startExam_Click"
                                         class="btn btn-outline-success" />
                                 </div>
                                 <div class="col-xs-12" style="margin: 0 auto;">
-                                    <asp:Button ID="btnStudyExam" 
-                                        Text="Study Exam" 
-                                        runat="server" 
-                                        OnClick="btnStudyExam_Click" 
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="btnStudyExam"
+                                        Text="Study Exam"
+                                        runat="server"
+                                        OnClick="btnStudyExam_Click"
                                         class="btn btn-outline-info" />
                                 </div>
                             </div>

@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Model;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Model;
 using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
@@ -23,7 +24,7 @@ namespace oneGoNclex
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
                 var serviceResponse = ExamService.GetQuestionsByBankId(bankId);
 
-                ViewState["listOfQuestions"] = serviceResponse.listOfQuestions;
+                ViewState["listOfQuestions"] = serviceResponse.listOfQuestions.Shuffle();
                 ViewState["listOfAnswers"] = serviceResponse.listOfAnswers;
                 ViewState["counter"] = 0;
 
@@ -44,7 +45,10 @@ namespace oneGoNclex
                     Response.Redirect(url);
                 }
 
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"])
+                                                .Where(x => x.QuestionID == itemExam.QuestionID)
+                                                .ToList()
+                                                .Shuffle();
 
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
@@ -87,7 +91,10 @@ namespace oneGoNclex
             if (counter <= (questions.Count - 1))
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"])
+                                                .Where(x => x.QuestionID == itemExam.QuestionID)
+                                                .ToList()
+                                                .Shuffle();
                 var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
@@ -111,7 +118,7 @@ namespace oneGoNclex
                     Answers.Items.Add(item);
                 }
 
-                if (counter == (questions.Count - 1))
+                if (counter >= (questions.Count - 1))
                 {
                     btnNext.Attributes.Add("disabled", "true");
                     btnNext.Visible = false;
@@ -148,7 +155,10 @@ namespace oneGoNclex
             if (counter >= 0)
             {
                 var itemExam = questions.ElementAt(counter);
-                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"]).Where(x => x.QuestionID == itemExam.QuestionID).OrderBy(o => o.Answer);
+                var answers = ((List<ExamAnswer>)ViewState["listOfAnswers"])
+                                                .Where(x => x.QuestionID == itemExam.QuestionID)
+                                                .ToList()
+                                                .Shuffle();
                 var responseQuestions = (List<string>)ViewState["responseQuestions"];
 
                 lblQuestions.Text = itemExam.Question;
@@ -177,7 +187,7 @@ namespace oneGoNclex
                 btnNext.Visible = true;
                 btnFinish.Style["display"] = "none";
 
-                if (counter == 0)
+                if (counter <= 0)
                     btnPrev.Attributes.Add("disabled", "true");
                 else
                     btnPrev.Attributes.Remove("disabled");

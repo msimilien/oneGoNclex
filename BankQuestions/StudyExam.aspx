@@ -192,6 +192,7 @@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-4">
                                                         <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
+                                                        <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Style="display: none;" />
                                                         <br />
                                                         <br />
                                                     </div>

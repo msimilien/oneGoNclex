@@ -101,13 +101,20 @@ namespace oneGoNclex
                     Answers.Items.Add(item);
                 }
 
-                if (counter == (questions.Count - 1))
+                if (counter >= (questions.Count - 1))
+                {
                     btnNext.Attributes.Add("disabled", "true");
+                    btnNext.Visible = false;
+                    btnFinish.Style["display"] = "block";
+                }
                 else
+                {
                     btnNext.Attributes.Remove("disabled");
+                    btnNext.Visible = true;
+                    btnFinish.Style["display"] = "none";
+                }
 
                 btnPrev.Attributes.Remove("disabled");
-
                 lblCorrect.Style.Add("display", "none");
                 lblIncorrect.Style.Add("display", "none");
 
@@ -164,7 +171,10 @@ namespace oneGoNclex
                 }
 
                 btnNext.Attributes.Remove("disabled");
-                if (counter == 0)
+                btnNext.Visible = true;
+                btnFinish.Style["display"] = "none";
+
+                if (counter <= 0)
                     btnPrev.Attributes.Add("disabled", "true");
                 else
                     btnPrev.Attributes.Remove("disabled");
@@ -249,7 +259,7 @@ namespace oneGoNclex
             if (string.IsNullOrEmpty(txtNumberQuestion.Text))
                 return;
 
-            var counter = int.Parse(txtNumberQuestion.Text);
+            var counter = int.Parse(txtNumberQuestion.Text) - 1;
             ViewState["counter"] = counter;
 
             var questions = (List<ExamQuestion>)ViewState["listOfQuestions"];
@@ -264,7 +274,7 @@ namespace oneGoNclex
                 lblQuestions.Text = itemExam.Question;
                 divContentVideoImage.InnerHtml = ExamService.GetVideoOrImageContent(itemExam.PictureQuestion);
                 lblAnswerExplanation.InnerHtml = explanation?.Explanation;
-                lblQuestionsAmount.InnerText = $"{counter} of {questions.Count()}";
+                lblQuestionsAmount.InnerText = $"{(counter + 1)} of {questions.Count()}";
                 lblAnswerExplanation.Style.Add("display", "none");
 
                 Answers.Items.Clear();
@@ -284,10 +294,18 @@ namespace oneGoNclex
                     Answers.Items.Add(item);
                 }
 
-                if (counter == (questions.Count - 1))
+                if (counter >= (questions.Count - 1))
+                {
                     btnNext.Attributes.Add("disabled", "true");
+                    btnNext.Visible = false;
+                    btnFinish.Style["display"] = "block";
+                }
                 else
+                {
                     btnNext.Attributes.Remove("disabled");
+                    btnNext.Visible = true;
+                    btnFinish.Style["display"] = "none";
+                }
 
                 btnPrev.Attributes.Remove("disabled");
 
@@ -300,6 +318,11 @@ namespace oneGoNclex
                 updAnswers.Update();
                 updButtons.Update();
             }
+        }
+
+        protected void btnFinish_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/bankquestions/banks");
         }
     }
 }

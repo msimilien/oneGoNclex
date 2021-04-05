@@ -1,4 +1,6 @@
-﻿using System;
+﻿using oneGoNclex.Security;
+using oneGoNclex.Services;
+using System;
 
 namespace oneGoNclex
 {
@@ -6,7 +8,27 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));
+                var serviceResponse = ExamService.GetQuestionsByBankId(bankId);
 
+                lblTotalQuestions.Text = serviceResponse.listOfQuestions.Count.ToString();
+
+                var hour = 0;
+                var seconds = 0;
+                var total = serviceResponse.listOfQuestions.Count;
+
+                while (total > 60)
+                {
+                    hour++;
+                    total -= 60;
+                }
+
+                int minute = total;
+
+                lblTimeLimit.Text = $"{hour.ToString().PadLeft(2, '0')}:{minute.ToString().PadLeft(2, '0')}:{seconds.ToString().PadLeft(2, '0')}";
+            }
         }
 
         protected void startExam_Click(object sender, EventArgs e)

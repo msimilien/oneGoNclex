@@ -474,6 +474,7 @@
     <Compile Include="DAL\ExternalLoginData.cs" />
     <Compile Include="DAL\PreregisterData.cs" />
     <Compile Include="DAL\StudentData.cs" />
+    <Compile Include="Extension\ListShuffle.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
