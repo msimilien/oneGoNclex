@@ -131,14 +131,16 @@
         </section>
 
         <section>
-            <div class="container" style="padding: 0 13%;">
+         <div id="">
+            <div class="container" style="padding: 0 5%; " >
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12" style="padding: 0 13%; background-color: #92a8d1; color: #ffffff;">
                         <h3>Our NCLEX Practice Questions Bank</h3>
                         <br />
                         <p>The world needs more registered nurses. Practice for your 2021 NCLEX test using the same kind of questions you’ll be answering on the actual written examination.</p>
                         <br />
                     </div>
+                    <br />
                     <div class="col-xs-12">
                         <form id="form1" runat="server">
                             <div class="row" runat="server" id="bankList">
@@ -148,6 +150,7 @@
                 </div>
                 <!--/.row-->
             </div>
+              </div>
             <!--/.container-->
         </section>
         <section class="py-4 fs-1 text-center background-9">
