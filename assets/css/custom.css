@@ -1,0 +1,110 @@
+.contenidos {
+    margin-top: 20px;
+    
+}
+#cuerpo {
+    width: 800px;
+    height: 250px;
+    border-radius: 8px;
+    margin-top: 5px;
+    background-image: url("imagenes/introbkg.png");
+    background-size: 800px 250px;
+    background-repeat: no-repeat;
+}
+
+.parrafos {
+    color: burlywood;
+    margin-top: 20px;
+    margin: 20px;
+    width: %;
+}
+
+.letrasBlancas {
+    color: #F8F8FF;
+    margin: 20px;
+    margin-top: 10px;
+}
+
+#cuerpoPersonal {
+    padding: 8px 8px 8px 8px;
+    background-color: #dadada;
+    width: 780px;
+    height: 170px;
+    background-image: url("imagenes/introbkg.png");
+    border-radius: 8px;
+}
+
+.letrasBlancasPersonal {
+    color: #F8F8FF;
+    margin: 20px;
+    border-right: 10px
+}
+
+#sectionImagenes {
+    text-align: center;
+    width: 780px;
+    height: 2500px;
+    background-color: #F5F5DC;
+    border-radius: 8px;
+    padding: 5px 5px 5px 5px;
+    margin-top: 10px;
+    clear: both;
+}
+
+
+.cajaImagen {
+    width: 880px;
+    color: #fff;
+    font-size: 12px;
+    font-family: arial, verdana;
+    line-height: 30px;
+    text-align: center;
+    padding: 20;
+    margin-top: 0px;
+    float: left;
+    right: 30%;
+}
+
+    .cajaImagen > li {
+        background: linear-gradient(#FFA07A, #333);
+        width: 190px;
+        float: left;
+        transition: all 0.2s;
+        border-radius: 8px;
+        height: 400px;
+        display: inline;
+        padding: 20px -30px;
+        text-align: center;
+        margin: 4px;
+        list-style: none;
+        margin-right: 0px;
+    }
+
+.cuerpo_Imagen {
+    width: 170px;
+    height: auto;
+    margin: 0 auto 15px auto;
+    /*border-radius: 100%; */
+    border-spacing: 100%;
+    display: block;
+    margin-top: 6px;
+}
+
+.zoom {
+    /* Aumentamos la anchura y altura durante 2 segundos */
+    transition: width 2s, height 2s, transform 2s;
+    -moz-transition: width 2s, height 2s, -moz-transform 2s;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    -o-transition: width 2s, height 2s,-o-transform 2s;
+    margin-top: 5px;
+    border: plum 5px solid;
+}
+
+    .zoom:hover {
+        /* tranformamos el elemento al pasar el mouse por encima al doble de
+           su tamaño con scale(2). */
+        transform: scale(1.1);
+        -moz-transform: scale(1.1); /* Firefox */
+        -webkit-transform: scale(1.1); /* Chrome - Safari */
+        -o-transform: scale(1.1); /* Opera */
+    }

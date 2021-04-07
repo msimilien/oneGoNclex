@@ -6,7 +6,7 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            btnExternal.Enabled = false;
         }
 
         protected void btnStudent_Click(object sender, EventArgs e)
