@@ -146,11 +146,11 @@
                                     <b>Answers</b> - You may review your answer-choices and compare them to the correct answers after your final attempt.
                                     <br />
                                     <br />
-                                    To start the exam mode, click the "Start exam" button or if you want to study, click the "Study exam". When finished the exam mode, click the "Finish" button to view the results.
+                                    To start the exam mode, click the "Start exam" button or if you want to 
+                                    review, click the "Start practice" button. When finished the exam mode, click the "Finish" button to view the results.
                                     <br />
                                     <br />
-                                    Only registered, enrolled users can take graded exam/study-exam
-                                </div>
+                                    Only registered students, enrolled users can take graded exam/practice </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12" style="margin: 0 auto;">
@@ -166,7 +166,7 @@
                                     <br />
                                     <br />
                                     <asp:Button ID="btnStudyExam"
-                                        Text="Study Exam"
+                                        Text="START PRACTICE"
                                         runat="server"
                                         OnClick="btnStudyExam_Click"
                                         class="btn btn-outline-info" />
