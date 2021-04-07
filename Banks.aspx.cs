@@ -23,7 +23,7 @@ namespace oneGoNclex
 
                 html.Append("<div class='col-lg-4' style='padding: 10 10 %;'> ");
                 html.Append($"<img src='{"../" + bank.imageBank}'  style='width: 100%; height: 180px ' class='card'>");
-                html.Append("<div class='container' style=' background-color: #cc0000; color: #ffffff;'>");
+                html.Append("<div class='container' style=' background: linear-gradient(to bottom left, #ff0000 0%, #c7c7c7 100%); color: #ffffff;'>");// #c7c7c7 #ffccff
                 //html.Append("<br />");
                 html.Append("<h4 class='font-weight-bold'>" + bank.Name + "</h4>");
                 //html.Append("<br />");
