@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PreExam.aspx.cs" Inherits="oneGoNclex.PreExam" %>
 
 <!DOCTYPE html>
-
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
@@ -107,27 +106,26 @@
                 </nav>
             </div>
         </div>
-        <section class=" background-11 py-0">
+        <section class=" background-11 py-0" style="padding: 0 7%;">
             <div class="container">
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <form runat="server">
-                            <div class="row">
+                            <div class="row" style="margin-top: 13.5rem;">
                                 <div class="col-xs-12">
-                                    <br /><br /><br /><br /><br /><br /><br /><br />
                                     <h4>Exam details</h4>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-4" style="margin-left: -17px;">
                                     <b>Total questions: </b>
                                     <asp:Label runat="server" ID="lblTotalQuestions"></asp:Label>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-4" style="margin-left: -17px;">
                                     <b>Time Limit: </b>
                                     <asp:Label runat="server" ID="lblTimeLimit"></asp:Label>
                                 </div>
-                                <div class="col-xs-12 col-sm-4">
+                                <div class="col-xs-12 col-sm-4" style="margin-left: -17px;">
                                     <b>Allowed Attempts: </b>
                                     <asp:Label runat="server" ID="lblAttempts">1</asp:Label>
                                 </div>
@@ -175,8 +173,8 @@
                         </form>
                     </div>
                 </div>
-                <!--/.row-->
             </div>
+            <!--/.row-->
             <!--/.container-->
         </section>
         <section class="py-4 fs-1 text-center background-9">

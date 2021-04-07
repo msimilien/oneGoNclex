@@ -23,7 +23,7 @@ namespace oneGoNclex
                 html.Append("<h4 class='font-weight-bold'>" + bank.Name + "</h4>");
                 html.Append("<br />");
                 html.Append("<div class='border-bottom-0' style='height:200px;overflow-y:auto;margin-bottom:10px;'> " + bank.Description +"</div>");
-                html.Append("<p>");
+                html.Append("<p class='text-center'>");
                 html.Append("<a class='btn btn-outline-success' href='" + url + "'>");
                 html.Append("Open Questions");
                 html.Append("<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-binoculars-fill' viewBox='0 0 16 16'>");
