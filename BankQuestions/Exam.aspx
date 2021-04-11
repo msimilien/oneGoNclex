@@ -120,17 +120,14 @@
                                     <p style="margin-bottom: 9rem;">
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestions" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <b style="position: absolute; left: 1.5%; top: 11rem;">Questions: </b>
-                                                <label runat="server" id="lblQuestionsAmount" style="position: absolute; left: 9%; top: 11rem;">1 of 120</label>
+                                                <b style="position: relative; width:150px; top: 1.5rem;">Questions: </b>
+                                                <label runat="server" id="lblQuestionsAmount" style="position: relative; top: 1.5rem;">1 of 120</label>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
 
-                                        <b style="position: absolute; left: 85%; top: 11rem;">Time: </b>
-                                        <label runat="server" id="lblTimer" style="position: absolute; left: 90%; top: 11rem;">00:15:00</label>
+                                        <b style="position: relative; width:150px; top: 1.5rem;">Time: </b>
+                                        <label runat="server" id="lblTimer" style="position: relative; top: 1.5rem;">00:15:00</label>
                                     </p>
-
-                                    <br />
-                                    <br />
 
                                     <p style="margin-bottom: 40px;">
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestion" UpdateMode="Conditional">
