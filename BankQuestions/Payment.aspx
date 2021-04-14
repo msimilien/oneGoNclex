@@ -107,81 +107,101 @@
                 </nav>
             </div>
         </div>
-        <section class=" background-11 py-0 text-center">
+        <section class="background-11 py-0 text-center">
             <div class="container">
-                <div class="row h-full align-items-center">
+                <div class="row align-items-center">
                     <div class="col-12 px-0">
-                        <div class="text-center">
-                            <form id="frmLogin" class="container-fluid" runat="server">
-                                <div class="imgcontainer">
-                                    <p>
-                                        Please enter a password and re-enter to confirm.
-                                    </p>
-                                </div>
+                        <form id="frmSubscription" runat="server" class="text-center mt-10">
+                            <p>Please select a subscription plan you want for a bank exam</p>
+                            <div class="row mb-4">
 
-                                <div class="container text-left">
-                                    <label for="uname"><b>Password</b></label>
-                                    <asp:TextBox ID="txtPassword" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                type="password"
-                                                placeholder="Your Password" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
-                                    </asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                        ControlToValidate="txtPassword"
-                                        ErrorMessage=" Password is a required."
-                                        ForeColor="Red">
-                                    </asp:RequiredFieldValidator>
-                                </div>
-
-                                <div class="container text-left">
-                                    <label for="uname"><b>Confirm Password</b></label>
-                                    <asp:TextBox ID="txtConfirmPassword" 
-                                                class="form-control" 
-                                                runat="server" 
-                                                type="password"
-                                                placeholder="Confirm Password" 
-                                                TextMode="SingleLine"
-                                                Font-Size="Medium">
-                                    </asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                        ControlToValidate="txtConfirmPassword"
-                                        ErrorMessage=" Confirm Password is a required."
-                                        ForeColor="Red">
-                                    </asp:RequiredFieldValidator>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-4">
-                                        &nbsp;
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4">
-                                        <asp:Button class="btn btn-md-lg btn-primary" 
-                                            ID="btnsend" 
-                                            runat="server"
-                                            BackColor="#4CAF50"
-                                            BorderStyle="None"
-                                            Text="Save" 
-                                            OnClick="btnsend_Click"></asp:Button>
-                                        <br />
-                                        <a href="/bankquestions/login">Back</a>
+                                <div class="col-sm-6">
+                                    <div class="card border-primary">
+                                        <div class="card-header bg-info">
+                                            <h3 class="text-white">Normal</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-primary">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">1 Month</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-primary">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">3 Months</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-primary">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">6 Months</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-primary">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">1 Year</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="container">
-                            <div style="margin-top: 20px;" class="row-fluid">
-                                <div class="offset4 span4 well">
-                                    <div class="col">
+
+                                <div class="col-sm-6">
+                                    <div class="card border-danger">
+                                        <div class="card-header bg-danger">
+                                            <h3 class="text-white">Premium</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-danger">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">1 Month</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-danger">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">3 Months</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-danger">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">6 Months</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 m-3">
+                                                <div class="card card-item border-danger">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">1 Year</h5>
+                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
-                        <br />
-                        <br />
-                        <br />
+                            <div id="paypal-button-container"></div>
+                        </form>
                     </div>
                 </div>
                 <!--/.row-->
@@ -214,7 +234,6 @@
                         <p class="text-uppercase color-9 ls mb-3">One Go NCLEX Review LLC, 1111 Route 110 , Suite 330 Farmingdale, New York 11735.Tel: 631-984-0231</p>
                         <p class="color-5 mb-0">
                             info@onegonclexreview.com
-
                         </p>
                     </div>
                 </div>
@@ -239,9 +258,28 @@
     <script src="../assets/lib/rellax/rellax.min.js"></script>
     <script src="../assets/js/zanimation.js"></script>
     <script src="../assets/js/inertia.js"></script>
-    <script src="../assets/js/googlemap.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ARupHA-BaL9tYFnFf2-MQNT3lcDQEPE1qQvP3IOrlG0pTKydhGBrQ473kETG_vO0q08b_GfXrmRm-jnV"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '0.10',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    debugger;
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container'); // Display payment options on your web page
+    </script>
 </body>
 </html>

@@ -32,8 +32,8 @@ a:hover, a:focus {
 }
 
 .card {
-  border-color: #f2f2f2;
-  border-radius: 0px;
+  border-color: #d3cdcd;
+  border-radius: 10px;
 }
 
 .card-img-top {
@@ -8521,4 +8521,12 @@ span.psw {
 
 [id^="Answers_"] {
     margin-right: 5px;
+}
+
+.card.border-danger.card-item:hover {
+    background-color: lightcoral;
+}
+
+.card.border-primary.card-item:hover {
+    background-color: lightblue;
 }

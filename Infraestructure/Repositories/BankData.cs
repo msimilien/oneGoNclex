@@ -1,5 +1,4 @@
 ﻿using oneGoNclex.Model;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -35,7 +34,7 @@ namespace oneGoNclex.DAL
 
                 return listOfBanks;
             }
-            catch (Exception ex)
+            catch
             {
                 return listOfBanks;
             }

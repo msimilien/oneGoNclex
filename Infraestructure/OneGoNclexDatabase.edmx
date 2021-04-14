@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NCLEXREVIEWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.Assistence' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Assistence">
+          <Key>
+            <PropertyRef Name="IdRegistration" />
+            <PropertyRef Name="EntryDate" />
+            <PropertyRef Name="GroupNumber" />
+          </Key>
+          <Property Name="IdRegistration" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="GroupNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="IdBank" />
+          </Key>
+          <Property Name="IdBank" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageBank" Type="nvarchar(max)" />
+          <Property Name="Actif" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.DocumentStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocumentStudent">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.EducationStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EducationStudent">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+            <PropertyRef Name="HighSchoolFrom" />
+            <PropertyRef Name="HighSchoolTo" />
+          </Key>
+          <Property Name="RegistrationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HighSchoolFrom" Type="datetime" Nullable="false" />
+          <Property Name="HighSchoolTo" Type="datetime" Nullable="false" />
+          <Property Name="Diploma_Title" Type="nvarchar(max)" />
+          <Property Name="Certificate_Title" Type="nvarchar(max)" />
+          <Property Name="GED" Type="nvarchar(max)" />
+          <Property Name="OtherDegree_Title" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.Exam_Questions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Exam_Questions">
+          <Key>
+            <PropertyRef Name="idExam" />
+            <PropertyRef Name="idq" />
+          </Key>
+          <Property Name="idExam" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="idq" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="durationTime" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DescriptionExam" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupStudent" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ExplanationQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdQuestion" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Explanation" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalLogin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GroupStudent">
+          <Key>
+            <PropertyRef Name="GroupNumber" />
+          </Key>
+          <Property Name="GroupNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bigining_Date" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.MailPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MailPayment">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="dateMail" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateMail" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Concept" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="paymentDate" Type="datetime" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preregister">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SocialSecurity" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmergencyPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmergencyMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyName" Type="nvarchar(max)" />
+          <Property Name="ResidenceCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="HighSchool/GED" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="LPNDiploma" Type="nchar" MaxLength="10" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuestionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Subject" Type="int" />
+          <Property Name="pictureQuestion" Type="nvarchar(max)" />
+          <Property Name="BankId" Type="int" />
+        </EntityType>
+        <EntityType Name="Responses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Response" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Asset" Type="bit" Nullable="false" />
+          <Property Name="IdQ" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SocialSecurity" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmergencyPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmergencyMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyName" Type="nvarchar(max)" />
+          <Property Name="ResidenceCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="HighSchool/GED" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Actif" Type="nchar" MaxLength="10" />
+          <Property Name="Group" Type="nchar" MaxLength="10" />
+          <Property Name="LPNDiploma" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.Student_Result' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Student_Result">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="idExam" />
+            <PropertyRef Name="Point" />
+            <PropertyRef Name="qualification" />
+          </Key>
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idExam" Type="int" Nullable="false" />
+          <Property Name="Point" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="qualification" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NCLEXREVIEWModelStoreContainer">
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exams" EntityType="Self.Exams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExplanationQuestion" EntityType="Self.ExplanationQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalLogin" EntityType="Self.ExternalLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupStudent" EntityType="Self.GroupStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preregister" EntityType="Self.Preregister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responses" EntityType="Self.Responses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assistence" EntityType="Self.Assistence" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Assistence].[IdRegistration] AS [IdRegistration], 
+    [Assistence].[EntryDate] AS [EntryDate], 
+    [Assistence].[GroupNumber] AS [GroupNumber]
+    FROM [dbo].[Assistence] AS [Assistence]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DocumentStudent" EntityType="Self.DocumentStudent" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocumentStudent].[IdStudent] AS [IdStudent], 
+    [DocumentStudent].[FileName] AS [FileName], 
+    [DocumentStudent].[Description] AS [Description]
+    FROM [dbo].[DocumentStudent] AS [DocumentStudent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EducationStudent" EntityType="Self.EducationStudent" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EducationStudent].[RegistrationID] AS [RegistrationID], 
+    [EducationStudent].[HighSchoolFrom] AS [HighSchoolFrom], 
+    [EducationStudent].[HighSchoolTo] AS [HighSchoolTo], 
+    [EducationStudent].[Diploma_Title] AS [Diploma_Title], 
+    [EducationStudent].[Certificate_Title] AS [Certificate_Title], 
+    [EducationStudent].[GED] AS [GED], 
+    [EducationStudent].[OtherDegree_Title] AS [OtherDegree_Title]
+    FROM [dbo].[EducationStudent] AS [EducationStudent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Exam_Questions" EntityType="Self.Exam_Questions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Exam_Questions].[idExam] AS [idExam], 
+    [Exam_Questions].[idq] AS [idq]
+    FROM [dbo].[Exam_Questions] AS [Exam_Questions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MailPayment" EntityType="Self.MailPayment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MailPayment].[IdStudent] AS [IdStudent], 
+    [MailPayment].[dateMail] AS [dateMail]
+    FROM [dbo].[MailPayment] AS [MailPayment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Student_Result" EntityType="Self.Student_Result" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Student_Result].[IdStudent] AS [IdStudent], 
+    [Student_Result].[idExam] AS [idExam], 
+    [Student_Result].[Point] AS [Point], 
+    [Student_Result].[qualification] AS [qualification]
+    FROM [dbo].[Student_Result] AS [Student_Result]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserRole].[ID] AS [ID], 
+    [UserRole].[Description] AS [Description]
+    FROM [dbo].[UserRole] AS [UserRole]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NCLEXREVIEWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="IdBank" />
+          </Key>
+          <Property Name="IdBank" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageBank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Actif" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Exam">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="durationTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionExam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupStudent" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ExplanationQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdQuestion" Type="Guid" Nullable="false" />
+          <Property Name="Explanation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalLogin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GroupStudent">
+          <Key>
+            <PropertyRef Name="GroupNumber" />
+          </Key>
+          <Property Name="GroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bigining_Date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Concept" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="paymentDate" Type="DateTime" Precision="3" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Preregister">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SocialSecurity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmergencyPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmergencyMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResidenceCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HighSchool_GED" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LPNDiploma" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Question1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="Int32" />
+          <Property Name="pictureQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BankId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Respons">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Response" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Asset" Type="Boolean" Nullable="false" />
+          <Property Name="IdQ" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SocialSecurity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmergencyPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmergencyMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmergencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResidenceCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HighSchool_GED" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Actif" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Group" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LPNDiploma" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Assistence">
+          <Key>
+            <PropertyRef Name="IdRegistration" />
+            <PropertyRef Name="EntryDate" />
+            <PropertyRef Name="GroupNumber" />
+          </Key>
+          <Property Name="IdRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentStudent">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EducationStudent">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+            <PropertyRef Name="HighSchoolFrom" />
+            <PropertyRef Name="HighSchoolTo" />
+          </Key>
+          <Property Name="RegistrationID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HighSchoolFrom" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HighSchoolTo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Diploma_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Certificate_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GED" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherDegree_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Exam_Questions">
+          <Key>
+            <PropertyRef Name="idExam" />
+            <PropertyRef Name="idq" />
+          </Key>
+          <Property Name="idExam" Type="Guid" Nullable="false" />
+          <Property Name="idq" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailPayment">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="dateMail" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateMail" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Student_Result">
+          <Key>
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="idExam" />
+            <PropertyRef Name="Point" />
+            <PropertyRef Name="qualification" />
+          </Key>
+          <Property Name="IdStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idExam" Type="Int32" Nullable="false" />
+          <Property Name="Point" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NCLEXREVIEWEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Exams" EntityType="Self.Exam" />
+          <EntitySet Name="ExplanationQuestions" EntityType="Self.ExplanationQuestion" />
+          <EntitySet Name="ExternalLogins" EntityType="Self.ExternalLogin" />
+          <EntitySet Name="GroupStudents" EntityType="Self.GroupStudent" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Preregisters" EntityType="Self.Preregister" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Responses" EntityType="Self.Respons" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Assistences" EntityType="Self.Assistence" />
+          <EntitySet Name="DocumentStudents" EntityType="Self.DocumentStudent" />
+          <EntitySet Name="EducationStudents" EntityType="Self.EducationStudent" />
+          <EntitySet Name="Exam_Questions" EntityType="Self.Exam_Questions" />
+          <EntitySet Name="MailPayments" EntityType="Self.MailPayment" />
+          <EntitySet Name="Student_Result" EntityType="Self.Student_Result" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NCLEXREVIEWModelStoreContainer" CdmEntityContainer="NCLEXREVIEWEntities">
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="IdBank" ColumnName="IdBank" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ImageBank" ColumnName="ImageBank" />
+                <ScalarProperty Name="Actif" ColumnName="Actif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exams">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Exam">
+              <MappingFragment StoreEntitySet="Exams">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="durationTime" ColumnName="durationTime" />
+                <ScalarProperty Name="DescriptionExam" ColumnName="DescriptionExam" />
+                <ScalarProperty Name="GroupStudent" ColumnName="GroupStudent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExplanationQuestions">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.ExplanationQuestion">
+              <MappingFragment StoreEntitySet="ExplanationQuestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+                <ScalarProperty Name="Explanation" ColumnName="Explanation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalLogins">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.ExternalLogin">
+              <MappingFragment StoreEntitySet="ExternalLogin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupStudents">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.GroupStudent">
+              <MappingFragment StoreEntitySet="GroupStudent">
+                <ScalarProperty Name="GroupNumber" ColumnName="GroupNumber" />
+                <ScalarProperty Name="Bigining_Date" ColumnName="Bigining_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Concept" ColumnName="Concept" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preregisters">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Preregister">
+              <MappingFragment StoreEntitySet="Preregister">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="SocialSecurity" ColumnName="SocialSecurity" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmergencyPhone" ColumnName="EmergencyPhone" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmergencyMail" ColumnName="EmergencyMail" />
+                <ScalarProperty Name="EmergencyName" ColumnName="EmergencyName" />
+                <ScalarProperty Name="ResidenceCountry" ColumnName="ResidenceCountry" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="HighSchool_GED" ColumnName="HighSchool/GED" />
+                <ScalarProperty Name="LPNDiploma" ColumnName="LPNDiploma" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="Question1" ColumnName="Question" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="pictureQuestion" ColumnName="pictureQuestion" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responses">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Respons">
+              <MappingFragment StoreEntitySet="Responses">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="Asset" ColumnName="Asset" />
+                <ScalarProperty Name="IdQ" ColumnName="IdQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="SocialSecurity" ColumnName="SocialSecurity" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmergencyPhone" ColumnName="EmergencyPhone" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmergencyMail" ColumnName="EmergencyMail" />
+                <ScalarProperty Name="EmergencyName" ColumnName="EmergencyName" />
+                <ScalarProperty Name="ResidenceCountry" ColumnName="ResidenceCountry" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="HighSchool_GED" ColumnName="HighSchool/GED" />
+                <ScalarProperty Name="Actif" ColumnName="Actif" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="LPNDiploma" ColumnName="LPNDiploma" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="subject1" ColumnName="subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assistences">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Assistence">
+              <MappingFragment StoreEntitySet="Assistence">
+                <ScalarProperty Name="IdRegistration" ColumnName="IdRegistration" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="GroupNumber" ColumnName="GroupNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentStudents">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.DocumentStudent">
+              <MappingFragment StoreEntitySet="DocumentStudent">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationStudents">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.EducationStudent">
+              <MappingFragment StoreEntitySet="EducationStudent">
+                <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+                <ScalarProperty Name="HighSchoolFrom" ColumnName="HighSchoolFrom" />
+                <ScalarProperty Name="HighSchoolTo" ColumnName="HighSchoolTo" />
+                <ScalarProperty Name="Diploma_Title" ColumnName="Diploma_Title" />
+                <ScalarProperty Name="Certificate_Title" ColumnName="Certificate_Title" />
+                <ScalarProperty Name="GED" ColumnName="GED" />
+                <ScalarProperty Name="OtherDegree_Title" ColumnName="OtherDegree_Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exam_Questions">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Exam_Questions">
+              <MappingFragment StoreEntitySet="Exam_Questions">
+                <ScalarProperty Name="idExam" ColumnName="idExam" />
+                <ScalarProperty Name="idq" ColumnName="idq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailPayments">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.MailPayment">
+              <MappingFragment StoreEntitySet="MailPayment">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="dateMail" ColumnName="dateMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Result">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.Student_Result">
+              <MappingFragment StoreEntitySet="Student_Result">
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="idExam" ColumnName="idExam" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

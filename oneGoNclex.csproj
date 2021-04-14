@@ -44,12 +44,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -232,6 +240,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Infraestructure\OneGoNclexDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OneGoNclexDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>OneGoNclexDatabase.edmx</DependentUpon>
+    </Content>
+    <Content Include="Infraestructure\OneGoNclexDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OneGoNclexDatabase.edmx</DependentUpon>
+      <LastGenOutput>OneGoNclexDatabase.cs</LastGenOutput>
+    </Content>
     <Content Include="HelpLineRegister.aspx" />
     <Content Include="Image_Questions\appendix.mp4" />
     <Content Include="Image_Questions\bankExam.jpg" />
@@ -324,6 +342,13 @@
     <Content Include="assets\scss\_config.scss" />
     <Content Include="assets\scss\_core.scss" />
     <Content Include="assets\scss\_utility.scss" />
+    <EntityDeploy Include="Infraestructure\OneGoNclexDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OneGoNclexDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Infraestructure\OneGoNclexDatabase.edmx.diagram">
+      <DependentUpon>OneGoNclexDatabase.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\OneGo Production.pubxml" />
     <None Include="Properties\PublishProfiles\test One Go.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -469,11 +494,83 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DAL\BankData.cs" />
-    <Compile Include="DAL\ExamData.cs" />
-    <Compile Include="DAL\ExternalLoginData.cs" />
-    <Compile Include="DAL\PreregisterData.cs" />
-    <Compile Include="DAL\StudentData.cs" />
+    <Compile Include="Infraestructure\Assistence.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Bank.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Repositories\BankData.cs" />
+    <Compile Include="Infraestructure\DocumentStudent.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\EducationStudent.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Exam.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Repositories\ExamData.cs" />
+    <Compile Include="Infraestructure\Exam_Questions.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\ExplanationQuestion.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\ExternalLogin.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Repositories\ExternalLoginData.cs" />
+    <Compile Include="Infraestructure\GroupStudent.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\MailPayment.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\OneGoNclexDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OneGoNclexDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\OneGoNclexDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\OneGoNclexDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OneGoNclexDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Payment.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Preregister.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Repositories\PreregisterData.cs" />
+    <Compile Include="Infraestructure\Question.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Respons.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Student.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Repositories\StudentData.cs" />
+    <Compile Include="Infraestructure\Student_Result.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Subject.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\User.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\UserRole.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Extension\ListShuffle.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -547,6 +644,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
