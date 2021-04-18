@@ -1,6 +1,8 @@
-﻿using oneGoNclex.Model;
+﻿using oneGoNclex.Infraestructure;
+using oneGoNclex.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace oneGoNclex.DAL
 {
@@ -37,6 +39,15 @@ namespace oneGoNclex.DAL
             catch
             {
                 return listOfBanks;
+            }
+        }
+
+        public static BankViewModel GetById(int bankId)
+        {
+            using (var db = new NCLEXREVIEWEntities())
+            {
+                var bank = db.Banks.Single(x => x.IdBank == bankId);
+                return new BankViewModel(bankId, bank.BankName, bank.Description, bank.ImageBank);
             }
         }
     }

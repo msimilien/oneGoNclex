@@ -115,7 +115,7 @@
                             <p>Please select a subscription plan you want for a bank exam</p>
                             <div class="row mb-4">
 
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 mb-3">
                                     <div class="card border-primary">
                                         <div class="card-header bg-info">
                                             <h3 class="text-white">Normal</h3>
@@ -127,6 +127,9 @@
                                                         <h5 class="card-title">1 Month</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 5 USD</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 m-3">
@@ -134,6 +137,9 @@
                                                     <div class="card-body">
                                                         <h5 class="card-title">3 Months</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 15 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,6 +149,9 @@
                                                         <h5 class="card-title">6 Months</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 30 USD</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 m-3">
@@ -151,13 +160,16 @@
                                                         <h5 class="card-title">1 Year</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 50 USD</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 mb-3">
                                     <div class="card border-danger">
                                         <div class="card-header bg-danger">
                                             <h3 class="text-white">Premium</h3>
@@ -169,6 +181,9 @@
                                                         <h5 class="card-title">1 Month</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 5 USD</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 m-3">
@@ -176,6 +191,9 @@
                                                     <div class="card-body">
                                                         <h5 class="card-title">3 Months</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 15 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -185,6 +203,9 @@
                                                         <h5 class="card-title">6 Months</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 30 USD</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 m-3">
@@ -193,14 +214,19 @@
                                                         <h5 class="card-title">1 Year</h5>
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
+                                                    <div class="card-footer">
+                                                        <h5>Cost: 50 USD</h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                <asp:TextBox ID="txtCost" runat="server" Style="display: none;"></asp:TextBox>
+                                <label id="lblValidation" style="display: none; color: red; margin: 10px auto;">Please choose a plan subscription to continue</label>
                             </div>
-                            <div id="paypal-button-container"></div>
+                            <asp:Button ID="btnConfirmPayment" runat="server" OnClick="btnConfirmPayment_Click" Text="Confirm" CssClass="btn btn-outline-success" />
                         </form>
                     </div>
                 </div>
@@ -260,26 +286,37 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=ARupHA-BaL9tYFnFf2-MQNT3lcDQEPE1qQvP3IOrlG0pTKydhGBrQ473kETG_vO0q08b_GfXrmRm-jnV"></script>
     <script>
-        paypal.Buttons({
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '0.10',
-                            currency: 'USD'
-                        }
-                    }]
+        function clearCardItems() {
+            $(".card-item").each(function (index, card) {
+                $(card).removeClass("selected-red");
+                $(card).removeClass("selected-blue");
+            });
+        }
+        $(function () {
+            $(".card-item").each(function (index, card) {
+                $(card).on("click", function () {
+                    clearCardItems();
+
+                    if ($(this).hasClass("border-danger")) {
+                        $(this).addClass("selected-red");
+                    } else {
+                        $(this).addClass("selected-blue");
+                    }
+
+                    $("#txtCost").val($(this).find(".card-footer h5").text().replace("Cost: ", "").replace("USD", ""));
                 });
-            },
-            onApprove: function (data, actions) {
-                return actions.order.capture().then(function (details) {
-                    debugger;
-                    alert('Transaction completed by ' + details.payer.name.given_name);
-                });
-            }
-        }).render('#paypal-button-container'); // Display payment options on your web page
+            });
+
+            $("#btnConfirmPayment").on("click", function (e) {
+                if ($("#txtCost").val() === "") {
+                    e.preventDefault();
+                    $("#lblValidation").fadeIn();
+                    return;
+                } else
+                    $("#lblValidation").fadeOut();
+            });
+        });
     </script>
 </body>
 </html>

@@ -5,25 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f512b9960e214d4283af62c644055836" Name="Diagram1">
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Bank" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Exam" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.ExplanationQuestion" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.ExternalLogin" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.GroupStudent" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Payment" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Preregister" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Question" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Respons" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Student" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Subject" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.User" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Assistence" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.DocumentStudent" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.EducationStudent" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Exam_Questions" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.MailPayment" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.Student_Result" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.UserRole" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Bank" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Exam" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.ExplanationQuestion" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.ExternalLogin" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.GroupStudent" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Payment" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.PaypalPayment" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Preregister" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Question" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Respons" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Student" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Subject" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.User" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Assistence" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.DocumentStudent" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.EducationStudent" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Exam_Questions" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.MailPayment" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.Student_Result" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.UserRole" Width="1.5" PointX="10.75" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

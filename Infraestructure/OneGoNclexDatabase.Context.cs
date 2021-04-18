@@ -31,6 +31,7 @@ namespace oneGoNclex.Infraestructure
         public virtual DbSet<ExternalLogin> ExternalLogins { get; set; }
         public virtual DbSet<GroupStudent> GroupStudents { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<PaypalPayment> PaypalPayments { get; set; }
         public virtual DbSet<Preregister> Preregisters { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Respons> Responses { get; set; }

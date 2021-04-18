@@ -8523,10 +8523,28 @@ span.psw {
     margin-right: 5px;
 }
 
+.card-item {
+    border-color: lightgray !important;
+}
+
 .card.border-danger.card-item:hover {
     background-color: lightcoral;
+    border-color: lightcoral !important;
+    cursor: pointer;
 }
 
 .card.border-primary.card-item:hover {
     background-color: lightblue;
+    border-color: lightblue !important;
+    cursor: pointer;
+}
+
+.selected-blue {
+    background-color: lightblue;
+    border-color: lightblue !important;
+}
+
+.selected-red {
+    background-color: lightcoral;
+    border-color: lightcoral !important;
 }

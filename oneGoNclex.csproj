@@ -221,6 +221,7 @@
     <Content Include="assets\lib\semantic-ui-transition\transition.min.js" />
     <Content Include="assets\lib\typed.js\lib\typed.min.js" />
     <Content Include="BankQuestions\ExamResult.aspx" />
+    <Content Include="BankQuestions\ConfirmPayment.aspx" />
     <Content Include="BankQuestions\StudyExam.aspx" />
     <Content Include="BankQuestions\PreExam.aspx" />
     <Content Include="BankQuestions\Choose.aspx" />
@@ -403,6 +404,13 @@
     <Compile Include="BankQuestions\ExamResult.aspx.designer.cs">
       <DependentUpon>ExamResult.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BankQuestions\ConfirmPayment.aspx.cs">
+      <DependentUpon>ConfirmPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\ConfirmPayment.aspx.designer.cs">
+      <DependentUpon>ConfirmPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BankQuestions\StudyExam.aspx.cs">
       <DependentUpon>StudyExam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -500,7 +508,6 @@
     <Compile Include="Infraestructure\Bank.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infraestructure\Repositories\BankData.cs" />
     <Compile Include="Infraestructure\DocumentStudent.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
@@ -510,7 +517,6 @@
     <Compile Include="Infraestructure\Exam.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infraestructure\Repositories\ExamData.cs" />
     <Compile Include="Infraestructure\Exam_Questions.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
@@ -520,13 +526,27 @@
     <Compile Include="Infraestructure\ExternalLogin.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Infraestructure\Repositories\ExternalLoginData.cs" />
     <Compile Include="Infraestructure\GroupStudent.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Infraestructure\MailPayment.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Infraestructure\Payment.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\PaypalPayment.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Preregister.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Question.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Repositories\BankData.cs" />
+    <Compile Include="Infraestructure\Repositories\ExamData.cs" />
+    <Compile Include="Infraestructure\Repositories\ExternalLoginData.cs" />
     <Compile Include="Infraestructure\OneGoNclexDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -542,35 +562,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OneGoNclexDatabase.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Infraestructure\Payment.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\Preregister.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Infraestructure\Repositories\PaymentRepository.cs" />
     <Compile Include="Infraestructure\Repositories\PreregisterData.cs" />
-    <Compile Include="Infraestructure\Question.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\Respons.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\Student.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\Repositories\StudentData.cs" />
-    <Compile Include="Infraestructure\Student_Result.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\Subject.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\User.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Infraestructure\UserRole.cs">
-      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Infraestructure\Repositories\StudentRepository.cs" />
     <Compile Include="Extension\ListShuffle.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -589,11 +583,30 @@
     <Compile Include="Banks.aspx.designer.cs">
       <DependentUpon>Banks.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Infraestructure\Respons.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Student.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Student_Result.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Subject.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\User.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\UserRole.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\BankViewModel.cs" />
     <Compile Include="Model\EmailViewModel.cs" />
     <Compile Include="Model\ExamResultViewModel.cs" />
     <Compile Include="Model\ExamViewModel.cs" />
     <Compile Include="Model\ExternalLoginViewModel.cs" />
+    <Compile Include="Model\PaymentViewModel.cs" />
     <Compile Include="Model\PreRegisterViewModel.cs" />
     <Compile Include="Model\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -607,6 +620,7 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\ExternalLoginService.cs" />
+    <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Services\PreRegisterService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Site.Master.cs">

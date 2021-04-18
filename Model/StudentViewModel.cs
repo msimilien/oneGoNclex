@@ -68,4 +68,16 @@
         public string LPNDiploma { get; }
         public string Password { get; set; }
     }
+
+    public class SearchStudentViewModel
+    {
+        public SearchStudentViewModel(string registrationID, string email)
+        {
+            RegistrationID = registrationID;
+            Email = email;
+        }
+
+        public string RegistrationID { get; }
+        public string Email { get; }
+    }
 }
