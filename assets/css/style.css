@@ -231,11 +231,12 @@ a:hover, a:focus {
 // Navigation
 ///////////////////////////////////*/
 .znav-container:not([class*="sticky-"]) {
-  top: 0;
-  left: 0;
-  right: 0;
-  position: relative;
-  z-index: 1030;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+    /*z-index: 1030;*/
+    z-index: 9;
 }
 
 @media (max-width: 61.99em) {
@@ -8547,4 +8548,10 @@ span.psw {
 .selected-red {
     background-color: lightcoral;
     border-color: lightcoral !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .btnShowResponseMove {
+        margin-top: -25px;
+    }
 }

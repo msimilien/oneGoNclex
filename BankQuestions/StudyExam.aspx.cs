@@ -106,12 +106,14 @@ namespace oneGoNclex
                     btnNext.Attributes.Add("disabled", "true");
                     btnNext.Visible = false;
                     btnFinish.Style["display"] = "block";
+                    btnShowResponse.CssClass = "btn btn-info btnShowResponseMove";
                 }
                 else
                 {
                     btnNext.Attributes.Remove("disabled");
                     btnNext.Visible = true;
                     btnFinish.Style["display"] = "none";
+                    btnShowResponse.CssClass = "btn btn-info";
                 }
 
                 btnPrev.Attributes.Remove("disabled");
@@ -299,12 +301,14 @@ namespace oneGoNclex
                     btnNext.Attributes.Add("disabled", "true");
                     btnNext.Visible = false;
                     btnFinish.Style["display"] = "block";
+                    btnShowResponse.CssClass = "btn btn-info btnShowResponseMove";
                 }
                 else
                 {
                     btnNext.Attributes.Remove("disabled");
                     btnNext.Visible = true;
                     btnFinish.Style["display"] = "none";
+                    btnShowResponse.CssClass = "btn btn-info";
                 }
 
                 btnPrev.Attributes.Remove("disabled");

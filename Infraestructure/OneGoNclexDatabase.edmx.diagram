@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="NCLEXREVIEWModel.ExternalLogin" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.GroupStudent" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.Payment" Width="1.5" PointX="4.75" PointY="3.75" />
-        <EntityTypeShape EntityType="NCLEXREVIEWModel.PaypalPayment" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.Preregister" Width="1.5" PointX="6.75" PointY="3.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.Question" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.Respons" Width="1.5" PointX="2.75" PointY="7.75" />
@@ -25,6 +24,8 @@
         <EntityTypeShape EntityType="NCLEXREVIEWModel.MailPayment" Width="1.5" PointX="10.75" PointY="4.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.Student_Result" Width="1.5" PointX="10.75" PointY="7.75" />
         <EntityTypeShape EntityType="NCLEXREVIEWModel.UserRole" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.PaypalPaymentHistory" Width="1.5" PointX="3.375" PointY="12.75" />
+        <EntityTypeShape EntityType="NCLEXREVIEWModel.PaypalPayment" Width="1.5" PointX="5.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -5,9 +5,35 @@ namespace oneGoNclex.Services
 {
     public static class PaymentService
     {
-        public static void InsertPayment(PaymentViewModel model)
+        public static void UpsertPayment(PaymentViewModel model)
         {
-            PaymentRepository.InsertPayment(model);   
+            PaymentRepository.UpsertPayment(model);   
+        }
+
+        public static int GetDaysBySubscriptionName(string subscriptionName)
+        {
+            var days = 0;
+            switch(subscriptionName)
+            {
+                case "1 Month":
+                    days = 30;
+                    break;
+                case "3 Months":
+                    days = 90;
+                    break;
+                case "6 Months":
+                    days = 180;
+                    break;
+                case "1 Year":
+                    days = 365;
+                    break;
+            };
+            return days;
+        }
+
+        public static bool CheckSubscriptionAvailableByRegistrationID(string registrationID)
+        {
+            return PaymentRepository.CheckSubscriptionAvailableByRegistrationID(registrationID);
         }
     }
 }

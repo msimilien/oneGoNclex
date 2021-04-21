@@ -120,12 +120,8 @@
                                     <p style="margin-bottom: 9rem;">
                                         <asp:UpdatePanel runat="server" ID="updPanelQuestions" UpdateMode="Conditional">
                                             <ContentTemplate>
-                                                <b style="position: absolute; left: 1.5%; top: 11rem;">Questions: </b>
-                                                <label runat="server"
-                                                    id="lblQuestionsAmount"
-                                                    style="position: absolute; left: 9%; top: 11rem;">
-                                                    Loading...
-                                                </label>
+                                                <b style="position: relative; width:150px; top: 1.5rem;">Questions: </b>
+                                                <label runat="server" id="lblQuestionsAmount" style="position: relative; top: 1.5rem;">Loading...</label>
                                                 <br />
                                                 <br />
                                                 <br />
@@ -192,7 +188,7 @@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-4">
                                                         <asp:Button Text="Next" runat="server" ID="btnNext" OnClick="btnNext_Click" CssClass="btn btn-success" Width="250px" />
-                                                        <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Style="display: none;" />
+                                                        <asp:Button Text="Finish" runat="server" ID="btnFinish" OnClick="btnFinish_Click" CssClass="btn btn-success" Width="250px" Style="display: none; margin: auto auto;" />
                                                         <br />
                                                         <br />
                                                     </div>
@@ -266,28 +262,8 @@
     <script src="../assets/lib/rellax/rellax.min.js"></script>
     <script src="../assets/js/zanimation.js"></script>
     <script src="../assets/js/inertia.js"></script>
-    <script src="../assets/js/googlemap.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script>
-        function checkAnswer(index, isCorrect, questionID) {
-            if (isCorrect) {
-                $("#lblCorrect").fadeIn();
-                $("#lblAnswerExplanation").fadeIn();
-                $("#lblIncorrect").css("display", "none");
-                setTimeout(function () {
-                    $("#txtQuestionsAnswered").val(questionID + "|1" + "|" + index);
-                }, 100);
-            } else {
-                $("#lblIncorrect").fadeIn();
-                $("#lblCorrect").css("display", "none");
-                $("#lblAnswerExplanation").css("display", "none");
-                setTimeout(function () {
-                    $("#txtQuestionsAnswered").val(questionID + "|0" + "|" + index);
-                }, 100);
-            }
-        }
-    </script>
+    <script src="../assets/js/StudyExam.js"></script>
 </body>
 </html>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
+using oneGoNclex.Services;
+using System;
 
 namespace oneGoNclex
 {
@@ -6,6 +9,16 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (CookieBase.IsValidCookie())
+            {
+                var cookieStudentData = CookieBase.GetDataFromCookie();
+
+                if (PaymentService.CheckSubscriptionAvailableByRegistrationID(cookieStudentData.RegistrationID))
+                    Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(cookieStudentData.RegistrationID)}&email={StringCipher.Encrypt(cookieStudentData.Email)}");
+                else
+                    Response.Redirect($"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(cookieStudentData.RegistrationID)}&email={StringCipher.Encrypt(cookieStudentData.Email)}");
+            }
+
             btnExternal.Enabled = false;
         }
 

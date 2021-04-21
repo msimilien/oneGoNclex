@@ -17,7 +17,11 @@ namespace oneGoNclex
                                                               $"/bankquestions/confirmpayment?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
 
 
-            Response.Redirect(url + "&cost=" + StringCipher.Encrypt(txtCost.Text));
+            url += "&cost=" + StringCipher.Encrypt(txtCost.Text);
+            url += "&isPremium=" + StringCipher.Encrypt(txtIsPremium.Text);
+            url += "&days=" + StringCipher.Encrypt(txtDays.Text);
+
+            Response.Redirect(url);
         }
     }
 }

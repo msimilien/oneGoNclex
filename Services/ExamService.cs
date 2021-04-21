@@ -8,14 +8,17 @@ namespace oneGoNclex.Services
 {
     public class ExamService
     {
-        public static (List<ExamQuestion> listOfQuestions, List<ExamAnswer> listOfAnswers, List<ExamAnswerExplanation> listOfExplanations) GetQuestionsByBankId(int bankID)
+        public static (List<ExamQuestion> listOfQuestions,
+            List<ExamAnswer> listOfAnswers,
+            List<ExamAnswerExplanation> listOfExplanations)
+            GetQuestionsByBankId(int bankID)
         {
             var list = ExamData.GetQuestionsByBankId(bankID);
-            var listOfQuestions = list.Select(s => new { s.Id, s.Question, s.PictureQuestion}).Distinct()
+            var listOfQuestions = list.Select(s => new { s.Id, s.Question, s.PictureQuestion }).Distinct()
                                       .Select(s => new ExamQuestion { Question = s.Question, QuestionID = s.Id, PictureQuestion = s.PictureQuestion })
                                       .ToList();
             var listOfAnswers = list.Select(s => new { s.Id, s.Response, s.Asset }).Distinct()
-                                    .Select(s => new ExamAnswer { QuestionID = s.Id, Answer = s.Response, Asset = s.Asset  })
+                                    .Select(s => new ExamAnswer { QuestionID = s.Id, Answer = s.Response, Asset = s.Asset })
                                     .ToList();
             var listOfExplanations = list.Select(s => new { s.Id, s.Explanation }).Distinct()
                                     .Select(s => new ExamAnswerExplanation { QuestionID = s.Id, Explanation = s.Explanation })

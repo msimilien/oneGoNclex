@@ -134,16 +134,22 @@
                                                 <asp:Label ID="lblEmail" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <b runat="server" id="lblBankTitle">Bank: </b>
+                                                <b runat="server" id="lblPremiumTitle">Premium: </b>
                                             </div>
                                             <div class="col-sm-8">
-                                                <asp:Label ID="lblBank" runat="server"></asp:Label>
+                                                <asp:Label ID="lblPremium" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-sm-4">
                                                 <b runat="server" id="lblCostTitle">Cost: </b>
                                             </div>
                                             <div class="col-sm-8">
                                                 <asp:Label ID="lblCost" runat="server"></asp:Label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <b runat="server" id="B1">End date: </b>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <asp:Label ID="lblEndDate" runat="server"></asp:Label>
                                             </div>
                                             <div class="col-sm-4 paypal-data" style="display: none;">
                                                 <b>Ticket ID: </b>
@@ -197,7 +203,10 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-info" data-dismiss="modal">Ok</button>
+                            <button type="button" 
+                                    class="btn btn-outline-info" 
+                                    data-dismiss="modal"
+                                    onclick="ConfirmTransaction()">Ok</button>
                         </div>
                     </div>
                 </div>
@@ -276,10 +285,14 @@
                     $(".paypal-data").fadeIn();
                     $("#txtID").val($(details).attr("id"));
                     $("#txtDate").val($(details).attr("create_time"));
-                    $("#btnConfirm").fadeIn();
+                    $('#paypal-button-container').fadeOut();
                 });
             }
-        }).render('#paypal-button-container'); // Display payment options on your web page
+        }).render('#paypal-button-container');
+
+        function ConfirmTransaction() {
+            $("#btnConfirm").trigger("click");
+        }
     </script>
 </body>
 </html>

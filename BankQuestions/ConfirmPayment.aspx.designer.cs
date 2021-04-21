@@ -78,22 +78,22 @@ namespace oneGoNclex
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
-        /// lblBankTitle control.
+        /// lblPremiumTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblBankTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPremiumTitle;
 
         /// <summary>
-        /// lblBank control.
+        /// lblPremium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBank;
+        protected global::System.Web.UI.WebControls.Label lblPremium;
 
         /// <summary>
         /// lblCostTitle control.
@@ -112,6 +112,24 @@ namespace oneGoNclex
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCost;
+
+        /// <summary>
+        /// B1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl B1;
+
+        /// <summary>
+        /// lblEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEndDate;
 
         /// <summary>
         /// lblTicketID control.

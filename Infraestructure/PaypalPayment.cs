@@ -19,6 +19,8 @@ namespace oneGoNclex.Infraestructure
         public string IdStudent { get; set; }
         public decimal Amount { get; set; }
         public string Concept { get; set; }
-        public int BankID { get; set; }
+        public string TransactionID { get; set; }
+        public bool IsBankPremium { get; set; }
+        public System.DateTime EndDate { get; set; }
     }
 }

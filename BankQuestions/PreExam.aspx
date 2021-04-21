@@ -227,8 +227,6 @@
     <script src="../assets/lib/rellax/rellax.min.js"></script>
     <script src="../assets/js/zanimation.js"></script>
     <script src="../assets/js/inertia.js"></script>
-    <script src="../assets/js/googlemap.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>

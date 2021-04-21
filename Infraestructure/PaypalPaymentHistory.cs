@@ -12,13 +12,15 @@ namespace oneGoNclex.Infraestructure
     using System;
     using System.Collections.Generic;
     
-    public partial class Bank
+    public partial class PaypalPaymentHistory
     {
-        public int IdBank { get; set; }
-        public string Description { get; set; }
-        public string BankName { get; set; }
-        public string ImageBank { get; set; }
-        public Nullable<int> Actif { get; set; }
-        public Nullable<bool> IsBankPremium { get; set; }
+        public int ID { get; set; }
+        public System.DateTime PaymentDate { get; set; }
+        public string IdStudent { get; set; }
+        public decimal Amount { get; set; }
+        public string Concept { get; set; }
+        public string TransactionID { get; set; }
+        public bool IsBankPremium { get; set; }
+        public System.DateTime EndDate { get; set; }
     }
 }

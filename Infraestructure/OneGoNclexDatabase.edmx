@@ -26,6 +26,7 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.Assistence' does not have a primar
           <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="ImageBank" Type="nvarchar(max)" />
           <Property Name="Actif" Type="int" />
+          <Property Name="IsBankPremium" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'NCLEXREVIEW.dbo.DocumentStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -132,7 +133,22 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.MailPayment' does not have a prima
           <Property Name="IdStudent" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Concept" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="BankID" Type="int" Nullable="false" />
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsBankPremium" Type="bit" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaypalPaymentHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="IdStudent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Concept" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsBankPremium" Type="bit" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Preregister">
           <Key>
@@ -249,6 +265,7 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <EntitySet Name="GroupStudent" EntityType="Self.GroupStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaypalPayment" EntityType="Self.PaypalPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaypalPaymentHistory" EntityType="Self.PaypalPaymentHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Preregister" EntityType="Self.Preregister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Responses" EntityType="Self.Responses" Schema="dbo" store:Type="Tables" />
@@ -318,7 +335,6 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <EntitySet Name="ExternalLogins" EntityType="NCLEXREVIEWModel.ExternalLogin" />
           <EntitySet Name="GroupStudents" EntityType="NCLEXREVIEWModel.GroupStudent" />
           <EntitySet Name="Payments" EntityType="NCLEXREVIEWModel.Payment" />
-          <EntitySet Name="PaypalPayments" EntityType="NCLEXREVIEWModel.PaypalPayment" />
           <EntitySet Name="Preregisters" EntityType="NCLEXREVIEWModel.Preregister" />
           <EntitySet Name="Questions" EntityType="NCLEXREVIEWModel.Question" />
           <EntitySet Name="Responses" EntityType="NCLEXREVIEWModel.Respons" />
@@ -332,6 +348,8 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <EntitySet Name="MailPayments" EntityType="NCLEXREVIEWModel.MailPayment" />
           <EntitySet Name="Student_Result" EntityType="NCLEXREVIEWModel.Student_Result" />
           <EntitySet Name="UserRoles" EntityType="NCLEXREVIEWModel.UserRole" />
+          <EntitySet Name="PaypalPaymentHistories" EntityType="NCLEXREVIEWModel.PaypalPaymentHistory" />
+          <EntitySet Name="PaypalPayments" EntityType="NCLEXREVIEWModel.PaypalPayment" />
         </EntityContainer>
         <EntityType Name="Bank">
           <Key>
@@ -342,6 +360,7 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ImageBank" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Actif" Type="Int32" />
+          <Property Name="IsBankPremium" Type="Boolean" />
         </EntityType>
         <EntityType Name="Exam">
           <Key>
@@ -390,17 +409,6 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="paymentDate" Type="DateTime" Precision="3" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="PaypalPayment">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdStudent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Concept" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BankID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Preregister">
           <Key>
@@ -555,6 +563,32 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="PaypalPaymentHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStudent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Concept" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsBankPremium" Type="Boolean" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaypalPayment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStudent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Concept" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsBankPremium" Type="Boolean" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -564,6 +598,7 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
           <EntitySetMapping Name="Banks">
             <EntityTypeMapping TypeName="NCLEXREVIEWModel.Bank">
               <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="IsBankPremium" ColumnName="IsBankPremium" />
                 <ScalarProperty Name="Actif" ColumnName="Actif" />
                 <ScalarProperty Name="ImageBank" ColumnName="ImageBank" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
@@ -622,18 +657,6 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PaypalPayments">
-            <EntityTypeMapping TypeName="NCLEXREVIEWModel.PaypalPayment">
-              <MappingFragment StoreEntitySet="PaypalPayment">
-                <ScalarProperty Name="BankID" ColumnName="BankID" />
-                <ScalarProperty Name="Concept" ColumnName="Concept" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -787,6 +810,34 @@ warning 6002: The table/view 'NCLEXREVIEW.dbo.UserRole' does not have a primary 
             <EntityTypeMapping TypeName="NCLEXREVIEWModel.UserRole">
               <MappingFragment StoreEntitySet="UserRole">
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaypalPaymentHistories">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.PaypalPaymentHistory">
+              <MappingFragment StoreEntitySet="PaypalPaymentHistory">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsBankPremium" ColumnName="IsBankPremium" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="Concept" ColumnName="Concept" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaypalPayments">
+            <EntityTypeMapping TypeName="NCLEXREVIEWModel.PaypalPayment">
+              <MappingFragment StoreEntitySet="PaypalPayment">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsBankPremium" ColumnName="IsBankPremium" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="Concept" ColumnName="Concept" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,4 +1,6 @@
-﻿namespace oneGoNclex.Model
+﻿using System;
+
+namespace oneGoNclex.Model
 {
     public class PaymentViewModel
     {
@@ -8,6 +10,9 @@
         public string TicketId { get; set; }
         public string CreationDate { get; set; }
         public string Amount { get; set; }
+        public bool IsBankPremium { get; set; }
+        public int Days { get; set; }
+        public DateTime EndDate { get; set; }
 
         public PaymentViewModel(
             string registrationId,
@@ -15,7 +20,10 @@
             int bankId,
             string ticketId,
             string creationDate,
-            string amount)
+            string amount,
+            bool isBankPremium,
+            int days,
+            DateTime endDate)
         {
             RegistrationId = registrationId;
             Email = email;
@@ -23,6 +31,9 @@
             TicketId = ticketId;
             CreationDate = creationDate;
             Amount = amount;
+            IsBankPremium = isBankPremium;
+            Days = days;
+            EndDate = endDate;
         }
     }
 }

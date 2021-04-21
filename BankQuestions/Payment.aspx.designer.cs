@@ -33,6 +33,24 @@ namespace oneGoNclex
         protected global::System.Web.UI.WebControls.TextBox txtCost;
 
         /// <summary>
+        /// txtIsPremium control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIsPremium;
+
+        /// <summary>
+        /// txtDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDays;
+
+        /// <summary>
         /// btnConfirmPayment control.
         /// </summary>
         /// <remarks>

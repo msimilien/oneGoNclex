@@ -224,6 +224,8 @@
                                 </div>
 
                                 <asp:TextBox ID="txtCost" runat="server" Style="display: none;"></asp:TextBox>
+                                <asp:TextBox ID="txtIsPremium" runat="server" Style="display: none;"></asp:TextBox>
+                                <asp:TextBox ID="txtDays" runat="server" Style="display: none;"></asp:TextBox>
                                 <label id="lblValidation" style="display: none; color: red; margin: 10px auto;">Please choose a plan subscription to continue</label>
                             </div>
                             <asp:Button ID="btnConfirmPayment" runat="server" OnClick="btnConfirmPayment_Click" Text="Confirm" CssClass="btn btn-outline-success" />
@@ -286,37 +288,6 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script>
-        function clearCardItems() {
-            $(".card-item").each(function (index, card) {
-                $(card).removeClass("selected-red");
-                $(card).removeClass("selected-blue");
-            });
-        }
-        $(function () {
-            $(".card-item").each(function (index, card) {
-                $(card).on("click", function () {
-                    clearCardItems();
-
-                    if ($(this).hasClass("border-danger")) {
-                        $(this).addClass("selected-red");
-                    } else {
-                        $(this).addClass("selected-blue");
-                    }
-
-                    $("#txtCost").val($(this).find(".card-footer h5").text().replace("Cost: ", "").replace("USD", ""));
-                });
-            });
-
-            $("#btnConfirmPayment").on("click", function (e) {
-                if ($("#txtCost").val() === "") {
-                    e.preventDefault();
-                    $("#lblValidation").fadeIn();
-                    return;
-                } else
-                    $("#lblValidation").fadeOut();
-            });
-        });
-    </script>
+    <script src="../assets/js/Payment.js"></script>
 </body>
 </html>

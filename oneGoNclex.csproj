@@ -156,9 +156,12 @@
     <Content Include="assets\images\student_login.jpg" />
     <Content Include="assets\js\config.js" />
     <Content Include="assets\js\core.js" />
+    <Content Include="assets\js\Exam.js" />
     <Content Include="assets\js\googlemap.js" />
     <Content Include="assets\js\inertia.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\Payment.js" />
+    <Content Include="assets\js\StudyExam.js" />
     <Content Include="assets\js\zanimation.js" />
     <Content Include="assets\lib\bootstrap\dist\css\bootstrap.min.css" />
     <Content Include="assets\lib\bootstrap\dist\js\bootstrap.min.js" />
@@ -502,6 +505,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Extension\CookieBase.cs" />
     <Compile Include="Infraestructure\Assistence.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
@@ -536,6 +540,9 @@
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Infraestructure\PaypalPayment.cs">
+      <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\PaypalPaymentHistory.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Infraestructure\Preregister.cs">
@@ -602,6 +609,7 @@
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BankViewModel.cs" />
+    <Compile Include="Model\CookieModel.cs" />
     <Compile Include="Model\EmailViewModel.cs" />
     <Compile Include="Model\ExamResultViewModel.cs" />
     <Compile Include="Model\ExamViewModel.cs" />

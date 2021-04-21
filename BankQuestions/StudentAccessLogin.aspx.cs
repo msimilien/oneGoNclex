@@ -1,7 +1,10 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Model;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace oneGoNclex
 {
@@ -20,18 +23,19 @@ namespace oneGoNclex
         {
             var registrationID = StringCipher.Decrypt(Request.QueryString["registrationid"]);
             var email = HttpUtility.UrlDecode(StringCipher.Decrypt(Request.QueryString["email"]));
+            var student = StudentService.GetStudentByRegistrationAndEmail(registrationID, email);
+
+            CookieBase.AddCookieBase(new CookieModel(registrationID, email, $"{student.FirstName} {student.MiddleName} {student.LastName}"));
 
             if (StudentService.CompareStudenPassword(registrationID, email, txtPassword.Text))
             {
-                //TODO: Chequear si pago el servicio del examen
-                //Si pago, a la pagina de examn
-                //No pago, a la pagina de payment
-                Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
+                if (PaymentService.CheckSubscriptionAvailableByRegistrationID(registrationID))
+                    Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
+                else
+                    Response.Redirect($"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
             }
             else
-            {
                 txtErrorLogin.Text = "Username, Registration ID or Password are invalid.";
-            }
         }
     }
 }
