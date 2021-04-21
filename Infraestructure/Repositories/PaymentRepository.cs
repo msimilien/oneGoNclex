@@ -69,6 +69,8 @@ namespace oneGoNclex.Infraestructure.Repositories
                         PaymentDate = DateTime.Now
                     });
 
+                    db.SaveChanges();
+
                     payment = db.PaypalPayments.Single(x => x.IdStudent == registrationID);
                 }
 
