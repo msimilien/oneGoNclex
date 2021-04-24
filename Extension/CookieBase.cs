@@ -40,7 +40,8 @@ namespace oneGoNclex.Extension
 
         public static void ClearCookie()
         {
-            if (HttpContext.Current.Request.Cookies["userData"] != null)
+            if (HttpContext.Current != null && 
+                HttpContext.Current.Request.Cookies["userData"] != null)
                 HttpContext.Current.Response.Cookies["userData"].Expires = DateTime.Now.AddDays(-1);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using oneGoNclex.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace oneGoNclex.Infraestructure.Repositories
@@ -55,7 +56,7 @@ namespace oneGoNclex.Infraestructure.Repositories
             using (var db = new NCLEXREVIEWEntities())
             {
                 var payment = db.PaypalPayments.FirstOrDefault(x => x.IdStudent == registrationID);
-                
+
                 if (payment == null)
                 {
                     db.PaypalPayments.Add(new PaypalPayment
@@ -75,6 +76,51 @@ namespace oneGoNclex.Infraestructure.Repositories
                 }
 
                 return payment.EndDate >= DateTime.Now;
+            }
+        }
+
+        public static List<PaymentDetailViewModel> GetAllPaymentsByRegistrationId(string registrationID)
+        {
+            var listOfPayments = new List<PaymentDetailViewModel>();
+            using (var db = new NCLEXREVIEWEntities())
+            {
+                var payment = db.PaypalPayments.FirstOrDefault(x => x.IdStudent == registrationID);
+
+                if (payment != null)
+                {
+                    listOfPayments.Add(new PaymentDetailViewModel
+                    {
+                        Amount = $"{payment.Amount} $USD",
+                        Concept = payment.Concept,
+                        EndDate = payment.EndDate.ToString("yyyy-MM-dd"),
+                        IdStudent = payment.IdStudent,
+                        SubscriptionType = payment.IsBankPremium ? "Premium" : "Normal",
+                        PaymentDate = payment.PaymentDate.ToString("yyyy-MM-dd"),
+                        TransactionID = payment.TransactionID
+                    });
+                }
+
+                if (db.PaypalPaymentHistories.FirstOrDefault(x => x.IdStudent == registrationID) != null)
+                {
+                    var paymentHistory = db.PaypalPaymentHistories
+                                       .Where(x => x.IdStudent == registrationID)
+                                       .Take(10)
+                                       .AsEnumerable()
+                                       .Select(x => new PaymentDetailViewModel
+                                       {
+                                           Amount = $"{x.Amount} $USD",
+                                           Concept = x.Concept,
+                                           EndDate = x.EndDate.ToString("yyyy-MM-dd"),
+                                           IdStudent = x.IdStudent,
+                                           SubscriptionType = x.IsBankPremium ? "Premium" : "Normal",
+                                           PaymentDate = x.PaymentDate.ToString("yyyy-MM-dd"),
+                                           TransactionID = x.TransactionID
+                                       });
+
+                    listOfPayments.AddRange(paymentHistory);
+                }
+
+                return listOfPayments;
             }
         }
     }

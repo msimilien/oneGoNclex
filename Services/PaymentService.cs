@@ -1,5 +1,6 @@
 ﻿using oneGoNclex.Infraestructure.Repositories;
 using oneGoNclex.Model;
+using System.Collections.Generic;
 
 namespace oneGoNclex.Services
 {
@@ -34,6 +35,11 @@ namespace oneGoNclex.Services
         public static bool CheckSubscriptionAvailableByRegistrationID(string registrationID)
         {
             return PaymentRepository.CheckSubscriptionAvailableByRegistrationID(registrationID);
+        }
+
+        public static List<PaymentDetailViewModel> GetAllPaymentsByRegistrationId(string registrationID)
+        {
+            return PaymentRepository.GetAllPaymentsByRegistrationId(registrationID);
         }
     }
 }

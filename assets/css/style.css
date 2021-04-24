@@ -8554,4 +8554,38 @@ span.psw {
     .btnShowResponseMove {
         margin-top: -25px;
     }
+    .card-outline-twitter {
+        width: 100% !important;
+    }
+}
+
+#tblPayments tr:nth-child(1) {
+    background-color:#4963cb;
+    color: white;
+    font-weight: bold;
+}
+#tblPayments tr td:nth-child(1) {
+    width: 20%;
+}
+#tblPayments tr td:nth-child(2) {
+    width: 20%;
+}
+#tblPayments tr td:nth-child(3) {
+    width: 20%;
+}
+#tblPayments tr td:nth-child(4) {
+    width: 20%;
+}
+#tblPayments tr td:nth-child(5) {
+    width: 20%;
+}
+#tblPayments tr td:nth-child(6),
+#tblPayments tr td:nth-child(7),
+#tblPayments tr td:nth-child(8),
+#tblPayments tr td:nth-child(9),
+#tblPayments tr td:nth-child(10),
+#tblPayments tr td:nth-child(11),
+#tblPayments tr td:nth-child(12),
+#tblPayments tr td:nth-child(13) {
+    display: none;
 }

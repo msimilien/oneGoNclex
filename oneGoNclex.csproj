@@ -223,6 +223,7 @@
     <Content Include="assets\lib\semantic-ui-transition\transition.min.css" />
     <Content Include="assets\lib\semantic-ui-transition\transition.min.js" />
     <Content Include="assets\lib\typed.js\lib\typed.min.js" />
+    <Content Include="BankQuestions\UpgradePayment.aspx" />
     <Content Include="BankQuestions\ExamResult.aspx" />
     <Content Include="BankQuestions\ConfirmPayment.aspx" />
     <Content Include="BankQuestions\StudyExam.aspx" />
@@ -400,6 +401,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BankQuestions\UpgradePayment.aspx.cs">
+      <DependentUpon>UpgradePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\UpgradePayment.aspx.designer.cs">
+      <DependentUpon>UpgradePayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BankQuestions\ExamResult.aspx.cs">
       <DependentUpon>ExamResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

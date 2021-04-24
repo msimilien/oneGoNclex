@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace oneGoNclex.Model
 {
@@ -35,5 +36,17 @@ namespace oneGoNclex.Model
             Days = days;
             EndDate = endDate;
         }
+    }
+
+    public class PaymentDetailViewModel
+    {
+        public int ID { get; set; }
+        public string PaymentDate { get; set; }
+        public string IdStudent { get; set; }
+        public string Amount { get; set; }
+        public string Concept { get; set; }
+        public string TransactionID { get; set; }
+        public string SubscriptionType { get; set; }
+        public string EndDate { get; set; }
     }
 }
