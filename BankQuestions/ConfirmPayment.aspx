@@ -180,6 +180,7 @@
             </div>
             <!--/.container-->
             <!-- Modal -->
+
             <div class="modal fade"
                 id="modalPayment"
                 tabindex="-1"
@@ -211,6 +212,73 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="modal fade"
+                id="modalPaymentError"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="modalPaymentError"
+                aria-hidden="true"
+                data-backdrop="false"
+                data-keyboard="false"
+                style="z-index: 9;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content mt-8">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Transaction Error</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-justify">
+                                Unexpected error occurred when trying to confirm your PayPal transaction. Please try again.
+                            </p>
+                            <p id="errorDetail">
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" 
+                                    class="btn btn-outline-info" 
+                                    data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade"
+                id="modalPaymentCancel"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="modalPayment"
+                aria-hidden="true"
+                data-backdrop="false"
+                data-keyboard="false"
+                style="z-index: 9;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content mt-8">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Transaction Cancelled</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-justify">
+                                The transaction was cancelled. If you want to get a valid subscription for an exam, please try again.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" 
+                                    class="btn btn-outline-info" 
+                                    data-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
         </section>
         <section class="py-4 fs-1 text-center background-9">
             <div class="container">
@@ -265,34 +333,6 @@
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=ARupHA-BaL9tYFnFf2-MQNT3lcDQEPE1qQvP3IOrlG0pTKydhGBrQ473kETG_vO0q08b_GfXrmRm-jnV"></script>
-    <script>
-        paypal.Buttons({
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: $.trim($("#lblCost").text()),
-                            currency: 'USD'
-                        }
-                    }]
-                });
-            },
-            onApprove: function (data, actions) {
-                return actions.order.capture().then(function (details) {
-                    $("#modalPayment").modal("show");
-                    $("#lblTicketID").text($(details).attr("id")).fadeIn();
-                    $("#lblPaymentDate").text($(details).attr("create_time")).fadeIn();
-                    $(".paypal-data").fadeIn();
-                    $("#txtID").val($(details).attr("id"));
-                    $("#txtDate").val($(details).attr("create_time"));
-                    $('#paypal-button-container').fadeOut();
-                });
-            }
-        }).render('#paypal-button-container');
-
-        function ConfirmTransaction() {
-            $("#btnConfirm").trigger("click");
-        }
-    </script>
+    <script src="../assets/js/ConfirmPayment.js"></script>
 </body>
 </html>
