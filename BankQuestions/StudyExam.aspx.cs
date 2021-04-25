@@ -326,7 +326,7 @@ namespace oneGoNclex
 
         protected void btnFinish_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/bankquestions/banks");
+            Response.Redirect("/banks");
         }
     }
 }

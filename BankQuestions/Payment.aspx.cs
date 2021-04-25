@@ -7,7 +7,10 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.QueryString["onlyPremium"] != null)
+            {
+                normalContainer.Style.Add("display", "none");
+            }
         }
 
         protected void btnConfirmPayment_Click(object sender, EventArgs e)

@@ -98,9 +98,26 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-instagram"></span>
                                 </a>
-                                <a class="pl-3 pl-lg-1 d-inline-block pr-0" href="#">
+                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
+                                <a id="loginAction" 
+                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
+                                    href="javascript:void();"
+                                    onclick="collapse()"
+                                    style="display:none !important;">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
+                                            <div class="card card-body">
+                                                <a href="javascript:void();" onclick="logoff();">Logoff</a>
+                                                <a href="javascript:void();" onclick="goSettings();">Setting</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -113,9 +130,9 @@
                     <div class="col-12 px-0">
                         <form id="frmSubscription" runat="server" class="text-center mt-10">
                             <p>Please select a subscription plan you want for a bank exam</p>
-                            <div class="row mb-4">
+                            <div class="row mb-4 justify-content-md-center">
 
-                                <div class="col-sm-6 mb-3">
+                                <div class="col-sm-6 mb-3" runat="server" id="normalContainer">
                                     <div class="card border-primary">
                                         <div class="card-header bg-info">
                                             <h3 class="text-white">Normal</h3>
@@ -289,5 +306,6 @@
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/Payment.js"></script>
+    <script src="../assets/js/UpgradePayment.js"></script>
 </body>
 </html>

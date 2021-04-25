@@ -84,9 +84,8 @@
                                 <a href="/Contact.aspx">Contact</a>
 
                             </li>
-
                         </ul>
-                        <ul class="navbar-nav fs-0 ml-lg-auto">
+                        <ul id="ulItems" class="navbar-nav fs-0 ml-lg-auto">
                             <li class="text-center">
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-facebook"></span>
@@ -97,9 +96,26 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-instagram"></span>
                                 </a>
-                                <a class="pl-3 pl-lg-1 d-inline-block pr-0" href="#">
+                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
+                                <a id="loginAction" 
+                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
+                                    href="javascript:void();"
+                                    onclick="collapse()"
+                                    style="display:none !important;">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
+                                            <div class="card card-body">
+                                                <a href="javascript:void();" onclick="logoff();">Logoff</a>
+                                                <a href="javascript:void();" onclick="goSettings();">Setting</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -229,5 +245,6 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/UpgradePayment.js"></script>
 </body>
 </html>

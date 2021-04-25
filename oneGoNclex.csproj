@@ -163,6 +163,7 @@
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\Payment.js" />
     <Content Include="assets\js\StudyExam.js" />
+    <Content Include="assets\js\UpgradePayment.js" />
     <Content Include="assets\js\zanimation.js" />
     <Content Include="assets\lib\bootstrap\dist\css\bootstrap.min.css" />
     <Content Include="assets\lib\bootstrap\dist\js\bootstrap.min.js" />

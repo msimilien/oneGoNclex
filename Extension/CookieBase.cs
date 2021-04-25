@@ -12,7 +12,7 @@ namespace oneGoNclex.Extension
         {
             var cookie = new HttpCookie("userData")
             {
-                HttpOnly = true,
+                //HttpOnly = true,
                 Secure = true,
                 Expires = DateTime.Now.AddDays(30),
                 Value = StringCipher.Encrypt(new JavaScriptSerializer().Serialize(model))

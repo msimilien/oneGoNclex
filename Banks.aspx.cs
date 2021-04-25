@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Text;
@@ -16,17 +17,10 @@ namespace oneGoNclex
             {
                 var url = "/bankquestions/choose?bankid=" + StringCipher.Encrypt(bank.BankId.ToString());
 
-
-
-
-                //html.Append("<div class='column'> <div class='card'><img src='{".. / " + bank.imageBank}' + '><div class="container"><h2>' + nombre + '</h2><p><button class="button" onclick="myFunction(' + id + ')">Ver Enfermedades</button></p></div> </div> </div>'");
-
                 html.Append("<div class='col-lg-4' style='padding: 10 10 %;'> ");
                 html.Append($"<img src='{"../" + bank.imageBank}'  style='width: 100%; height: 180px ' class='card'>");
                 html.Append("<div class='container' style=' background: linear-gradient(to bottom left, #ff0000 0%, #c7c7c7 100%); color: #ffffff;'>");// #c7c7c7 #ffccff
-                //html.Append("<br />");
                 html.Append("<h4 class='font-weight-bold'>" + bank.Name + "</h4>");
-                //html.Append("<br />");
                 html.Append("<div class='border-bottom-0' style='height:200px;overflow-y:auto;margin-bottom:10px;'> " + bank.Description + "</div>");
                 html.Append("<p class='text-center'>");
                 html.Append("<a class='btn btn-primary' href='" + url + "'>");
@@ -38,11 +32,12 @@ namespace oneGoNclex
                 html.Append("</p>");
                 html.Append("</div>");
                 html.Append("</div>");
-
-
             }
 
             bankList.InnerHtml = html.ToString();
+
+            if (Request.QueryString["dc"] != null)
+                CookieBase.ClearCookie();
         }
     }
 }

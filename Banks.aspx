@@ -89,7 +89,23 @@
                                 <a href="Contact.aspx">Contact</a>
 
                             </li>
-
+                            <li id="liItemLogin" 
+                                onmouseover="$('#collapseOptions').collapse('toggle')"
+                                onmouseout="$('#collapseOptions').collapse('toggle')">
+                                <a href="javascript:void();">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse" id="collapseOptions">
+                                            <div class="card card-body">
+                                                <a href="javascript:void();">Logoff</a>
+                                                <a href="javascript:void();">Setting</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                         <ul class="navbar-nav fs-0 ml-lg-auto">
                             <li class="text-center">
@@ -131,26 +147,26 @@
         </section>
 
         <section>
-         <div id="">
-            <div class="container" style="padding: 0 5%; " >
-                <div class="row">
-                    <div class="col-xs-12" style="padding: 0 13%; background-color: #92a8d1; color: #ffffff;">
-                        <h3>Our NCLEX Practice Questions Bank</h3>
+            <div id="">
+                <div class="container" style="padding: 0 5%;">
+                    <div class="row">
+                        <div class="col-xs-12" style="padding: 0 13%; background-color: #92a8d1; color: #ffffff;">
+                            <h3>Our NCLEX Practice Questions Bank</h3>
+                            <br />
+                            <p>The world needs more registered nurses. Practice for your 2021 NCLEX test using the same kind of questions you’ll be answering on the actual written examination.</p>
+                            <br />
+                        </div>
                         <br />
-                        <p>The world needs more registered nurses. Practice for your 2021 NCLEX test using the same kind of questions you’ll be answering on the actual written examination.</p>
-                        <br />
+                        <div class="col-xs-12">
+                            <form id="form1" runat="server">
+                                <div class="row" runat="server" id="bankList">
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <br />
-                    <div class="col-xs-12">
-                        <form id="form1" runat="server">
-                            <div class="row" runat="server" id="bankList">
-                            </div>
-                        </form>
-                    </div>
+                    <!--/.row-->
                 </div>
-                <!--/.row-->
             </div>
-              </div>
             <!--/.container-->
         </section>
         <section class="py-4 fs-1 text-center background-9">
@@ -208,5 +224,6 @@
     <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="assets/js/core.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/UpgradePayment.js"></script>
 </body>
 </html>

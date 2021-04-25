@@ -24,8 +24,9 @@ namespace oneGoNclex
             var registrationID = StringCipher.Decrypt(Request.QueryString["registrationid"]);
             var email = HttpUtility.UrlDecode(StringCipher.Decrypt(Request.QueryString["email"]));
             var student = StudentService.GetStudentByRegistrationAndEmail(registrationID, email);
-
-            CookieBase.AddCookieBase(new CookieModel(registrationID, email, $"{student.FirstName} {student.MiddleName} {student.LastName}"));
+            var fullName = !string.IsNullOrEmpty(student.MiddleName) ? $"{student.FirstName} {student.MiddleName} {student.LastName}" :
+                                                                       $"{student.FirstName} {student.LastName}";
+            CookieBase.AddCookieBase(new CookieModel(registrationID, email, fullName));
 
             if (StudentService.CompareStudenPassword(registrationID, email, txtPassword.Text))
             {

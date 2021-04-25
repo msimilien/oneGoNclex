@@ -47,6 +47,7 @@ namespace oneGoNclex.Model
         public string Concept { get; set; }
         public string TransactionID { get; set; }
         public string SubscriptionType { get; set; }
-        public string EndDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string EndDateFormat { get; set; }
     }
 }

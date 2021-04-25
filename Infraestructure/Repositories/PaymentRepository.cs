@@ -78,7 +78,6 @@ namespace oneGoNclex.Infraestructure.Repositories
                 return payment.EndDate >= DateTime.Now;
             }
         }
-
         public static List<PaymentDetailViewModel> GetAllPaymentsByRegistrationId(string registrationID)
         {
             var listOfPayments = new List<PaymentDetailViewModel>();
@@ -92,7 +91,8 @@ namespace oneGoNclex.Infraestructure.Repositories
                     {
                         Amount = $"{payment.Amount} $USD",
                         Concept = payment.Concept,
-                        EndDate = payment.EndDate.ToString("yyyy-MM-dd"),
+                        EndDate = payment.EndDate,
+                        EndDateFormat = payment.EndDate.ToString("yyyy-MM-dd"),
                         IdStudent = payment.IdStudent,
                         SubscriptionType = payment.IsBankPremium ? "Premium" : "Normal",
                         PaymentDate = payment.PaymentDate.ToString("yyyy-MM-dd"),
@@ -110,7 +110,8 @@ namespace oneGoNclex.Infraestructure.Repositories
                                        {
                                            Amount = $"{x.Amount} $USD",
                                            Concept = x.Concept,
-                                           EndDate = x.EndDate.ToString("yyyy-MM-dd"),
+                                           EndDate = x.EndDate,
+                                           EndDateFormat = x.EndDate.ToString("yyyy-MM-dd"),
                                            IdStudent = x.IdStudent,
                                            SubscriptionType = x.IsBankPremium ? "Premium" : "Normal",
                                            PaymentDate = x.PaymentDate.ToString("yyyy-MM-dd"),
