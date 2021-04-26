@@ -9,9 +9,9 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (CookieBase.IsValidCookie())
+            if (SessionBase.IsValidSession())
             {
-                var cookieStudentData = CookieBase.GetDataFromCookie();
+                var cookieStudentData = SessionBase.GetDataFromSession();
 
                 if (PaymentService.CheckSubscriptionAvailableByRegistrationID(cookieStudentData.RegistrationID))
                     Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(cookieStudentData.RegistrationID)}&email={StringCipher.Encrypt(cookieStudentData.Email)}");

@@ -17,12 +17,12 @@ namespace oneGoNclex
 
         void Session_Start(object sender, EventArgs E)
         {
-            CookieBase.ClearCookie();
+            SessionBase.ClearSession();
         }
 
         void Session_End(object sender, EventArgs E)
         {
-            CookieBase.ClearCookie();
+            SessionBase.ClearSession();
         }
     }
 }

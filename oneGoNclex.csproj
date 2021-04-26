@@ -515,7 +515,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Extension\CookieBase.cs" />
+    <Compile Include="Extension\SessionBase.cs" />
     <Compile Include="Infraestructure\Assistence.cs">
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
@@ -619,7 +619,7 @@
       <DependentUpon>OneGoNclexDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\BankViewModel.cs" />
-    <Compile Include="Model\CookieModel.cs" />
+    <Compile Include="Model\SessionModel.cs" />
     <Compile Include="Model\EmailViewModel.cs" />
     <Compile Include="Model\ExamResultViewModel.cs" />
     <Compile Include="Model\ExamViewModel.cs" />
