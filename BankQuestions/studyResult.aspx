@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PreExam.aspx.cs" Inherits="oneGoNclex.PreExam" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="studyResult.aspx.cs" Inherits="oneGoNclex.BankQuestions.studyResult" %>
 
 <!DOCTYPE html>
+
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
@@ -84,8 +85,9 @@
                                 <a href="/Contact.aspx">Contact</a>
 
                             </li>
+
                         </ul>
-                        <ul id="ulItems" class="navbar-nav fs-0 ml-lg-auto">
+                        <ul class="navbar-nav fs-0 ml-lg-auto">
                             <li class="text-center">
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-facebook"></span>
@@ -96,101 +98,52 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-instagram"></span>
                                 </a>
-                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
+                                <a class="pl-3 pl-lg-1 d-inline-block pr-0" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
-                                <a id="loginAction" 
-                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
-                                    href="javascript:void();"
-                                    onclick="collapse()"
-                                    style="display:none !important;">
-                                    <i class="fa fa-user"></i>
-                                </a>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
-                                            <div class="card card-body">
-                                                <a href="javascript:void();" onclick="logoff();">Logout</a>
-                                                <a href="javascript:void();" onclick="goSettings();">Upgrade Subscription</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
-        <section class=" background-11 py-0" style="padding: 0 7%;">
+        <section class=" background-11 py-0">
             <div class="container">
                 <div class="row h-full align-items-center">
                     <div class="col-12 px-0">
                         <form runat="server">
-                            <div class="row" style="margin-top: 13.5rem;">
-                                <div class="col-xs-12">
-                                    <h4>Exam details</h4>
-                                </div>
-                            </div>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4" style="margin-left: -17px;">
-                                    <b>Total questions: </b>
-                                    <asp:Label runat="server" ID="lblTotalQuestions"></asp:Label>
+                                <div class="col-md-4 col-lg-12 mb-4">
+                                    <br />
+                                    <br />
+                                    <h4> Congratulations!! you've completed the Practice.</h4>
+                                  
+                                    <p>In order to validate the skills acquired during this practice, we recommend that you take the exam linked to it by clicking on the "take exam" button.</p>
+                                    
                                 </div>
-                                <div class="col-xs-12 col-sm-4" style="margin-left: -17px;">
-                                    <b>Time Limit: </b>
-                                    <asp:Label runat="server" ID="lblTimeLimit"></asp:Label>
-                                </div>
-                                <div class="col-xs-12 col-sm-4" style="margin-left: -17px;">
-                                    <b>Allowed Attempts: </b>
-                                    <asp:Label runat="server" ID="lblAttempts">1</asp:Label>
-                                </div>
+
+
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12">
+                            
+                             <br />
+                             <div class="row">
+                               <div class="col-xs-12" style="margin: 0 auto;">
                                     <br />
-                                    <b>Instructions</b>
-                                    <br />
-                                    <br />
-                                    This exam/study-exam consists of multiple-choice questions. To be successful with the weekly exam/study-exam, it’s important to thoroughly be organize and precise in every answer. It will also be extremely useful to study the key terms at the end of the chapter and review the Test Your Knowledge activity at the end of the chapter. Keep the following in mind:
-                                    <br />
-                                    <br />
-                                    <b>Attempts</b> - You will have one attempt for take the exam. The score being recorded in the database.
-                                    <b>Timing</b> - You will an estimated time to complete the exam.
-                                    <b>Answers</b> - You may review your answer-choices and compare them to the correct answers after your final attempt.
-                                    <br />
-                                    <br />
-                                    To start the exam mode, click the "Start exam" button or if you want to 
-                                    review, click the "Start practice" button. When finished the exam mode, click the "Finish" button to view the results.
-                                    <br />
-                                    <br />
-                                    Only registered students, enrolled users can take graded exam/practice </div>
+                                                        <asp:Button Text="Take Exam" runat="server" ID="btnRetake"  CssClass="btn btn-success" Width="250px" OnClick="btnRetake_Click"  />
+                                                       
+                                                       
+                                                       
+                             </div>
+                            <div class="col-xs-12" style="margin: 0 auto;">
+                                 <br />
+                                 <asp:Button Text="Back To Question Bank" runat="server" ID="btnKckToBank"  CssClass="btn btn-success" Width="250px" OnClick="btnKckToBank_Click"  />
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12" style="margin: 0 auto;">
-                                    <br />
-                                    <br />
-                                    <asp:Button ID="startExam"
-                                        Text="Start Exam"
-                                        runat="server"
-                                        OnClick="startExam_Click"
-                                        class="btn btn-outline-success" />
-                                </div>
-                                <div class="col-xs-12" style="margin: 0 auto;">
-                                    <br />
-                                    <br />
-                                    <asp:Button ID="btnStudyExam"
-                                        Text="START PRACTICE"
-                                        runat="server"
-                                        OnClick="btnStudyExam_Click"
-                                        class="btn btn-outline-info" />
-                                </div>
-                            </div>
+                           </div>
                         </form>
                     </div>
                 </div>
+                <!--/.row-->
             </div>
-            <!--/.row-->
             <!--/.container-->
         </section>
         <section class="py-4 fs-1 text-center background-9">
@@ -245,6 +198,5 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/UpgradePayment.js"></script>
 </body>
 </html>

@@ -91,7 +91,7 @@
                                 <a href="Contact.aspx">Contact</a>
 
                             </li>
-                            <li id="liItemLogin" 
+                        <%--    <li id="liItemLogin" 
                                 onmouseover="$('#collapseOptions').collapse('toggle')"
                                 onmouseout="$('#collapseOptions').collapse('toggle')">
                                 <a href="javascript:void();">
@@ -107,10 +107,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li>--%>
                         </ul>
                         <ul class="navbar-nav fs-0 ml-lg-auto">
                             <li class="text-center">
+                                <a id="loginAction" 
+                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
+                                    href="javascript:void();"
+                                    onclick="collapse()"
+                                    style="display:none !important;">
+                                    <span class="fa fa-user"></span>
+                                </a>
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-facebook"></span>
                                 </a>
@@ -123,6 +130,17 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block pr-0" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
+                           
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
+                                            <div class="card card-body">
+                                                <a href="javascript:void();" onclick="logoff();">Logout</a>
+                                                <a href="javascript:void();" onclick="goSettings();">Upgrade Subscription</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>

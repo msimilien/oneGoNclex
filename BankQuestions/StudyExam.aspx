@@ -112,8 +112,8 @@
                                     <div class="col">
                                         <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
                                             <div class="card card-body">
-                                                <a href="javascript:void();" onclick="logoff();">Logoff</a>
-                                                <a href="javascript:void();" onclick="goSettings();">Setting</a>
+                                                <a href="javascript:void();" onclick="logoff();">Logout</a>
+                                                <a href="javascript:void();" onclick="goSettings();">Upgrade Subscription</a>
                                             </div>
                                         </div>
                                     </div>
