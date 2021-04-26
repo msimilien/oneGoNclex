@@ -15,7 +15,7 @@ namespace oneGoNclex
 
             foreach (var bank in bankListData)
             {
-                var url = "/bankquestions/choose?bankid=" + StringCipher.Encrypt(bank.BankId.ToString());
+                var url = "/bankquestions/choose?bankid=" + StringCipher.Encrypt(bank.BankId.ToString())+"&ispremium="+StringCipher.Encrypt(bank.IsPremium.ToString());
 
                 html.Append("<div class='col-lg-4' style='padding: 10 10 %;'> ");
                 html.Append($"<img src='{"../" + bank.imageBank}'  style='width: 100%; height: 180px ' class='card'>");

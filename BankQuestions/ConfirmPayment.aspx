@@ -349,8 +349,35 @@
     <script src="../assets/js/inertia.js"></script>
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=ARupHA-BaL9tYFnFf2-MQNT3lcDQEPE1qQvP3IOrlG0pTKydhGBrQ473kETG_vO0q08b_GfXrmRm-jnV"></script>
-    <script src="../assets/js/ConfirmPayment.js"></script>
-    <script src="../assets/js/UpgradePayment.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AdGQftApUjI_fGj3wyg1bhb4eperr-9jC9LYo5IsiiotW3EcgJ_BfITqeZXOrPbw28lijz9AQqrmsjub"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: $.trim($("#lblCost").text()),
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    $("#modalPayment").modal("show");
+                    $("#lblTicketID").text($(details).attr("id")).fadeIn();
+                    $("#lblPaymentDate").text($(details).attr("create_time")).fadeIn();
+                    $(".paypal-data").fadeIn();
+                    $("#txtID").val($(details).attr("id"));
+                    $("#txtDate").val($(details).attr("create_time"));
+                    $('#paypal-button-container').fadeOut();
+                });
+            }
+        }).render('#paypal-button-container');
+
+        function ConfirmTransaction() {
+            $("#btnConfirm").trigger("click");
+        }
+    </script>
 </body>
 </html>

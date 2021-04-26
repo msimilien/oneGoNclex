@@ -33,7 +33,7 @@ namespace oneGoNclex
                 Response.Redirect($"/bankquestions/studentaccesspassword?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(txtRegistrationID.Text)}&email={StringCipher.Encrypt(HttpUtility.UrlEncode(txtEmail.Text))}");
             }
 
-            Response.Redirect($"/bankquestions/studentaccesslogin?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(txtRegistrationID.Text)}&email={StringCipher.Encrypt(HttpUtility.UrlEncode(txtEmail.Text))}");
+            Response.Redirect($"/bankquestions/studentaccesslogin?bankid={Request.QueryString["bankid"]}&registrationid={StringCipher.Encrypt(txtRegistrationID.Text)}&email={StringCipher.Encrypt(HttpUtility.UrlEncode(txtEmail.Text))}&ispremium={StringCipher.Decrypt(Request.QueryString["ispremium"])}");
         }
 
         #region Methods

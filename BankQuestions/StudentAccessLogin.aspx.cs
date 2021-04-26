@@ -30,10 +30,26 @@ namespace oneGoNclex
 
             if (StudentService.CompareStudenPassword(registrationID, email, txtPassword.Text))
             {
-                if (PaymentService.CheckSubscriptionAvailableByRegistrationID(registrationID))
-                    Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
+                var checkPayment = PaymentService.CheckSubscriptionAvailableByRegistrationID(registrationID);
+                var checkpremium = StringCipher.Decrypt(Request.QueryString["ispremium"]);
+                if (checkPayment != null)
+                {
+                    if (checkpremium == "True" && !checkPayment.IsBankPremium)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please upgrade your subscribtion to access to a premium bank');window.location.href='/Banks.aspx';", true);
+                    }
+                    else
+                    {
+                        Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
+                    }
+                   
+                }
+
                 else
+                {
                     Response.Redirect($"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
+                }
+                    
             }
             else
                 txtErrorLogin.Text = "Username, Registration ID or Password are invalid.";

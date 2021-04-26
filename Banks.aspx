@@ -41,7 +41,9 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
 </head>
-<body data-spy="scroll" data-target=".inner-link" data-offset="60">
+<body data-spy="scroll" data-target=".inner-link" data-offset="60"
+    oncut="return false"
+    oncopy="return false">
     <main>
         <div class="loading" id="preloader">
             <div class="h-100 d-flex align-items-center justify-content-center">

@@ -145,7 +145,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 5 USD</h5>
+                                                        <h5>Cost: 3 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -156,7 +156,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 15 USD</h5>
+                                                        <h5>Cost: 60 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +167,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 30 USD</h5>
+                                                        <h5>Cost: 120 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,7 +178,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 50 USD</h5>
+                                                        <h5>Cost: 200 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -199,7 +199,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 5 USD</h5>
+                                                        <h5>Cost: 50 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,7 +210,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 15 USD</h5>
+                                                        <h5>Cost: 150 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -221,7 +221,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 30 USD</h5>
+                                                        <h5>Cost: 300 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -232,7 +232,7 @@
                                                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <h5>Cost: 50 USD</h5>
+                                                        <h5>Cost: 500 USD</h5>
                                                     </div>
                                                 </div>
                                             </div>

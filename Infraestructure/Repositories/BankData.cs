@@ -1,5 +1,6 @@
 ﻿using oneGoNclex.Infraestructure;
 using oneGoNclex.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace oneGoNclex.DAL
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.myConnection);
                 SqlCommand cmd = new SqlCommand
                 {
-                    CommandText = @"SELECT [IdBank],[Description],[BankName],[ImageBank] FROM [dbo].[Bank] WITH(NOLOCK) WHERE Actif=1 ",
+                    CommandText = @"SELECT [IdBank],[Description],[BankName],[ImageBank],[IsBankPremium] FROM [dbo].[Bank] WITH(NOLOCK) WHERE Actif=1 ",
                     Connection = conn
                 };
 
@@ -28,7 +29,7 @@ namespace oneGoNclex.DAL
                 {
                     while (reader.Read())
                     {
-                        listOfBanks.Add(new BankViewModel(reader.GetInt32(0), reader.GetString(2), reader.GetString(1), reader.GetString(3)));
+                        listOfBanks.Add(new BankViewModel(reader.GetInt32(0), reader.GetString(2), reader.GetString(1), reader.GetString(3),reader.GetBoolean(4)));
                     }
                 }
 
@@ -36,7 +37,7 @@ namespace oneGoNclex.DAL
 
                 return listOfBanks;
             }
-            catch
+            catch(Exception ex)
             {
                 return listOfBanks;
             }
@@ -47,7 +48,7 @@ namespace oneGoNclex.DAL
             using (var db = new NCLEXREVIEWEntities())
             {
                 var bank = db.Banks.Single(x => x.IdBank == bankId);
-                return new BankViewModel(bankId, bank.BankName, bank.Description, bank.ImageBank);
+                return new BankViewModel(bankId, bank.BankName, bank.Description, bank.ImageBank,bank.IsBankPremium);
             }
         }
     }

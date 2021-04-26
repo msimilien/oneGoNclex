@@ -326,7 +326,11 @@ namespace oneGoNclex
 
         protected void btnFinish_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/banks");
+            var registrationID = StringCipher.Decrypt(Request.QueryString["registrationid"]);
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/studyresult?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                             $"/bankquestions/examresult?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+
+            Response.Redirect(url);
         }
     }
 }

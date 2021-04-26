@@ -223,10 +223,13 @@ namespace oneGoNclex
                 BankID = bankId,
                 Qualification = totalExam,
                 Point = totalQuestions,
-                StudentID = string.IsNullOrEmpty(registrationID) ? externalLoginID.ToString() : registrationID
+                StudentID = string.IsNullOrEmpty(registrationID) ? externalLoginID.ToString() : registrationID,
+                totalPass = responseQuestions.Count,
+                totalFail=totalQuestions-responseQuestions.Count
+                
             };
 
-            ExamService.RegisterExamResult(model);
+            //ExamService.RegisterExamResult(model);//it's not necesary to save the result in our DB
 
             Session["examResult"] = model;
 

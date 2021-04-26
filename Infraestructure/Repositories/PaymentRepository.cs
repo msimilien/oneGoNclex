@@ -47,11 +47,18 @@ namespace oneGoNclex.Infraestructure.Repositories
                     payment.IdStudent = model.RegistrationId;
                     payment.PaymentDate = DateTime.Parse(model.CreationDate);
                 }
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
 
-                db.SaveChanges();
+                }
+              
             }
         }
-        public static bool CheckSubscriptionAvailableByRegistrationID(string registrationID)
+        public static PaypalPayment CheckSubscriptionAvailableByRegistrationID(string registrationID)
         {
             using (var db = new NCLEXREVIEWEntities())
             {
@@ -75,7 +82,15 @@ namespace oneGoNclex.Infraestructure.Repositories
                     payment = db.PaypalPayments.Single(x => x.IdStudent == registrationID);
                 }
 
-                return payment.EndDate >= DateTime.Now;
+                if (payment.EndDate >= DateTime.Now)
+                {
+                    return payment;
+                }
+                else
+                {
+                    return null;
+                }
+                    
             }
         }
         public static List<PaymentDetailViewModel> GetAllPaymentsByRegistrationId(string registrationID)

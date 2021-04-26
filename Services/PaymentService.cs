@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Infraestructure.Repositories;
+﻿using oneGoNclex.Infraestructure;
+using oneGoNclex.Infraestructure.Repositories;
 using oneGoNclex.Model;
 using System.Collections.Generic;
 
@@ -32,7 +33,7 @@ namespace oneGoNclex.Services
             return days;
         }
 
-        public static bool CheckSubscriptionAvailableByRegistrationID(string registrationID)
+        public static PaypalPayment CheckSubscriptionAvailableByRegistrationID(string registrationID)
         {
             return PaymentRepository.CheckSubscriptionAvailableByRegistrationID(registrationID);
         }

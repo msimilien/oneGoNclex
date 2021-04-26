@@ -133,17 +133,38 @@
                                 <div class="col-md-4 col-lg-12 mb-4">
                                     <br />
                                     <br />
-                                    <h4>Our NCLEX Practice Questions Bank</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, condimentum maecenas neque in senectus purus porta, vitae morbi diam et vehicula bibendum. Cubilia nec ligula eleifend mollis nisi mattis facilisis primis sodales, posuere metus cursus tortor volutpat turpis accumsan imperdiet, enim tempus gravida commodo tempor ac id aptent. Mi nibh himenaeos risus lacus fusce blandit quisque, purus phasellus magnis metus semper vestibulum, aliquam nisl auctor ultrices feugiat commodo.</p>
-                                    <p>Inceptos conubia laoreet vivamus eu habitasse hac ad malesuada, eget massa id auctor morbi magnis mattis, rutrum lacinia ante taciti donec aliquam accumsan. Nec praesent primis enim dapibus cubilia eleifend egestas commodo magna malesuada tempus volutpat, neque himenaeos quis morbi lacus tellus donec facilisi diam iaculis. Inceptos mattis porttitor semper aptent tristique litora interdum montes tincidunt, egestas tempor curae himenaeos sapien varius commodo ante enim, nulla malesuada ligula ornare rhoncus sed class proin.</p>
+                                    <h4> Congratulations!! you've completed the exam.</h4>
+                                    <p>Remember that this quiz will help you prepare for your next nclex exams to get your nursing degree.</p>
+                                    <p>If you're not happy with your score please return to the practice module to continue increasing your capacity.</p>
                                     <p><b>The result of your exam is: </b></p>
                                 </div>
+
+
                             </div>
                             <div class="row">
                                 <div class="col-xs-12" style="margin: 0 auto;">
+                                    <asp:Label ID="Label1" runat="server" Text="Total Asset  :"></asp:Label>
+                                    <asp:Label ID="LblPass" runat="server" Text=""></asp:Label> <br />
+                                    <asp:Label ID="Label2" runat="server" Text="Total Fail  :"></asp:Label>
+                                    <asp:Label ID="lblFail" runat="server" Text=""></asp:Label> <br />
+                                    <asp:Label ID="Label3" runat="server" Text="Your Score is : "></asp:Label>
                                     <asp:Label runat="server" ID="lblResult"></asp:Label>
                                 </div>
                             </div>
+                             <br />
+                             <div class="row">
+                               <div class="col-xs-12" style="margin: 0 auto;">
+                                    <br />
+                                                        <asp:Button Text="Retake Exam" runat="server" ID="btnRetake"  CssClass="btn btn-success" Width="250px" OnClick="btnRetake_Click" />
+                                                       
+                                                       
+                                                       
+                             </div>
+                            <div class="col-xs-12" style="margin: 0 auto;">
+                                 <br />
+                                 <asp:Button Text="Back To Question Bank" runat="server" ID="btnKckToBank"  CssClass="btn btn-success" Width="250px" OnClick="btnKckToBank_Click" />
+                            </div>
+                           </div>
                         </form>
                     </div>
                 </div>

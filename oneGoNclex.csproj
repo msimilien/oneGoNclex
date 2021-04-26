@@ -240,6 +240,7 @@
     <Content Include="BankQuestions\Exam.aspx" />
     <Content Include="BankQuestions\ForgotPassword.aspx" />
     <Content Include="BankQuestions\Login.aspx" />
+    <Content Include="BankQuestions\studyResult.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Contact.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -507,6 +508,13 @@
     </Compile>
     <Compile Include="BankQuestions\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BankQuestions\studyResult.aspx.cs">
+      <DependentUpon>studyResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BankQuestions\studyResult.aspx.designer.cs">
+      <DependentUpon>studyResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
