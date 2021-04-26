@@ -9,7 +9,7 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (CookieBase.IsValidCookie())
+            if (SessionBase.IsValidSession())
             {
                 var cookieStudentData = CookieBase.GetDataFromCookie();
                 var checkPayment = PaymentService.CheckSubscriptionAvailableByRegistrationID(cookieStudentData.RegistrationID);

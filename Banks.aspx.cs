@@ -37,7 +37,7 @@ namespace oneGoNclex
             bankList.InnerHtml = html.ToString();
 
             if (Request.QueryString["dc"] != null)
-                CookieBase.ClearCookie();
+                SessionBase.ClearSession();
         }
     }
 }

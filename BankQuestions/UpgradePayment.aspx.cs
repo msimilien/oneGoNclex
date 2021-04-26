@@ -12,13 +12,13 @@ namespace oneGoNclex
         {
             if (!IsPostBack)
             {
-                if (!CookieBase.IsValidCookie() || Request.QueryString["bankid"] == null)
+                if (!SessionBase.IsValidSession() || Request.QueryString["bankid"] == null)
                 {
                     var url = "/banks";
                     Response.Redirect(url);
                 }
 
-                var cookieData = CookieBase.GetDataFromCookie();
+                var cookieData = SessionBase.GetDataFromSession();
                 var registrationID = cookieData.RegistrationID;
                 var email = HttpUtility.UrlDecode(cookieData.Email);
                 var fullName = cookieData.FullName;

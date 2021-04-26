@@ -26,7 +26,7 @@ namespace oneGoNclex
             var student = StudentService.GetStudentByRegistrationAndEmail(registrationID, email);
             var fullName = !string.IsNullOrEmpty(student.MiddleName) ? $"{student.FirstName} {student.MiddleName} {student.LastName}" :
                                                                        $"{student.FirstName} {student.LastName}";
-            CookieBase.AddCookieBase(new CookieModel(registrationID, email, fullName));
+            SessionBase.AddSessionBase(new SessionModel(registrationID, email, fullName));
 
             if (StudentService.CompareStudenPassword(registrationID, email, txtPassword.Text))
             {
