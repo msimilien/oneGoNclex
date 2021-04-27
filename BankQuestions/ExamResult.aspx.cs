@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Model;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Model;
 using oneGoNclex.Security;
 using System;
 using System.Drawing;
@@ -9,6 +10,9 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             if (!Page.IsPostBack)
             {
                 var qualification = ((ExamResultViewModel)Session["examResult"]).Qualification;

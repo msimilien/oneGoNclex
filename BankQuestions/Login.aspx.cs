@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 
@@ -8,7 +9,10 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!btnToChoose.HRef.Contains("?bankid="))
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
+            if (!btnToChoose.HRef.Contains("?bankid="))
                 btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
 
             if (!btnToExternal.HRef.Contains("?bankid="))

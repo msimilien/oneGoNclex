@@ -4,7 +4,6 @@ using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Web;
-using System.Web.Script.Serialization;
 
 namespace oneGoNclex
 {
@@ -17,6 +16,9 @@ namespace oneGoNclex
 
             if (!btnForgotPassword.HRef.Contains("?bankid="))
                 btnForgotPassword.HRef += $"?tag=student&bankid={Request.QueryString["bankid"]}";
+
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -35,21 +37,12 @@ namespace oneGoNclex
                 if (checkPayment != null)
                 {
                     if (checkpremium == "True" && !checkPayment.IsBankPremium)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please upgrade your subscribtion to access to a premium bank');window.location.href='/Banks.aspx';", true);
-                    }
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please upgrade your subscribtion to access to a premium bank');window.location.href='/banks';", true);
                     else
-                    {
                         Response.Redirect($"/bankquestions/preexam?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
-                    }
-                   
                 }
-
                 else
-                {
                     Response.Redirect($"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}");
-                }
-                    
             }
             else
                 txtErrorLogin.Text = "Username, Registration ID or Password are invalid.";

@@ -11,6 +11,9 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             btnToChoose.HRef += $"?bankid={Request.QueryString["bankid"]}";
             txtErrorMsg.Visible = false;
         }

@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Model;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Model;
 using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
@@ -11,6 +12,9 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             if (!btnToBack.HRef.Contains("?bankid="))
                 btnToBack.HRef += $"?bankid={Request.QueryString["bankid"]}";
         }

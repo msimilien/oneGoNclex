@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 
@@ -8,6 +9,9 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             if (!Page.IsPostBack)
             {
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));

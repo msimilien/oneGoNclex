@@ -8589,6 +8589,7 @@ span.psw {
 #tblPayments tr td:nth-child(10),
 #tblPayments tr td:nth-child(11),
 #tblPayments tr td:nth-child(12),
-#tblPayments tr td:nth-child(13) {
+#tblPayments tr td:nth-child(13),
+#tblPayments tr td:nth-child(14) {
     display: none;
 }

@@ -19,6 +19,9 @@ namespace oneGoNclex
             scripManager1.RegisterAsyncPostBackControl(btnNext);
             scripManager1.RegisterAsyncPostBackControl(btnPrev);
 
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             if (!Page.IsPostBack)
             {
                 var bankId = int.Parse(StringCipher.Decrypt(Request.QueryString["bankid"]));

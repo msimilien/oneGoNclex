@@ -102,6 +102,7 @@
                                 <a id="loginAction" 
                                     class="pl-3 pl-lg-1 d-inline-block pr-0" 
                                     href="javascript:void();"
+                                    runat="server"
                                     onclick="collapse()"
                                     style="display:none !important;">
                                     <i class="fa fa-user"></i>
@@ -172,6 +173,7 @@
                                     <br />
                                     <asp:Button ID="startExam"
                                         Text="Start Exam"
+                                        Width="250px"
                                         runat="server"
                                         OnClick="startExam_Click"
                                         class="btn btn-outline-success" />
@@ -181,6 +183,7 @@
                                     <br />
                                     <asp:Button ID="btnStudyExam"
                                         Text="START PRACTICE"
+                                        Width="250px"
                                         runat="server"
                                         OnClick="btnStudyExam_Click"
                                         class="btn btn-outline-info" />

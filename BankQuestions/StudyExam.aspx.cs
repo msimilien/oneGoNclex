@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Model;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Model;
 using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
@@ -16,6 +17,9 @@ namespace oneGoNclex
         {
             scripManager1.RegisterAsyncPostBackControl(btnNext);
             scripManager1.RegisterAsyncPostBackControl(btnPrev);
+
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
 
             if (!Page.IsPostBack)
             {

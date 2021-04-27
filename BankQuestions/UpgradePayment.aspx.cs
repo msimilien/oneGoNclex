@@ -10,6 +10,9 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             if (!IsPostBack)
             {
                 if (!SessionBase.IsValidSession() || Request.QueryString["bankid"] == null)

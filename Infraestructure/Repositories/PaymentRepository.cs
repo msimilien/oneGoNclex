@@ -51,7 +51,7 @@ namespace oneGoNclex.Infraestructure.Repositories
                 {
                     db.SaveChanges();
                 }
-                catch (Exception ex)
+                catch
                 {
 
                 }

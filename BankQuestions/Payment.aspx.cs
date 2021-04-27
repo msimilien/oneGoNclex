@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using System;
 
 namespace oneGoNclex
@@ -7,10 +8,11 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             if (Request.QueryString["onlyPremium"] != null)
-            {
                 normalContainer.Style.Add("display", "none");
-            }
         }
 
         protected void btnConfirmPayment_Click(object sender, EventArgs e)

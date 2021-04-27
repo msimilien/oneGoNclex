@@ -103,6 +103,7 @@
                                 </a>
                                 <a id="loginAction" 
                                     class="pl-3 pl-lg-1 d-inline-block pr-0" 
+                                    runat="server"
                                     href="javascript:void();"
                                     onclick="collapse()"
                                     style="display:none !important;">

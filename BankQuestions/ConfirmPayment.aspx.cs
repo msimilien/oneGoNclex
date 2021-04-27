@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Threading.Tasks;
@@ -41,6 +42,9 @@ namespace oneGoNclex
             }
             else
                 Response.Redirect(BackToPaymentSelectionUrl());
+
+            if(SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
         }
 
         protected void btnBackToPayment_Click(object sender, EventArgs e)

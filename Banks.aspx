@@ -91,33 +91,9 @@
                                 <a href="Contact.aspx">Contact</a>
 
                             </li>
-                        <%--    <li id="liItemLogin" 
-                                onmouseover="$('#collapseOptions').collapse('toggle')"
-                                onmouseout="$('#collapseOptions').collapse('toggle')">
-                                <a href="javascript:void();">
-                                    <i class="fas fa-user"></i>
-                                </a>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="collapse multi-collapse" id="collapseOptions">
-                                            <div class="card card-body">
-                                                <a href="javascript:void();">Logoff</a>
-                                                <a href="javascript:void();">Setting</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>--%>
                         </ul>
                         <ul class="navbar-nav fs-0 ml-lg-auto">
                             <li class="text-center">
-                                <a id="loginAction" 
-                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
-                                    href="javascript:void();"
-                                    onclick="collapse()"
-                                    style="display:none !important;">
-                                    <span class="fa fa-user"></span>
-                                </a>
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-facebook"></span>
                                 </a>
@@ -127,20 +103,9 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-instagram"></span>
                                 </a>
-                                <a class="pl-3 pl-lg-1 d-inline-block pr-0" href="#">
+                                <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
-                           
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
-                                            <div class="card card-body">
-                                                <a href="javascript:void();" onclick="logoff();">Logout</a>
-                                                <a href="javascript:void();" onclick="goSettings();">Upgrade Subscription</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </li>
                         </ul>
                     </div>
@@ -240,10 +205,7 @@
     <script src="assets/lib/rellax/rellax.min.js"></script>
     <script src="assets/js/zanimation.js"></script>
     <script src="assets/js/inertia.js"></script>
-    <script src="assets/js/googlemap.js" async></script>
-    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCoK8GIrOHzHwnzHCyqrdtmTpUWcdrTTD8&callback=initMap" async></script>
     <script src="assets/js/core.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/UpgradePayment.js"></script>
 </body>
 </html>

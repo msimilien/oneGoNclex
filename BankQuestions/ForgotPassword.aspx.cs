@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Threading.Tasks;
@@ -12,6 +13,9 @@ namespace oneGoNclex
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
+
             _from = Request.QueryString["tag"];
 
             if (_from == "student")

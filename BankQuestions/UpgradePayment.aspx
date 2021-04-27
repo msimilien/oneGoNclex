@@ -104,6 +104,7 @@
                                 <a id="loginAction" 
                                     class="pl-3 pl-lg-1 d-inline-block pr-0" 
                                     href="javascript:void();"
+                                    runat="server"
                                     onclick="collapse()"
                                     style="display:none !important;">
                                     <i class="fa fa-user"></i>
@@ -189,7 +190,7 @@
                                             <asp:BoundColumn HeaderText="Subscription Type" DataField="SubscriptionType"></asp:BoundColumn>
                                             <asp:BoundColumn HeaderText="Amount" DataField="Amount"></asp:BoundColumn>
                                             <asp:BoundColumn HeaderText="Transaction ID" DataField="TransactionID"></asp:BoundColumn>
-                                            <asp:BoundColumn HeaderText="Subscription End" DataField="EndDate"></asp:BoundColumn>
+                                            <asp:BoundColumn HeaderText="Subscription End" DataField="EndDateFormat"></asp:BoundColumn>
                                         </Columns>
                                     </asp:DataGrid>
                                 </div>

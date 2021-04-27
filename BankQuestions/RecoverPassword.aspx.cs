@@ -1,4 +1,5 @@
-﻿using oneGoNclex.Security;
+﻿using oneGoNclex.Extension;
+using oneGoNclex.Security;
 using oneGoNclex.Services;
 using System;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace oneGoNclex
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (SessionBase.IsValidSession())
+                loginAction.Attributes.CssStyle["display"] = "block";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

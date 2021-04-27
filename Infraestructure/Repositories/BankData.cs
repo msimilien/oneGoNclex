@@ -37,7 +37,7 @@ namespace oneGoNclex.DAL
 
                 return listOfBanks;
             }
-            catch(Exception ex)
+            catch
             {
                 return listOfBanks;
             }
