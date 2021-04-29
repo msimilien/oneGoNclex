@@ -18,8 +18,8 @@ namespace oneGoNclex
         protected void btnConfirmPayment_Click(object sender, EventArgs e)
         {
             var registrationID = Request.QueryString["registrationid"];
-            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/confirmpayment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
-                                                              $"/bankquestions/confirmpayment?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/confirmpayment?registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                              $"/bankquestions/confirmpayment?email={Request.QueryString["email"]}";
 
 
             url += "&cost=" + StringCipher.Encrypt(txtCost.Text);

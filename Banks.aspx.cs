@@ -43,6 +43,14 @@ namespace oneGoNclex
 
             if (Request.QueryString["dc"] != null)
                 SessionBase.ClearSession();
+
+            if (SessionBase.IsValidSession())
+            {
+                loginAction.Attributes.CssStyle["display"] = "block";
+                var model = SessionBase.GetDataFromSession();
+                var url = Request.Url + $"?registrationid={StringCipher.Encrypt(model.RegistrationID)}&email={StringCipher.Encrypt(model.Email)}";
+                ClientScript.RegisterStartupScript(this.GetType(), "email", $"window.history.pushState('SessionModel', 'Banks', '{url}');", true);
+            }
         }
     }
 }

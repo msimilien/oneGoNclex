@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace oneGoNclex.Model
 {
@@ -7,7 +6,6 @@ namespace oneGoNclex.Model
     {
         public string RegistrationId { get; set; }
         public string Email { get; set; }
-        public int BankId { get; set; }
         public string TicketId { get; set; }
         public string CreationDate { get; set; }
         public string Amount { get; set; }
@@ -18,7 +16,6 @@ namespace oneGoNclex.Model
         public PaymentViewModel(
             string registrationId,
             string email,
-            int bankId,
             string ticketId,
             string creationDate,
             string amount,
@@ -28,7 +25,6 @@ namespace oneGoNclex.Model
         {
             RegistrationId = registrationId;
             Email = email;
-            BankId = bankId;
             TicketId = ticketId;
             CreationDate = creationDate;
             Amount = amount;

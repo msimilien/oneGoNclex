@@ -101,20 +101,20 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
-                                <a id="loginAction" 
-                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
-                                    href="javascript:void();"
+                                <a id="loginAction"
+                                    class="pl-3 pl-lg-1 d-inline-block pr-0"
+                                    href="javascript:;"
                                     runat="server"
                                     onclick="collapse()"
-                                    style="display:none !important;">
+                                    style="display: none !important;">
                                     <i class="fa fa-user"></i>
                                 </a>
                                 <div class="row">
                                     <div class="col">
                                         <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
                                             <div class="card card-body">
-                                                <a href="javascript:void();" onclick="logoff();">Logout</a>
-                                                <a href="javascript:void();" onclick="goSettings();">Upgrade Subscription</a>
+                                                <a href="javascript:;" onclick="logoff();">Logout</a>
+                                                <a href="javascript:;" onclick="goSettings();">Upgrade Subscription</a>
                                             </div>
                                         </div>
                                     </div>
@@ -222,15 +222,16 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" 
-                                    class="btn btn-outline-info" 
-                                    data-dismiss="modal"
-                                    onclick="ConfirmTransaction()">Ok</button>
+                            <button type="button"
+                                class="btn btn-outline-info"
+                                data-dismiss="modal"
+                                onclick="ConfirmTransaction()">
+                                Ok</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal fade"
                 id="modalPaymentError"
                 tabindex="-1"
@@ -253,13 +254,13 @@
                                 Unexpected error occurred when trying to confirm your PayPal transaction. Please try again.
                             </p>
                             <p id="errorDetail">
-
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" 
-                                    class="btn btn-outline-info" 
-                                    data-dismiss="modal">Ok</button>
+                            <button type="button"
+                                class="btn btn-outline-info"
+                                data-dismiss="modal">
+                                Ok</button>
                         </div>
                     </div>
                 </div>
@@ -288,9 +289,10 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" 
-                                    class="btn btn-outline-info" 
-                                    data-dismiss="modal">Ok</button>
+                            <button type="button"
+                                class="btn btn-outline-info"
+                                data-dismiss="modal">
+                                Ok</button>
                         </div>
                     </div>
                 </div>
@@ -351,34 +353,7 @@
     <script src="../assets/js/core.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=AdGQftApUjI_fGj3wyg1bhb4eperr-9jC9LYo5IsiiotW3EcgJ_BfITqeZXOrPbw28lijz9AQqrmsjub"></script>
-    <script>
-        paypal.Buttons({
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: $.trim($("#lblCost").text()),
-                            currency: 'USD'
-                        }
-                    }]
-                });
-            },
-            onApprove: function (data, actions) {
-                return actions.order.capture().then(function (details) {
-                    $("#modalPayment").modal("show");
-                    $("#lblTicketID").text($(details).attr("id")).fadeIn();
-                    $("#lblPaymentDate").text($(details).attr("create_time")).fadeIn();
-                    $(".paypal-data").fadeIn();
-                    $("#txtID").val($(details).attr("id"));
-                    $("#txtDate").val($(details).attr("create_time"));
-                    $('#paypal-button-container').fadeOut();
-                });
-            }
-        }).render('#paypal-button-container');
-
-        function ConfirmTransaction() {
-            $("#btnConfirm").trigger("click");
-        }
-    </script>
+    <script src="../assets/js/ConfirmPayment.js"></script>
+    <script src="../assets/js/UpgradePayment.js"></script>
 </body>
 </html>

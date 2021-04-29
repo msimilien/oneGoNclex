@@ -15,7 +15,7 @@ namespace oneGoNclex
 
             if (!IsPostBack)
             {
-                if (!SessionBase.IsValidSession() || Request.QueryString["bankid"] == null)
+                if (!SessionBase.IsValidSession())
                 {
                     var url = "/banks";
                     Response.Redirect(url);
@@ -50,8 +50,8 @@ namespace oneGoNclex
         protected void btnRenew_Click(object sender, EventArgs e)
         {
             var registrationID = Request.QueryString["registrationid"];
-            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
-                                                              $"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/payment?registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                              $"/bankquestions/payment?email={Request.QueryString["email"]}";
 
             Response.Redirect(url);
         }
@@ -59,8 +59,8 @@ namespace oneGoNclex
         protected void btnUpgradePremium_Click(object sender, EventArgs e)
         {
             var registrationID = Request.QueryString["registrationid"];
-            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
-                                                              $"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+            var url = !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/payment?registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                              $"/bankquestions/payment?email={Request.QueryString["email"]}";
 
 
             url += "&onlyPremium=1";

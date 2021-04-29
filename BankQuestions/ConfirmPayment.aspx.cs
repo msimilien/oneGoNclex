@@ -55,8 +55,8 @@ namespace oneGoNclex
         private string BackToPaymentSelectionUrl()
         {
             var registrationID = Request.QueryString["registrationid"];
-            return !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
-                                                           $"/bankquestions/payment?bankid={Request.QueryString["bankid"]}&email={Request.QueryString["email"]}";
+            return !string.IsNullOrEmpty(registrationID) ? $"/bankquestions/payment?registrationid={Request.QueryString["registrationid"]}&email={Request.QueryString["email"]}" :
+                                                           $"/bankquestions/payment?email={Request.QueryString["email"]}";
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
@@ -64,7 +64,6 @@ namespace oneGoNclex
             var registrationID = StringCipher.Decrypt(Request.QueryString["registrationid"]);
             var email = HttpUtility.UrlDecode(StringCipher.Decrypt(Request.QueryString["email"]));
             var cost = StringCipher.Decrypt(Request.QueryString["cost"]);
-            var bank = StringCipher.Decrypt(Request.QueryString["bankid"]);
             var isPremium = bool.Parse(StringCipher.Decrypt(Request.QueryString["isPremium"]));
             var days = StringCipher.Decrypt(Request.QueryString["days"]);
             var daysCount = PaymentService.GetDaysBySubscriptionName(days);
@@ -73,7 +72,6 @@ namespace oneGoNclex
             Task.Run(() => {
                 PaymentService.UpsertPayment(new Model.PaymentViewModel(registrationID,
                                                                     email,
-                                                                    int.Parse(bank),
                                                                     txtID.Text,
                                                                     txtDate.Text, 
                                                                     cost,

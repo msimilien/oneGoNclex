@@ -103,7 +103,7 @@
                                 </a>
                                 <a id="loginAction" 
                                     class="pl-3 pl-lg-1 d-inline-block pr-0" 
-                                    href="javascript:void();"
+                                    href="javascript:;"
                                     runat="server"
                                     onclick="collapse()"
                                     style="display:none !important;">
@@ -113,8 +113,8 @@
                                     <div class="col">
                                         <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
                                             <div class="card card-body">
-                                                <a href="javascript:void();" onclick="logoff();">Logoff</a>
-                                                <a href="javascript:void();" onclick="goSettings();">Setting</a>
+                                                <a href="javascript:;" onclick="logoff();">Logoff</a>
+                                                <a href="javascript:;" onclick="goSettings();">Setting</a>
                                             </div>
                                         </div>
                                     </div>

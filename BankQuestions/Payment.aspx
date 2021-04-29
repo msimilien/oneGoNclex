@@ -101,20 +101,20 @@
                                 <a class="pl-3 pl-lg-1 d-inline-block" href="#">
                                     <span class="fa fa-dribbble"></span>
                                 </a>
-                                <a id="loginAction" 
-                                    class="pl-3 pl-lg-1 d-inline-block pr-0" 
-                                    href="javascript:void();"
+                                <a id="loginAction"
+                                    class="pl-3 pl-lg-1 d-inline-block pr-0"
+                                    href="javascript:;"
                                     runat="server"
                                     onclick="collapse()"
-                                    style="display:none !important;">
+                                    style="display: none !important;">
                                     <i class="fa fa-user"></i>
                                 </a>
                                 <div class="row">
                                     <div class="col">
                                         <div class="collapse multi-collapse pos-fixed ml-6" id="collapseOptions">
                                             <div class="card card-body">
-                                                <a href="javascript:void();" onclick="logoff();">Logout</a>
-                                                <a href="javascript:void();" onclick="goSettings();">Upgrade Subscription</a>
+                                                <a href="javascript:;" onclick="logoff();">Logout</a>
+                                                <a href="javascript:;" onclick="goSettings();">Upgrade Subscription</a>
                                             </div>
                                         </div>
                                     </div>
